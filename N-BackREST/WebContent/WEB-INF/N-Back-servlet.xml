@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+<context:component-scan base-package="controllers,data"></context:component-scan>
+
+<mvc:annotation-driven />
+
+<tx:annotation-driven transaction-manager="transactionManager" />
+
+<bean id="myEmf"
+  class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+  <property name="dataSource" ref="dataSource" />
+  <property name="packagesToScan" value="entities" />
+  <property name="jpaVendorAdapter">
+    <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+  </property>
+  <property name="jpaProperties">
+    <props>
+      <prop key="hibernate.show_sql">false</prop>
+          <prop key="hibernate.format_sql">false</prop>
+      <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+      <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+    </props>
+  </property>
+</bean>
+
+<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+  <property name="entityManagerFactory" ref="myEmf" />
+</bean>
+
+<bean id="dataSource"
+  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  <property name="driverClassName" value="${rds_driver}" />
+  <property name="url"
+    value="${rds_jdbc_host}" />
+  <property name="username" value="${rds_mysql_user}" />
+  <property name="password" value="${rds_mysql_password}" />
+</bean>
+
+<bean id="persistenceExceptionTranslationPostProcessor"
+  class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+<!-- This loads the properties file -->
+<bean id="properties"
+  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+  <property name="location" value="classpath:rds.properties" />
+</bean>
+</beans>
