@@ -1,0 +1,3 @@
+
+rootProject.name = 'N-BackREST'
+includeFlat 'N-BackJPA'
