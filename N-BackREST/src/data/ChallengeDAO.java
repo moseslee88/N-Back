@@ -2,17 +2,17 @@ package data;
 
 import java.util.Set;
 
-import entities.Game;
+import entities.Challenge;
 
 public interface ChallengeDAO {
-	public Set<Game> indexGame();
+	public Set<Challenge> indexChallenge();
 
-	public Game showGame(Integer gameId);
+	public Challenge showChallenge(Integer challengeId);
 
-	public Game createGame(String gameJson);
+	public Challenge createChallenge(String challengeJson);
 
-	public Game updateGame(Integer gameId, String gameJson);
+	public Challenge updateChallenge(Integer challengeId, String challengeJson);
 
-	public Boolean destroyGame(Integer gameId);
+	public Boolean destroyChallenge(Integer challengeId);
 
 }
