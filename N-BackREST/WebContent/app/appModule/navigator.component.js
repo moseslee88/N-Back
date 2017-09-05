@@ -8,7 +8,7 @@ angular.module('appModule', [])
 
 			vm.logout = function() {
 				authService.logout().then(function(response) {
-					console.log("yay, user logggggggged out");
+					console.log("yup, user logged out");
 					$location.path('/');
 				})
 					.catch(function() {
