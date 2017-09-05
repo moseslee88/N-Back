@@ -11,7 +11,6 @@
 		<class>entities.Profile</class>
 		<class>entities.Result</class>
 		<class>entities.User</class>
-		<class>entities.UserFriend</class>
 
 		<properties>
 

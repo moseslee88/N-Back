@@ -20,7 +20,7 @@ public class ProfileTest {
 
 	@Before
 	public void setUp() throws Exception {
-		emf = Persistence.createEntityManagerFactory("N-Back");
+		emf = Persistence.createEntityManagerFactory("RDS");
 		em = emf.createEntityManager();
 	}
 

@@ -10,7 +10,6 @@ angular.module('appModule')
 			}
 			return true;
 		}
-		
 	},
 	controllerAs : 'vm'
 })
