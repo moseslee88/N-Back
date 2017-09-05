@@ -5,14 +5,14 @@ import java.util.Set;
 import entities.Challenge;
 
 public interface ChallengeDAO {
-	public Set<Challenge> indexChallenge();
+	public Set<Challenge> indexChallenge(Integer uid);
 
-	public Challenge showChallenge(Integer challengeId);
+	public Challenge showChallenge(Integer uid, Integer challengeId);
 
-	public Challenge createChallenge(String challengeJson);
+	public Challenge createChallenge(Integer uid, Integer challengedUserId, String challengeJson);
 
-	public Challenge updateChallenge(Integer challengeId, String challengeJson);
+	public Challenge updateChallenge(Integer uid, Integer challengeId, String challengeJson);
 
-	public Boolean destroyChallenge(Integer challengeId);
+	public Boolean destroyChallenge(Integer uid, Integer challengeId);
 
 }
