@@ -86,10 +86,12 @@ public class ChallengeDAOImpl implements ChallengeDAO {
 				em.remove(c);
 
 			} catch (Exception e) {
-				// TODO: handle exception
+				e.printStackTrace();
+				return false;
 			}
+			return true;
 		}
-		return null;
+		return false;
 	}
 
 }

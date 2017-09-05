@@ -5,14 +5,11 @@ import java.util.Set;
 import entities.Result;
 
 public interface ResultDAO {
-	public Set<Result> indexResult();
+	public Set<Result> indexResult(Integer userId);
 
-	public Result showResult(Integer resultId);
+	public Result showResult(Integer userId, Integer resultId);
 
-	public Result createResult(String resultJson);
+	public Result createResult(Integer userId, String resultJson);
 
-	public Result updateResult(Integer resultId, String resultJson);
-
-	public Boolean destroyResult(Integer resultId);
 
 }
