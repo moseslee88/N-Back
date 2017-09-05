@@ -35,7 +35,7 @@ angular.module('authModule')
 			
 			authService.register(user)
 				.then(function(res) {
-					$location.path('/todo');
+					$location.path('/login');
 				})
 				.catch(console.error)
 		}
