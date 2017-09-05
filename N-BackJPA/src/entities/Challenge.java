@@ -1,12 +1,13 @@
 package entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Challenge {
@@ -15,15 +16,20 @@ public class Challenge {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@JsonBackReference(value="usertochallenge")
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user; 
 
-	@Column(name = "result_id")
-	private Integer resultId;
+	@JsonBackReference (value="resulttochallenge")
+	@ManyToOne
+	@JoinColumn(name="result_id")
+	private Result result;
 
-	@Column(name = "target_user_id")
-	private Integer targetUserId;
+	@JsonBackReference(value="targetusertochallenge")
+	@ManyToOne
+	@JoinColumn(name="target_user_id")
+	private User targetUser;
 
 	// gets and sets
 
@@ -39,21 +45,24 @@ public class Challenge {
 		this.user = user;
 	}
 
-	public Integer getResultId() {
-		return resultId;
+	public Result getResult() {
+		return result;
 	}
 
-	public void setResultId(Integer resultId) {
-		this.resultId = resultId;
+	public void setResult(Result result) {
+		this.result = result;
 	}
 
-	public Integer getTargetUserId() {
-		return targetUserId;
+	public User getTargetUser() {
+		return targetUser;
 	}
 
-	public void setTargetUserId(Integer targetUserId) {
-		this.targetUserId = targetUserId;
+	public void setTargetUser(User targetUser) {
+		this.targetUser = targetUser;
 	}
+
+
+
 
 //	Override
 //	public String toString() {
