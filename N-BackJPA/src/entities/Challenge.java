@@ -55,9 +55,9 @@ public class Challenge {
 		this.targetUserId = targetUserId;
 	}
 
-	@Override
-	public String toString() {
-		return "Challenge [id=" + id + ", resultId=" + resultId + ", targetUserId=" + targetUserId + "]";
-	}
+//	Override
+//	public String toString() {
+//		return "Challenge [id=" + id + ", resultId=" + resultId + ", targetUserId=" + targetUserId + "]";
+//	}
 
 }

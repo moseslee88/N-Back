@@ -1,5 +1,8 @@
 package data;
 
-public interface AuthDAO {
+import entities.User;
 
+public interface AuthDAO {
+	  public User register(User u);
+	  public User login(User u);
 }
