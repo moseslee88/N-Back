@@ -2,10 +2,16 @@ package data;
 
 import java.util.Set;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import entities.Game;
 
 public class GameDAOImpl implements GameDAO {
 
+	@PersistenceContext
+	private EntityManager em;
+	
 	@Override
 	public Set<Game> indexGame() {
 		// TODO Auto-generated method stub

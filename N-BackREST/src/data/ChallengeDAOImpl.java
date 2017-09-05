@@ -2,10 +2,21 @@ package data;
 
 import java.util.Set;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import entities.Challenge;
 
+@Transactional
+@Repository
 public class ChallengeDAOImpl implements ChallengeDAO {
 
+	@PersistenceContext
+	private EntityManager em;
+	
 	@Override
 	public Set<Challenge> indexChallenge() {
 		// TODO Auto-generated method stub
