@@ -1,4 +1,4 @@
-angular.module('appModule', [])
+angular.module('appModule')
 	.component('navigator', {
 		templateUrl : 'app/appModule/navigator.component.html',
 
