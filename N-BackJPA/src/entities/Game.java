@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Table(name="game")
@@ -21,6 +22,7 @@ public class Game {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@JsonIgnore
 	@OneToMany(mappedBy="game", fetch=FetchType.EAGER)
 	@JsonManagedReference(value="gametoresult")
 	private Set<Result> results;

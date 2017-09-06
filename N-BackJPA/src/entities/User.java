@@ -14,7 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Table(name="user")
 @Entity
@@ -26,25 +27,32 @@ public class User {
 	private String email;
 
 	private String password;
-
-	@ManyToMany
-	@JoinTable(name = "user_friend", joinColumns = @JoinColumn(name = "user_id1"), inverseJoinColumns = @JoinColumn(name = "user_id2"))
+    
+	@JsonIgnore
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(name = "friend", joinColumns = @JoinColumn(name = "user_id1"), inverseJoinColumns = @JoinColumn(name = "user_id2"))
 	private Collection<User> friends;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user", fetch=FetchType.LAZY)
-	@JsonManagedReference(value = "usertoresult")
+	//@JsonManagedReference(value = "usertoresult")
 	private Collection<Result> results;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user", fetch=FetchType.LAZY)
-	@JsonManagedReference(value = "usertochallenge")
+	//@JsonManagedReference(value = "usertochallenge")
 	private Collection<Challenge> challenges;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "targetUser", fetch=FetchType.LAZY)
-	@JsonManagedReference(value = "targetusertochallenge")
+	//@JsonManagedReference(value = "targetusertochallenge")
 	private Collection<Challenge> targetChallenges;
 
+	@JsonBackReference
 	@OneToOne(mappedBy = "user")
 	private Profile profile;
+	
+	//gets and sets
 
 	public Integer getId() {
 		return id;

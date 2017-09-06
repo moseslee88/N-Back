@@ -25,7 +25,7 @@ public class ChallengeController {
 	@Autowired
 	private UserDAO udao;
 
-	@RequestMapping(path = "ping", method = RequestMethod.GET)
+	@RequestMapping(path = "challenge/ping", method = RequestMethod.GET)
 	public String ping() {
 		return "pong";
 	}

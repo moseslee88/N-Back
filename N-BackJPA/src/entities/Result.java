@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Table(name="result")
@@ -24,6 +25,7 @@ public class Result {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@JsonIgnore
 	@OneToMany(mappedBy="result", fetch=FetchType.EAGER)
 	@JsonManagedReference(value="resulttochallenge")
 	private Set<Challenge> challenges;

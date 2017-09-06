@@ -25,7 +25,7 @@ public class ResultController {
 	@Autowired
 	private ResultDAO dao;
 	
-	@RequestMapping(path = "ping", method = RequestMethod.GET)
+	@RequestMapping(path = "results/ping", method = RequestMethod.GET)
 	public String ping() {
 		return "pong";
 	}
