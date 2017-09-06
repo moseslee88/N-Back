@@ -21,13 +21,13 @@ public class GameController {
 	private GameDAO dao;
 
 	@RequestMapping(path = "games", method = RequestMethod.GET)
-    public Collection<Game> index(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid) {
+    public Collection<Game> index(HttpServletRequest req, HttpServletResponse res) {
 		return dao.indexGame();
 	}
 	
 	
 	 @RequestMapping(path = "games/{gid}", method = RequestMethod.GET)
-	 	public Todo show(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int tid) {
+	 	public Game show(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer gid) {
 		   return dao.showGame(gid);
 		}
 }
