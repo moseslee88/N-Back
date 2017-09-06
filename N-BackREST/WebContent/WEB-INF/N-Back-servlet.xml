@@ -46,6 +46,9 @@
   <property name="password" value="${rds_mysql_password}" />
 </bean>
 
+<bean id="bCryptPasswordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
 <bean id="persistenceExceptionTranslationPostProcessor"
   class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
