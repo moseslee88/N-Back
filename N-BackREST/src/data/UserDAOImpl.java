@@ -79,7 +79,7 @@ public class UserDAOImpl implements UserDAO {
 		if(deleteUser == null) {
 			return false;
 		}
-		return null;
+		return true;
 	}
 
 }
