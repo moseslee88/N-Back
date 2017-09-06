@@ -22,7 +22,7 @@ public class GameDAOImpl implements GameDAO {
 
 	@Override
 	public Set<Game> indexGame() {
-		String query = "SELECT c FROM Challenge c";
+		String query = "SELECT g FROM Game g";
 		List<Game> gameList = em.createQuery(query, Game.class)
 				.getResultList();
 
@@ -32,7 +32,7 @@ public class GameDAOImpl implements GameDAO {
 
 	@Override
 	public Game showGame(Integer gameId) {
-		String query = "SELECT c FROM Challenge c WHERE c.id=:id";
+		String query = "SELECT g FROM Game g WHERE g.id=:id";
 		Game game = em.createQuery(query, Game.class)
 				.setParameter("id", gameId)
 				.getResultList()
