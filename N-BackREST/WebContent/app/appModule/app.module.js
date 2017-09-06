@@ -1,4 +1,4 @@
-angular.module('appModule',['ngRoute', 'ngCookies', 'authModule'])
+angular.module('appModule',['ngRoute', 'ngCookies', 'authModule', 'gameModule'])
 .config(function($routeProvider){ 
 	  $routeProvider  
 	  .when('/', { 
@@ -16,7 +16,5 @@ angular.module('appModule',['ngRoute', 'ngCookies', 'authModule'])
 	    .otherwise({
 	    template: '<not-found></not-found>'
              })
-	        
-	     
-	
+
 });

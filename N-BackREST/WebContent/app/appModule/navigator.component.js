@@ -15,8 +15,6 @@ angular.module('appModule')
 						console.log("can't logout of this particular session");
 					});
 			}
-
-
 		},
 		controllerAs : 'vm'
 	})
