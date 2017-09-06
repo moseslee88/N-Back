@@ -19,7 +19,7 @@ public class ProfileDAOImpl implements ProfileDAO {
 
 	@Override
 	public Set<Profile> indexProfile(Integer userId) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

@@ -1,5 +1,6 @@
 package data;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -51,13 +52,33 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User updateUser(Integer userId, String userJson) {
-		// TODO Auto-generated method stub
+		User managedUser = em.find(User.class, userId);
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			User myMappedUser = mapper.readValue(userJson, User.class);
+			managedUser.setEmail(myMappedUser.getEmail());
+			managedUser.setPassword(myMappedUser.getPassword());
+			managedUser.setChallenges(myMappedUser.getChallenges());
+			managedUser.setFriends(myMappedUser.getFriends());
+			managedUser.setProfile(myMappedUser.getProfile());
+			managedUser.setResults(myMappedUser.getResults());
+			managedUser.setTargetChallenges(myMappedUser.getTargetChallenges());
+
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 
 	@Override
 	public Boolean destroyUser(Integer userId) {
-		// TODO Auto-generated method stub
+		User deleteUser= em.find(User.class, userId);
+		em.remove(deleteUser);
+		if(deleteUser == null) {
+			return false;
+		}
 		return null;
 	}
 
