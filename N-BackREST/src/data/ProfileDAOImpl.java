@@ -23,7 +23,7 @@ public class ProfileDAOImpl implements ProfileDAO {
 	private EntityManager em;
 
 	@Override
-	public Set<Profile> indexProfile(Integer userId) {
+	public Set<Profile> indexProfile() {
 		//check later that syntax is correct for user id
 		String queryString = "Select p from Profile p"; 
 		List<Profile> list = em.createQuery(queryString, Profile.class).getResultList();
@@ -89,7 +89,7 @@ public class ProfileDAOImpl implements ProfileDAO {
 	public Boolean destroyProfile(Integer userId, Integer profileId) {
 		User u = em.find(User.class, userId);
 		Profile deletedProf = em.find(Profile.class, profileId);
-		em.remove(deletedProf);
+		em.remove(deletedProf); 
 		if(deletedProf == null) {
 			return false;
 		}

@@ -5,7 +5,7 @@ import java.util.Set;
 import entities.Profile;
 
 public interface ProfileDAO {
-	public Set<Profile> indexProfile(Integer userId);
+	public Set<Profile> indexProfile();
 
 	public Profile showProfile(Integer userId, Integer profileId);
 
