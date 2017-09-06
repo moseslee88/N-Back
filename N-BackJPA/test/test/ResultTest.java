@@ -39,7 +39,7 @@ public class ResultTest {
 	}
 	
 	@Test
-	public void testChallenge() {
+	public void testResult() {
 		result = em.find(Result.class, 1);
 		assertNotNull(result);
 		System.out.println(result.getId());

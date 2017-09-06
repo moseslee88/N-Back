@@ -39,7 +39,7 @@ public class GameTest {
 	}
 	
 	@Test
-	public void testChallenge() {
+	public void testGame() {
 		game = em.find(Game.class, 1);
 		assertNotNull(game);
 		System.out.println(game.getId());
