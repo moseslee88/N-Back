@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert.*;
 
+import entities.Challenge;
 import entities.Game;
 
 public class GameTest {
@@ -35,5 +36,12 @@ public class GameTest {
 	public void test() {
 		boolean pass = true;
 		assertEquals(pass, true);
+	}
+	
+	@Test
+	public void testChallenge() {
+		game = em.find(Game.class, 1);
+		assertNotNull(game);
+		System.out.println(game.getId());
 	}
 }

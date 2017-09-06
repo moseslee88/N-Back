@@ -36,4 +36,10 @@ public class ChallengeTest {
 		boolean pass = true;
 		assertEquals(pass, true);
 	}
+	@Test
+	public void testChallenge() {
+		challenge = em.find(Challenge.class, 1);
+		assertNotNull(challenge);
+		System.out.println(challenge.getId());
+	}
 }
