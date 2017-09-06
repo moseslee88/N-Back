@@ -38,10 +38,10 @@ public class ResultTest {
 		assertEquals(pass, true);
 	}
 	
-	@Test
-	public void testResult() {
-		result = em.find(Result.class, 1);
-		assertNotNull(result);
-		System.out.println(result.getId());
-	}
+//	@Test
+//	public void testResult() {
+//		result = em.find(Result.class, 1);
+//		assertNotNull(result);
+//		System.out.println(result.getId());
+//	}
 }

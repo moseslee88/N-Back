@@ -9,3 +9,4 @@ Servers
 *.properties
 s3.properties
 rds.properties
+persistence.xml

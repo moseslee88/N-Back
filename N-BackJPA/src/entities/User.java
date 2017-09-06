@@ -12,9 +12,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+@Table(name="user")
 @Entity
 public class User {
 	@Id
@@ -29,19 +31,19 @@ public class User {
 	@JoinTable(name = "user_friend", joinColumns = @JoinColumn(name = "user_id1"), inverseJoinColumns = @JoinColumn(name = "user_id2"))
 	private Collection<User> friends;
 
-	@OneToMany(mappedBy = "user", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "user", fetch=FetchType.LAZY)
 	@JsonManagedReference(value = "usertoresult")
 	private Collection<Result> results;
 
-	@OneToMany(mappedBy = "user", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "user", fetch=FetchType.LAZY)
 	@JsonManagedReference(value = "usertochallenge")
 	private Collection<Challenge> challenges;
 
-	@OneToMany(mappedBy = "targetUser", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "targetUser", fetch=FetchType.LAZY)
 	@JsonManagedReference(value = "targetusertochallenge")
 	private Collection<Challenge> targetChallenges;
 
-	@OneToOne(mappedBy = "user", fetch=FetchType.EAGER)
+	@OneToOne(mappedBy = "user")
 	private Profile profile;
 
 	public Integer getId() {
