@@ -10,7 +10,7 @@
 		<class>entities.Game</class>
 		<class>entities.Profile</class>
 		<class>entities.Result</class>
-		<class>entities.User</class>
+		<class>entities.User</class> 
 
 		<properties>
 

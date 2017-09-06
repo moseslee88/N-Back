@@ -36,4 +36,10 @@ public class UserTest {
 		boolean pass = true;
 		assertEquals(pass, true);
 	}
+	@Test
+	public void isUserThere() {
+		User u = em.find(User.class, 2);
+		assertNotNull(u);
+		System.out.println(u.getEmail());
+	}
 }
