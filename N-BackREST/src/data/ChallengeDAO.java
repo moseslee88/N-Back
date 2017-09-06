@@ -9,7 +9,7 @@ public interface ChallengeDAO {
 
 	public Challenge showChallenge(Integer uid, Integer challengeId);
 
-	public Challenge createChallenge(Integer uid, Integer challengedUserId, String challengeJson);
+	public Challenge createChallenge(Integer uid, String challengeJson);
 
 	public Challenge updateChallenge(Integer uid, Integer challengeId, String challengeJson);
 

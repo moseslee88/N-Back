@@ -39,14 +39,14 @@ public class ChallengeDAOImpl implements ChallengeDAO {
 	}
 
 	@Override
-	public Challenge createChallenge(Integer uid, Integer challengedUserId, String challengeJson) {
+	public Challenge createChallenge(Integer uid, String challengeJson) {
 		User u = em.find(User.class, uid);
-		User challengedUser = em.find(User.class, challengedUserId);
 		Challenge challenge = null;
 
 		ObjectMapper om = new ObjectMapper();
 		try {
 			challenge = om.readValue(challengeJson, Challenge.class);
+			User challengedUser = em.find(User.class, challenge.getTargetUser());
 			challenge.setUser(u);
 			challenge.setTargetUser(challengedUser);
 			em.persist(challenge);
