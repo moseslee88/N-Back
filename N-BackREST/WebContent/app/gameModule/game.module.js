@@ -1,1 +1,1 @@
-angular.module('gameModule',[]);
+angular.module('gameModule',['ngRoute', 'ngCookies']);

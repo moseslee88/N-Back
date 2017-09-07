@@ -7,7 +7,7 @@ angular.module('gameModule')
 
 			vm.gameList = [];
 			vm.getGameList = function() {
-				gameService.index()
+				localGameService.index()
 					.then(function(res) {
 						vm.gameList = (res.data);
 					})
