@@ -1,7 +1,7 @@
 angular.module('appModule')
    .component('home', {   
 	   templateUrl: 'app/appModule/home.component.html',
-	  controller: function($location, $cookies)  {
+	  controller: function($location, $cookies, resultService, profileService, gameService, challengeService)  {
 		   var vm = this;
 		   vm.currentUserId = null;
 		   
@@ -13,7 +13,6 @@ angular.module('appModule')
 		   console.log(vm.currentUserId);
 		   
 		   vm.goToRegister = function(){
-			   console.log("In the register func");
 			   $location.path('/register')
 		   };
 		   

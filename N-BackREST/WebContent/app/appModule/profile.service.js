@@ -3,7 +3,6 @@ angular.module('appModule')
   var service = {};
   var userId = $cookies.get("uid");
 
-
 		service.index = function() {
 			return $http({
 				method : 'GET',
@@ -11,17 +10,12 @@ angular.module('appModule')
 			})
 		};
 
-
-
-
 		service.show = function(pid) {
 			return $http({
 				method : 'GET',
 				url : '/api/user/' + userId + '/profile' + pid
 			})
 		};
-
-
 
 		service.create = function(profile) {
 			var newProfile = angular.copy(profile);
@@ -42,10 +36,7 @@ angular.module('appModule')
 				})
 		};
 
-
 		service.update = function(profile) {
-
-
 			return $http({
 				method : 'PUT',
 				url : '/api/user/' + userId + '/profile/' + profile.id,
@@ -56,17 +47,12 @@ angular.module('appModule')
 			})
 		},
 
-
-
-
-
 		service.destroy = function(pid) {
 			return $http({
 				method : 'DELETE',
 				url : '/api/user/' + userId + '/profile/' + pid
 			})
 		};
-
 		return service;
 
 

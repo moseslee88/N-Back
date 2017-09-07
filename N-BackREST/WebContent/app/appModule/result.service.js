@@ -7,7 +7,7 @@ angular.module('appModule')
 		service.index = function() {
 			return $http({
 				method : 'GET',
-				url : '/api/user/' + userId + '/result'
+				url : 'api/user/' + userId + '/result'
 			})
 		};
 
@@ -17,7 +17,7 @@ angular.module('appModule')
 		service.show = function(rid) {
 			return $http({
 				method : 'GET',
-				url : '/api/user/' + userId + '/result' + rid
+				url : 'api/user/' + userId + '/result' + rid
 			})
 		};
 
@@ -28,7 +28,7 @@ angular.module('appModule')
 
 			return $http({
 				method : 'POST',
-				url : '/api/user/' + userId + '/result',
+				url : 'api/user/' + userId + '/result',
 				headers : {
 					'Content-Type' : 'application/json'
 				},
