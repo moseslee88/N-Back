@@ -6,14 +6,16 @@ angular.module('appModule')
 		service.index = function() {
 			return $http({
 				method : 'GET',
-				url : '/api/profile'
+				url : 'api/profile'
 			})
 		};
 
 		service.show = function(pid) {
 			return $http({
 				method : 'GET',
-				url : '/api/user/' + userId + '/profile' + pid
+				//url : '/api/user/' + userId + '/profile' + pid
+				url : 'api/user/' + authService.getToken().id + '/profile' + pid
+
 			})
 		};
 
@@ -22,7 +24,7 @@ angular.module('appModule')
 
 			return $http({
 				method : 'POST',
-				url : '/api/user/' + userId + '/profile',
+				url : 'api/user/' + authService.getToken().id + '/profile',
 				headers : {
 					'Content-Type' : 'application/json'
 				},
@@ -30,7 +32,7 @@ angular.module('appModule')
 			})
 				.then(function(res) {
 					$rootScope.$broadcast('created', {
-						todo : res.data
+						profile : res.data
 					})
 					return res;
 				})
@@ -39,7 +41,7 @@ angular.module('appModule')
 		service.update = function(profile) {
 			return $http({
 				method : 'PUT',
-				url : '/api/user/' + userId + '/profile/' + profile.id,
+				url : 'api/user/' + authService.getToken().id + '/profile/' + profile.id,
 				headers : {
 					'Content-Type' : 'application/json'
 				},
@@ -50,7 +52,7 @@ angular.module('appModule')
 		service.destroy = function(pid) {
 			return $http({
 				method : 'DELETE',
-				url : '/api/user/' + userId + '/profile/' + pid
+				url : 'api/user/' + authService.getToken().id + '/profile/' + pid
 			})
 		};
 		return service;

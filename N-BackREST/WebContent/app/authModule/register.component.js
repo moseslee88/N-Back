@@ -35,7 +35,7 @@ angular.module('authModule')
 			console.log(user);
 			authService.register(user)
 				.then(function(res) {
-					$location.path('/');
+					$location.path('/profile');
 				})
 				.catch(console.error)
 		}
