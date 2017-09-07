@@ -1,5 +1,3 @@
-//this is broken!
-
 angular.module('gameModule')
   .factory('localGameService', function($filter, $http, $rootScope) {
     var service = {};
