@@ -34,8 +34,8 @@ public class UserController {
 		return u;
 	}
 
-	@RequestMapping(path = "user/{userId}", method = RequestMethod.POST)
-	public User createUser(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer userId, @RequestBody String userJson) {
+	@RequestMapping(path = "user", method = RequestMethod.POST)
+	public User createUser(HttpServletRequest req, HttpServletResponse res, @RequestBody String userJson) {
         User newUser = dao.createUser(userJson);
 		return newUser;
 	}
