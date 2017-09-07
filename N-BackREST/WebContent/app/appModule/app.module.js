@@ -1,4 +1,4 @@
-angular.module('appModule',['ngRoute', 'ngCookies', 'authModule', 'gameModule'])
+angular.module('appModule',['ngRoute', 'ngCookies', 'authModule'])
 .config(function($routeProvider){ 
 	  $routeProvider  
 	  .when('/', { 
