@@ -2,7 +2,7 @@ angular.module('appModule')
 	.component('navigator', {
 		templateUrl : 'app/appModule/navigator.component.html',
 
-		controller : function(authService, $location) {
+		controller : function(authService, $location, $cookies) {
 			var vm = this;
 			vm.users = [];
 			vm.currentUserId = null;
