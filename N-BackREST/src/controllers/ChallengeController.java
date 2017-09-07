@@ -31,23 +31,23 @@ public class ChallengeController {
 	}
 	
 	@RequestMapping(path = "/user/{uid}/challenge", method = RequestMethod.GET)
-	public Set<Challenge> index(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid) {
+	public Set<Challenge> indexChallenge(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid) {
 		return dao.indexChallenge(uid);
 	}
 	@RequestMapping(path = "/user/{uid}/challenge/{cid}", method = RequestMethod.GET)
-	public Challenge show(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int cid) {
+	public Challenge showChallenge(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int cid) {
 		return dao.showChallenge(uid, cid);
 	}
 	@RequestMapping(path = "/user/{uid}/challenge", method = RequestMethod.POST)
-	public Challenge create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String challengeJson) {
+	public Challenge createChallenge(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String challengeJson) {
 		return dao.createChallenge(uid, challengeJson);
 	}
 	@RequestMapping(path = "/user/{uid}/challenge/{cid}", method = RequestMethod.PUT)
-	public Challenge update(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int cid, @RequestBody String challengeJson) {
+	public Challenge updateChallenge(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int cid, @RequestBody String challengeJson) {
 		return dao.updateChallenge(uid, cid, challengeJson);
 	}
 	@RequestMapping(path = "/user/{uid}/challenge/{cid}", method = RequestMethod.DELETE)
-	public Boolean destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int cid) {
+	public Boolean destroyChallenge(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int cid) {
 		return dao.destroyChallenge(uid, cid);
 	}
 }

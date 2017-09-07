@@ -31,15 +31,15 @@ public class ResultController {
 	}
 	
 	@RequestMapping(path = "/user/{uid}/result", method = RequestMethod.GET)
-	public Set<Result> index(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid) {
+	public Set<Result> indexResult(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid) {
 		return dao.indexResult(uid);
 	}
 	@RequestMapping(path = "/user/{uid}/result/{rid}", method = RequestMethod.GET)
-	public Result show(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int rid) {
+	public Result showResult(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int rid) {
 		return dao.showResult(uid, rid);
 	}
 	@RequestMapping(path = "/user/{uid}/result", method = RequestMethod.POST)
-	public Result create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String resultJson) {
+	public Result createResult(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String resultJson) {
 		return dao.createResult(uid, resultJson);
 	}
 
