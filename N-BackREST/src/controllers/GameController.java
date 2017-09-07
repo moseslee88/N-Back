@@ -27,7 +27,7 @@ public class GameController {
 	
 	
 	 @RequestMapping(path = "games/{gid}", method = RequestMethod.GET)
-	 	public Game show(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer gid) {
-		   return dao.showGame(gid);
+	 public Game show(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer gid) {
+		  return dao.showGame(gid);
 		}
 }

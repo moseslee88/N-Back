@@ -5,6 +5,7 @@ angular.module('appModule')
 		   var vm = this;
 		   
 		   vm.goToRegister = function(){
+			   console.log("In the register func");
 			   $location.path('/register')
 		   };
 		   
