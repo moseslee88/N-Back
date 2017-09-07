@@ -1,4 +1,4 @@
-angular.module('appModule',['ngRoute', 'ngCookies', 'authModule'])
+angular.module('appModule',['ngRoute', 'ngCookies', 'authModule', 'gameModule'])
 .config(function($routeProvider){ 
 	  $routeProvider  
 	  .when('/', { 
@@ -13,8 +13,11 @@ angular.module('appModule',['ngRoute', 'ngCookies', 'authModule'])
 	     .when('/register', { 
 		template: '<register></register>'  
 	        })
-	        .when('/games', { 
-		template: '<games></games>'  
+	        .when('/game', { 
+		template: '<game></game>'  
+	        })
+	        .when('/profile', { 
+	        	template: '<profile></profile>'  
 	        })
 	    .otherwise({
 	    template: '<not-found></not-found>'
