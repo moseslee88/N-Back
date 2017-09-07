@@ -22,31 +22,33 @@ public class ProfileController {
 	@Autowired
 	ProfileDAO dao;
 
-	@RequestMapping(path = "profiles", method = RequestMethod.GET)
-	public Collection<Profile> index(HttpServletRequest req, HttpServletResponse res) {
+	@RequestMapping(path = "profile", method = RequestMethod.GET)
+	public Collection<Profile> indexProfile(HttpServletRequest req, HttpServletResponse res) {
 		return dao.indexProfile();
 	}
 
-	@RequestMapping(path = "users/{userId}/profiles/{pid}", method = RequestMethod.GET)     	//check to validate pathing in database
-	public Profile show(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer userId,
+	@RequestMapping(path = "user/{userId}/profile/{pid}", method = RequestMethod.GET) // check to validate pathing in
+	public Profile showProfile(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer userId,
 			@PathVariable Integer pid) {
 		Profile p = dao.showProfile(userId, pid);
 		return p;
 	}
 
-	@RequestMapping(path = "users/{userId}/profiles/{pid}", method = RequestMethod.POST)
-	public Profile create(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer userId, @PathVariable Integer pid, @RequestBody String profileJson) {
-        Profile newProfile = dao.createProfile(userId, profileJson);
+	@RequestMapping(path = "user/{userId}/profile", method = RequestMethod.POST)
+	public Profile createProfile(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer userId, @RequestBody String profileJson) {
+		Profile newProfile = dao.createProfile(userId, profileJson);
 		return newProfile;
 	}
-	
-	@RequestMapping(path="users/{userId}/profiles/{pid}", method=RequestMethod.PUT)
-	public Profile update(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer userId, @PathVariable Integer pid, @RequestBody String profileJson)  {
+
+	@RequestMapping(path = "user/{userId}/profile/{pid}", method = RequestMethod.PUT)
+	public Profile updateProfile(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer userId,
+			@PathVariable Integer pid, @RequestBody String profileJson) {
 		return dao.updateProfile(userId, pid, profileJson);
 	}
-	
-	@RequestMapping(path="users/{userId}/profiles/{pid}", method=RequestMethod.DELETE) 
-	public Boolean destroy (HttpServletRequest req, HttpServletResponse res, @PathVariable Integer userId, @PathVariable Integer pid)  {
+
+	@RequestMapping(path = "user/{userId}/profile/{pid}", method = RequestMethod.DELETE)
+	public Boolean destroyProfile(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer userId,
+			@PathVariable Integer pid) {
 		return dao.destroyProfile(userId, pid);
 	}
 }
