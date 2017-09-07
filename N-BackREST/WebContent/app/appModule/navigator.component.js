@@ -5,6 +5,12 @@ angular.module('appModule')
 		controller : function(authService, $location) {
 			var vm = this;
 			vm.users = [];
+			vm.currentUserId = null;
+
+			vm.getCurrentUser = function() {
+				vm.currentUserId = $cookies.get("uid");
+			}
+			vm.getCurrentUser();
 
 			vm.logout = function() {
 				authService.logout().then(function(response) {
