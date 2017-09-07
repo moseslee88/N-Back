@@ -20,13 +20,13 @@ public class GameController {
 	@Autowired
 	private GameDAO dao;
 
-	@RequestMapping(path = "games", method = RequestMethod.GET)
+	@RequestMapping(path = "game", method = RequestMethod.GET)
     public Collection<Game> index(HttpServletRequest req, HttpServletResponse res) {
 		return dao.indexGame();
 	}
 	
 	
-	 @RequestMapping(path = "games/{gid}", method = RequestMethod.GET)
+	 @RequestMapping(path = "game/{gid}", method = RequestMethod.GET)
 	 public Game show(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer gid) {
 		  return dao.showGame(gid);
 		}
