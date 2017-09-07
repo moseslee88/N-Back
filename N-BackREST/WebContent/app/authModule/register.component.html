@@ -1,7 +1,7 @@
 <form ng-hide="vm.editRegisterForm">
 	<input type="text" placeholder="email" ng-model="registerUser.email" required />
 	<input type="password" placeholder="password" ng-model="registerUser.password" required />
-	<input type="password" ng-model="registerUser.confirm" required />
+	<input type="password" placeholder="confirm password" ng-model="registerUser.confirm" required />
 	<input type="submit" value="REGISTER" ng-disabled="vm.invalid(registerUser)" ng-click="vm.register(registerUser)" />
 </form>
 
