@@ -1,0 +1,17 @@
+<navigator></navigator>
+<form ng-hide="vm.displayUserProfile">
+	<input type="text" placeholder="userName" ng-model="userProfile.name" />
+	<input type="text" placeholder="birthYear" ng-model="userProfile.name" />
+	<input type="text" placeholder="city" ng-model="userProfile.name" />
+	<select name="gender">
+		<option>m</option>
+		<option>f</option>
+	</select>
+		<br>
+	<input type="text" placeholder="region" ng-model="userProfile.name" />
+	<input type="text" placeholder="education" ng-model="userProfile.name" />
+	<input type="text" placeholder="country" ng-model="userProfile.name" />
+	<input type="text" placeholder="houseHoldIncome" ng-model="userProfile.name" />
+				<!-- get user id from session -->
+	<input type="submit" value="Save Profile" ng-disabled="vm.invalid(userProfile)" ng-click="vm.saveUserProfile(userProfile)" />
+</form>
