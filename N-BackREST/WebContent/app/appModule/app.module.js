@@ -13,6 +13,9 @@ angular.module('appModule',['ngRoute', 'ngCookies', 'authModule'])
 	     .when('/register', { 
 		template: '<register></register>'  
 	        })
+	        .when('/games', { 
+		template: '<games></games>'  
+	        })
 	    .otherwise({
 	    template: '<not-found></not-found>'
              })
