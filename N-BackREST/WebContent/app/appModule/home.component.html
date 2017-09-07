@@ -1,3 +1,12 @@
-<h1 ng-show="vm.currentUserId">HOME!</h1>
-<button id="btn"  ng-click="vm.goToRegister()" ng-hide="vm.currentUserId" > Go Register</button>
-<login ng-hide="vm.currentUserId"></login>
+<navigator></navigator>
+<div id="mainContent" class="container-fluid">
+	<h1 ng-show="vm.currentUserId">HOME!</h1>
+	<button id="btn" ng-click="vm.goToRegister()"
+		ng-hide="vm.currentUserId">Go Register</button>
+	<login ng-hide="vm.currentUserId"></login>
+
+	<div ng-show="vm.currentUserId">
+		
+	
+	</div>
+</div>
