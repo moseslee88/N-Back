@@ -1,9 +1,13 @@
 angular.module('appModule')
    .component('home', {   
 	   templateUrl: 'app/appModule/home.component.html',
-	  // controller: function()  {
-		//   var vm = this;
+	  controller: function($location)  {
+		   var vm = this;
 		   
-	  // },
-	  // controllerAs: 'vm'
+		   vm.goToRegister = function(){
+			   $location.path('/register')
+		   };
+		   
+	   },
+	   controllerAs: 'vm'
    })
