@@ -1,1 +1,1 @@
-angular.module('authModule',[]);
+angular.module('gameModule',[]);
