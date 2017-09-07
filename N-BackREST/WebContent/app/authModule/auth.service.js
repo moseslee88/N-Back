@@ -22,7 +22,7 @@ angular.module('authModule')
     service.login = function(user) {
     		return $http({
     			method : 'POST',
-    			url : 'api/auth/login',
+    			url : 'api/login',
     			headers : {
     				'Content-Type' : 'application/json'
     			},
@@ -41,7 +41,7 @@ angular.module('authModule')
     service.register = function(user) {
 		return $http({
 			method : 'POST',
-			url : 'api/auth/register',
+			url : 'api/register',
 			headers : {
 				'Content-Type' : 'application/json'
 			},
@@ -57,7 +57,7 @@ angular.module('authModule')
     service.logout = function() {
     		return $http({
     			method : 'POST',
-    			url : 'api/auth/logout'
+    			url : 'api/logout'
     		})
     		.then(function(res) {
     			removeToken();
