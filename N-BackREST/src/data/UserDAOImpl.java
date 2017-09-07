@@ -27,6 +27,7 @@ public class UserDAOImpl implements UserDAO {
 		String queryString = "Select u from User u";
 		List<User> list = em.createQuery(queryString, User.class).getResultList();
 		Set<User> users = new HashSet<>(list);
+		System.out.println("In the user index num of users is: " + users.size());
 		return users;
 	}
 
