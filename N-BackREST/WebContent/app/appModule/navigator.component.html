@@ -11,8 +11,8 @@
       <a class="navbar-brand active" href="#/">Home<span class="sr-only">(current)</span></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div ng-show="vm.currentUserId" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right" ng-show="vm.currentUserId">
         <li><a href="#/friends/">Friends</a></li>
         <li><a href="#/games/">Games</a></li>
         <li><a href="#/results/">Results</a></li>
