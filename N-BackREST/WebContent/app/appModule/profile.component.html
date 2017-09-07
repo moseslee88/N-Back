@@ -2,17 +2,17 @@
 <h2>Your User Profile</h2>
 <form>
 	<input type="text" placeholder="userName" ng-model="userProfile.name" /><br>
-	<input type="text" placeholder="birthYear" ng-model="userProfile.name" /><br>
-	<input type="text" placeholder="city" ng-model="userProfile.name" /><br>
-	Gender: <select name="gender">
+	<input type="text" placeholder="birthYear" ng-model="userProfile.birthYear" /><br>
+	<input type="text" placeholder="city" ng-model="userProfile.city" /><br>
+	Gender: <select name="gender" ng-model="userProfile.gender">
 		<option>m</option>
 		<option>f</option>
 	</select>
 		<br>
-	<input type="text" placeholder="region" ng-model="userProfile.name" /><br>
-	<input type="text" placeholder="education" ng-model="userProfile.name" /><br>
-	<input type="text" placeholder="country" ng-model="userProfile.name" /><br>
-	<input type="text" placeholder="houseHoldIncome" ng-model="userProfile.name" /><br>
+	<input type="text" placeholder="region" ng-model="userProfile.region" /><br>
+	<input type="text" placeholder="education" ng-model="userProfile.edu" /><br>
+	<input type="text" placeholder="country" ng-model="userProfile.country" /><br>
+	<input type="text" placeholder="houseHoldIncome" ng-model="userProfile.householdIncome" /><br>
 				<!-- get user id from session -->
 	<input type="submit" value="Save Profile" ng-disabled="vm.invalid(userProfile)" ng-click="vm.saveUserProfile(userProfile)" />
 </form>
