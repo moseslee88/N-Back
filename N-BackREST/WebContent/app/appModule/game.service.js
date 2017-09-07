@@ -2,7 +2,7 @@ angular.module('appModule')
 	.factory('gameService', function($filter, $http, authService, $rootScope) {
 		var service = {};
 
-		var BASE_URL = 'http://localhost:8080/N-BackREST/api/';
+		var BASE_URL = 'api/';
 
 
 		service.index = function() {

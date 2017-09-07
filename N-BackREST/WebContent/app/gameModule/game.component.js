@@ -1,7 +1,7 @@
 angular.module('gameModule')
 	.component('game', {
 		templateUrl : 'app/gameModule/game.component.html',
-		controller : function($location, gameService) {
+		controller : function($location, localGameService) {
 			var vm = this;
 			console.log("we are in the game component")
 

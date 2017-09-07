@@ -1,8 +1,8 @@
 angular.module('gameModule')
-	.factory('gameService', function($filter, $http, authService, $rootScope) {
+	.factory('localGameService', function($filter, $http, $rootScope) {
 		var service = {};
 
-		var BASE_URL = 'http://localhost:8080/N-BackREST/api/';
+		var BASE_URL = 'api/';
 
 
 		service.index = function() {
@@ -60,12 +60,6 @@ angular.module('gameModule')
 				url : `${BASE_URL}games/{gid}`
 			})
 		};
-
-
-		//  var checkLogin = function()  {
-		//stub out code, use authService to check if user  is logged in
-		//  };
-
 
 
 		return service;
