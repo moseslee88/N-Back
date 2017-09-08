@@ -7,7 +7,11 @@ orange: #F07F00
  */
 
 body {
-	background: #143D4C;
+     background: linear-gradient(to bottom, #143D4C, #111);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 h1, h2, h3, h4, h5, h6 {
