@@ -1,12 +1,13 @@
 angular.module('appModule')
-	.factory('resultService', function($filter, $http, authService, $rootScope, $cookies) {
+	.factory('resultService', function($filter, $http, authService, $rootScope, $cookies, gameService) {
 		var service = {};
 
-		service.index = function() {
+		service.index = function(includeGames) {
+			if (!includeGames) includeGames = false;
 			var userId = $cookies.get("uid");
 			return $http({
 				method : 'GET',
-				url : 'api/user/' + userId + '/result'
+				url : 'api/user/' + userId + '/result?games=' + includeGames
 			})
 		};
 
@@ -42,6 +43,16 @@ angular.module('appModule')
 					return res;
 				})
 		};
+//
+//		service.getUsersGamePlayTotal = function() {			
+//			
+//	    
+//			
+//			
+//			
+//			return gamePlayTotal;
+//			
+//		}
 
 		return service;
 

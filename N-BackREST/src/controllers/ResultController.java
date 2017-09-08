@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Collection;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,11 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import data.ResultDAO;
 import data.UserDAO;
-import entities.Challenge;
 import entities.Result;
 
 @RestController
@@ -31,8 +32,14 @@ public class ResultController {
 	}
 	
 	@RequestMapping(path = "/user/{uid}/result", method = RequestMethod.GET)
-	public Set<Result> indexResult(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid) {
-		return dao.indexResult(uid);
+	public Collection<?> indexResult(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestParam(name = "games", required=false) Boolean includeGames) {
+		Set<Result> results = dao.indexResult(uid);
+		
+		if (includeGames != null && includeGames == true) {
+			return dao.addGames(results);
+		}
+		
+		return results;
 	}
 	@RequestMapping(path = "/user/{uid}/result/{rid}", method = RequestMethod.GET)
 	public Result showResult(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int rid) {
@@ -40,6 +47,7 @@ public class ResultController {
 	}
 	@RequestMapping(path = "/user/{uid}/result", method = RequestMethod.POST)
 	public Result createResult(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String resultJson) {
+		
 		return dao.createResult(uid, resultJson);
 	}
 

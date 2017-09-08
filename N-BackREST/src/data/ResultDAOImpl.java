@@ -1,5 +1,7 @@
 package data;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import entities.Challenge;
 import entities.Result;
 import entities.User;
 
@@ -61,6 +62,22 @@ public class ResultDAOImpl implements ResultDAO {
 		}
 		
 		return result;
+	}
+
+	@Override
+	public Collection<ResultGameDTO> addGames(Set<Result> results) {
+		List<ResultGameDTO> gameResults = new ArrayList<>();
+		results.forEach(r -> {
+			Result resultWithGame = em.createQuery("SELECT r FROM Result r JOIN FETCH r.game WHERE r.id = :id", Result.class)
+				.setParameter("id", r.getId())
+				.getResultList()
+				.get(0);
+			
+			gameResults.add(new ResultGameDTO(resultWithGame));
+		});
+		
+		return gameResults;
+		
 	}
 	
 	
