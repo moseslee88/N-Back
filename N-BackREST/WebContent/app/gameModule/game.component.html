@@ -7,11 +7,23 @@
 				<!-- <img src="..." alt="...">
                 <div class="caption"> -->
 				<br>
-				<h3>This is a game</h3>
+				<h3>{{thisGame.name}}</h3>
 				<p>
+				diff: <select name="difficulty" ng-model="activeGame.difficulty">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							<option>8</option>
+						</select>
+						
 					<a href="#/" class="btn btn-primary" role="button">play!</a>
-					...leads to a game html tag
 				</p>
+				<br>
+				<p>{{thisGame.description}}</p>
 				
 				<br> <br>
 			</div>
