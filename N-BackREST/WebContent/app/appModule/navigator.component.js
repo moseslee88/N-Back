@@ -11,8 +11,6 @@ angular.module('appModule')
 				vm.currentUserId = $cookies.get("uid");
 			}
 			vm.getCurrentUser();
-			console.log(vm.currentUserId);
-			
 
 			vm.logout = function() {
 				authService.logout().then(function(response) {
