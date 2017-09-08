@@ -6,16 +6,21 @@ angular.module('appModule')
 		   vm.currentUserId = null;
 		   vm.currentUser = null; 
 		   
+		   vm.getUser = function(){
+			   userService.show()
+			   	.then(function(res){
+			   		vm.currentUser = res;
+			   });
+		   }
+		   
 		   vm.getCurrentUserID = function(){
 			   vm.currentUserId = $cookies.get("uid");
+			   vm.getUser();
 		   }
 		   vm.getCurrentUserID();
 		   
-		   vm.getUser = function(){
-			  vm.currentUser = userService.show();
-		   }
-		   vm.getUser();
-		   console.log(vm.currentUser.id);
+		   
+		   
 		   
 		   vm.goToRegister = function(){
 			   $location.path('/register')

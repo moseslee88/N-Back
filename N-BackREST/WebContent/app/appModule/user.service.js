@@ -13,7 +13,7 @@ angular.module('appModule')
 		service.show = function() {
 			return $http({
 				method : 'GET',
-				url : 'api/user/' + authService.getToken().id 
+				url : 'api/user/' + userId
 
 			})
 		};
@@ -40,7 +40,7 @@ angular.module('appModule')
 		service.update = function(user) {
 			return $http({
 				method : 'PUT',
-				url : 'api/user/' + authService.getToken().id,
+				url : 'api/user/' + userId,
 				headers : {
 					'Content-Type' : 'application/json'
 				},
@@ -51,7 +51,7 @@ angular.module('appModule')
 		service.destroy = function() {
 			return $http({
 				method : 'DELETE',
-				url : 'api/user/' + authService.getToken().id
+				url : 'api/user/' + userId
 			})
 		};
 		return service;
