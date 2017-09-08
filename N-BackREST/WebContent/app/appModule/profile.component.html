@@ -10,21 +10,21 @@
 				<br>
 				<h2>Edit Profile</h2>
 					<form>
-						<input type="text" placeholder="userName" ng-model="userProfile.name" /><br>
-						<input type="text" placeholder="birthYear" ng-model="userProfile.birthYear" /><br>
-						<input type="text" placeholder="city" ng-model="userProfile.city" /><br>
-						Gender: <select name="gender" ng-model="userProfile.gender">
+						<input type="text" placeholder="userName" ng-model="vm.editProfile.name" /><br>
+						<input type="text" placeholder="birthYear" ng-model="vm.editProfile.birthYear" /><br>
+						<input type="text" placeholder="city" ng-model="vm.editProfile.city" /><br>
+						Gender: <select name="gender" ng-model="vm.editProfile.gender">
 							<option>M</option>
 							<option>F</option>
 						</select>
 							<br>
-						<input type="text" placeholder="region" ng-model="userProfile.region" /><br>
-						<input type="text" placeholder="education" ng-model="userProfile.edu" /><br>
-						<input type="text" placeholder="country" ng-model="userProfile.country" /><br>
-						<input type="text" placeholder="houseHoldIncome" ng-model="userProfile.householdIncome" /><br>
+						<input type="text" placeholder="region" ng-model="vm.editProfile.region" /><br>
+						<input type="text" placeholder="education" ng-model="vm.editProfile.edu" /><br>
+						<input type="text" placeholder="country" ng-model="vm.editProfile.country" /><br>
+						<input type="text" placeholder="houseHoldIncome" ng-model="vm.editProfile.householdIncome" /><br>
 									<!-- get user id from session -->
-						<input type="submit" class="btn-primary btn" value="Save Profile" ng-disabled="vm.invalid(userProfile)" ng-click="vm.saveUserProfile(userProfile)" />
-						<input type="submit" class="btn-primary btn" value="Update Profile" ng-show="vm.profileExists(user)" ng-click="vm.updateUserProfile(userProfile)" />
+						<input type="submit" class="btn-primary btn" value="Save Profile" ng-disabled="vm.invalid(vm.editProfile)" ng-click="vm.saveUserProfile(vm.editProfile)" />
+						<input type="submit" class="btn-primary btn" value="Update Profile" ng-show="vm.profileExists(user)" ng-click="vm.updateUserProfile(vm.editProfile)" />
 					</form>
 				<br> <br>
 			</div>

@@ -75,7 +75,6 @@ public class ProfileDAOImpl implements ProfileDAO {
 			p.setHouseholdIncome(managedProfile.getHouseholdIncome());
 			p.setName(managedProfile.getName());
 			p.setRegion(managedProfile.getRegion());
-			p.setUser(managedProfile.getUser());
 			
 			em.flush();
 			return p;
