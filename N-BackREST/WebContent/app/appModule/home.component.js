@@ -25,6 +25,10 @@ angular.module('appModule')
 		   vm.goToRegister = function(){
 			   $location.path('/register')
 		   };
+		   vm.goToProfile = function(){
+			   console.log("in gotoprofile")
+			   $location.path('/profile')
+		   };
 		   
 	   },
 	   controllerAs: 'vm'
