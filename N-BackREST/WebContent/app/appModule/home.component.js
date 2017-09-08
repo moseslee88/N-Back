@@ -11,6 +11,7 @@ angular.module('appModule')
 				   userService.show()
 			   		.then(function(res){
 			   		vm.currentUser = res.data;
+			   		console.log(vm.currentUser);
 			   	});
 			   }
 		   }
@@ -20,9 +21,6 @@ angular.module('appModule')
 			   vm.getUser();
 		   }
 		   vm.getCurrentUserID();
-		   
-		   
-		   
 		   
 		   vm.goToRegister = function(){
 			   $location.path('/register')

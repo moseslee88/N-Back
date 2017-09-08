@@ -11,8 +11,8 @@ angular.module('appModule')
 		};
 
 		service.show = function() {
-			console.log(userId)
 			var userId = $cookies.get("uid");
+			console.log(userId)
 			if (userId) {
 				return $http({
 					method : 'GET',
