@@ -9,10 +9,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Table(name="profile")
 @Entity
 public class Profile {
 	
+	@JsonBackReference
 	@OneToOne
 	@JoinColumn(name="user_id")
 	private User user;
@@ -38,6 +41,8 @@ public class Profile {
 	
 	@Column(name="household_income")
 	private Double householdIncome;
+	
+	//gets and sets
 	
 	public User getUser() {
 		return user;
