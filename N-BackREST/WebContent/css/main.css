@@ -1,5 +1,13 @@
+/* color scheme:
+dark gray: #504E55
+gold: #E4A835
+dark blue: #143D4C
+light gray: #796F70
+orange: #F07F00
+ */
+
 body {
-	background: #023C40
+	background: #143D4C;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -23,15 +31,23 @@ p, p>a {
 
 .thumbnail * {
 	text-align: center;
-	color: #023C40;
+	color: #143D4C;
 }
 
-.btn-primary {
-	background: #37718E;
+button, .btn-primary {
+	background: #143D4C;
+	border: #143D4C;
 	color: #EEE;
 }
 
 .btn-secondary {
-	background: #C33C54;
+	background: #504E55;
+	border: #504E55;
+	color: #EEE;
+}
+
+.btn:hover {
+	background: #796F70;
+	border: #E4A835;
 	color: #EEE;
 }
