@@ -14,8 +14,14 @@ body {
     background-attachment: fixed;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
 	font-size: calc(0.5em + 4vmin);
+	font-family: "Spectral", "Cormorant Garamond", serif;
+	color: #EEE;
+}
+
+h3, h4, h5, h6 {
+	font-size: calc(0.5em + 3vmin);
 	font-family: "Spectral", "Cormorant Garamond", serif;
 	color: #EEE;
 }

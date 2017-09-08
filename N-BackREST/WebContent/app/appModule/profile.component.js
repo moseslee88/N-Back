@@ -2,37 +2,52 @@ angular.module('appModule')
 	.component('profile', {
 		templateUrl : 'app/appModule/profile.component.html',
 
-		controller : function(profileService, $location, $scope) {
+		controller : function(profileService, $location, $scope, authService, userService, $cookies) {
 			var vm = this;
+			
+			var userId = $cookies.get("uid");
 
 			console.log("In PROFILE, user profile");
 			$location.path('/profile');
+			
+			vm.user = null;
+			
+			// Use authservice to get actual user object from API with data (profile)
+			// store into vm.user
+			if(!authService.getToken()) {
+				$location.path("/login")
+			} else {       
+				// use service/$http to get actual user
+				userService.show().then(function(response) {   
+					vm.user = response.data;   
+					console.log(response.data.id  + "hello Maldo");  
+					 //query DATABASE IF USER id exists in DATABASE!!!!!!!!!!!
+				})   
+				.catch(function()  {
+					console.log("error; no user exists in session");
+				});
+			}       
+			
 
 
-			vm.profileExists = false;
+			//vm.profileExists = false;
 			
 			var emptyProfileMaldo = [];
 			
-			vm.checkProfileStatus = function(profiles, profileExists) {
-				profileService.index().then(function(res) {
-					console.log("in index, then check for profileID");
-					profiles.forEach(function(profile) {
-						
-						
-				})
-					
-				})
-					.catch(function() {
-						console.log("in error")
-					});
+			vm.profileExists = function(user) {
+				console.log("profile button hide");
 				
-						//				if (profileExists) {				
-			//	}				
-//			    var count = vm.getNumTodos ();
-//			    if (count >=10) return 'danger';
-//			    if (count < 10 && count >=5) return 'warning';
-//			    if (count < 5) return 'safe';
-		}
+				
+				if(vm.user != null){
+					//hide update button
+					if(vm.user.profile !=null)  {
+					console.log("this is where i hide button and vm.user is not null");
+					      //vm.profileExists == true;
+					return true;
+					}
+				}
+				return false;	
+			}
 
 
 			vm.saveUserProfile = function(userProfile) {
