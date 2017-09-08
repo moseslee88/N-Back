@@ -7,7 +7,7 @@ angular.module('authModule')
 			authService.login(user)
 				.then(function(res) {
 					console.log(res.data);
-					$location.path('/game')
+					$location.path('/')
 				})
 				.catch(console.error);
 		}
