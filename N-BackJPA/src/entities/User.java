@@ -48,7 +48,7 @@ public class User {
 	//@JsonManagedReference(value = "targetusertochallenge")
 	private Collection<Challenge> targetChallenges;
 
-	@JsonBackReference
+
 	@OneToOne(mappedBy = "user")
 	private Profile profile;
 	
