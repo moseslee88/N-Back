@@ -1,8 +1,21 @@
 <navigator></navigator>
 <div id="mainContent" class="container-fluid">
-	<h2>LETS BUILD SOME GAMES!!!!!!!!</h2>
-	<ul>
-	<li ng-repeat="thisGame in vm.gameList"><a href="game/thisGame.name">thisGame.name</a>
-	</ul>
+
+		<!-- repeatable section -->
+		<div class="col-sm-6 col-md-4" ng-repeat="thisGame in vm.gameList">
+			<div class="thumbnail">
+				<!-- <img src="..." alt="...">
+                <div class="caption"> -->
+				<br>
+				<h3>This is a game</h3>
+				<p>
+					<a href="#/" class="btn btn-primary" role="button">play!</a>
+					...leads to a game html tag
+				</p>
+				
+				<br> <br>
+			</div>
+		</div>
+
 </div>
 

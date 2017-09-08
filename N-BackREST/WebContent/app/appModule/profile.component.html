@@ -1,18 +1,33 @@
 <navigator></navigator>
-<h2>Your User Profile</h2>
-<form>
-	<input type="text" placeholder="userName" ng-model="userProfile.name" /><br>
-	<input type="text" placeholder="birthYear" ng-model="userProfile.birthYear" /><br>
-	<input type="text" placeholder="city" ng-model="userProfile.city" /><br>
-	Gender: <select name="gender" ng-model="userProfile.gender">
-		<option>m</option>
-		<option>f</option>
-	</select>
-		<br>
-	<input type="text" placeholder="region" ng-model="userProfile.region" /><br>
-	<input type="text" placeholder="education" ng-model="userProfile.edu" /><br>
-	<input type="text" placeholder="country" ng-model="userProfile.country" /><br>
-	<input type="text" placeholder="houseHoldIncome" ng-model="userProfile.householdIncome" /><br>
-				<!-- get user id from session -->
-	<input type="submit" value="Save Profile" ng-disabled="vm.invalid(userProfile)" ng-click="vm.saveUserProfile(userProfile)" />
-</form>
+<div id="mainContent" class="container-fluid">
+	<div class="row">
+	
+			<!-- repeatable section -->
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<!-- <img src="..." alt="...">
+                <div class="caption"> -->
+				<br>
+				<h2>Edit Profile</h2>
+					<form>
+						<input type="text" placeholder="userName" ng-model="userProfile.name" /><br>
+						<input type="text" placeholder="birthYear" ng-model="userProfile.birthYear" /><br>
+						<input type="text" placeholder="city" ng-model="userProfile.city" /><br>
+						Gender: <select name="gender" ng-model="userProfile.gender">
+							<option>M</option>
+							<option>F</option>
+						</select>
+							<br>
+						<input type="text" placeholder="region" ng-model="userProfile.region" /><br>
+						<input type="text" placeholder="education" ng-model="userProfile.edu" /><br>
+						<input type="text" placeholder="country" ng-model="userProfile.country" /><br>
+						<input type="text" placeholder="houseHoldIncome" ng-model="userProfile.householdIncome" /><br>
+									<!-- get user id from session -->
+						<input type="submit" value="Save Profile" ng-disabled="vm.invalid(userProfile)" ng-click="vm.saveUserProfile(userProfile)" />
+					</form>
+				<br> <br>
+			</div>
+		</div>
+	</div>
+</div>
+	
