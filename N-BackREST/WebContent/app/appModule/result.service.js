@@ -1,10 +1,9 @@
 angular.module('appModule')
 	.factory('resultService', function($filter, $http, authService, $rootScope, $cookies) {
 		var service = {};
-		var userId = $cookies.get("uid");
-
 
 		service.index = function() {
+			var userId = $cookies.get("uid");
 			return $http({
 				method : 'GET',
 				url : 'api/user/' + userId + '/result'
@@ -15,6 +14,7 @@ angular.module('appModule')
 
 
 		service.show = function(rid) {
+			var userId = $cookies.get("uid");
 			return $http({
 				method : 'GET',
 				url : 'api/user/' + userId + '/result' + rid
@@ -24,6 +24,7 @@ angular.module('appModule')
 
 
 		service.create = function(result) {
+			var userId = $cookies.get("uid");
 			var newResult = angular.copy(result);
 
 			return $http({

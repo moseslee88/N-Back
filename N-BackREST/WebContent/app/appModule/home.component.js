@@ -1,16 +1,18 @@
 angular.module('appModule')
    .component('home', {   
 	   templateUrl: 'app/appModule/home.component.html',
-	  controller: function($location, $cookies, resultService, profileService, gameService, challengeService, userService)  {
+	  controller: function($location, $cookies, resultService, profileService, gameService, challengeService, userService, authService)  {
 		   var vm = this;
 		   vm.currentUserId = null;
 		   vm.currentUser = null; 
 		   
 		   vm.getUser = function(){
-			   userService.show()
-			   	.then(function(res){
-			   		vm.currentUser = res;
-			   });
+			   if (authService.getToken().id) {
+				   userService.show()
+			   		.then(function(res){
+			   		vm.currentUser = res.data;
+			   	});
+			   }
 		   }
 		   
 		   vm.getCurrentUserID = function(){

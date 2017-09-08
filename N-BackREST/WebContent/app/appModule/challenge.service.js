@@ -1,9 +1,9 @@
 angular.module('appModule')
 	.factory('challengeService', function($filter, $http, authService, $rootScope, $cookies) {
 		var service = {};
-		var userId = $cookies.get("uid");
 
 		service.index = function() {
+			var userId = $cookies.get("uid");
 			return $http({
 				method : 'GET',
 				url : '/user/' + userId + '/challenge'
@@ -11,6 +11,7 @@ angular.module('appModule')
 		};
 
 		service.show = function(cid) {
+			var userId = $cookies.get("uid");
 			return $http({
 				method : 'GET',
 				url : '/user/' + userId + '/challenge' + cid
@@ -20,6 +21,7 @@ angular.module('appModule')
 
 
 		service.create = function(challenge) {
+			var userId = $cookies.get("uid");
 			var newChallenge = angular.copy(challenge);
 
 			return $http({
@@ -39,6 +41,7 @@ angular.module('appModule')
 		};
 
 		service.update = function(challenge) {
+			var userId = $cookies.get("uid");
 			return $http({
 				method : 'PUT',
 				url : '/api/user/' + userId + '/challenge/' + challenge.id,
@@ -50,6 +53,7 @@ angular.module('appModule')
 		},
 
 		service.destroy = function(cid) {
+			var userId = $cookies.get("uid");
 			return $http({
 				method : 'DELETE',
 				url : '/api/user/' + userId + '/challenge/' + cid

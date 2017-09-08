@@ -1,7 +1,6 @@
 angular.module('appModule')
 .factory('profileService', function($filter, $http, authService, $rootScope, $cookies) {
   var service = {};
-  var userId = $cookies.get("uid");
 
 		service.index = function() {
 			return $http({
@@ -11,20 +10,21 @@ angular.module('appModule')
 		};
 
 		service.show = function(pid) {
+			var userId = $cookies.get("uid");
 			return $http({
 				method : 'GET',
-				//url : '/api/user/' + userId + '/profile' + pid
-				url : 'api/user/' + authService.getToken().id + '/profile' + pid
+				url : 'api/user/' + userId+ '/profile' + pid
 
 			})
 		};
 
 		service.create = function(profile) {
 			var newProfile = angular.copy(profile);
+			var userId = $cookies.get("uid");
 
 			return $http({
 				method : 'POST',
-				url : 'api/user/' + authService.getToken().id + '/profile',
+				url : 'api/user/' + userId + '/profile',
 				headers : {
 					'Content-Type' : 'application/json'
 				},
@@ -39,9 +39,10 @@ angular.module('appModule')
 		};
 
 		service.update = function(profile) {
+			var userId = $cookies.get("uid");
 			return $http({
 				method : 'PUT',
-				url : 'api/user/' + authService.getToken().id + '/profile/' + profile.id,
+				url : 'api/user/' + userId + '/profile/' + profile.id,
 				headers : {
 					'Content-Type' : 'application/json'
 				},
@@ -50,9 +51,10 @@ angular.module('appModule')
 		},
 
 		service.destroy = function(pid) {
+			var userId = $cookies.get("uid");
 			return $http({
 				method : 'DELETE',
-				url : 'api/user/' + authService.getToken().id + '/profile/' + pid
+				url : 'api/user/' + userId + '/profile/' + pid
 			})
 		};
 		return service;

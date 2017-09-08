@@ -1,7 +1,7 @@
 angular.module('appModule')
-.factory('userService', function($filter, $http, authService, $rootScope, $cookies) {
-  var service = {};
-  var userId = $cookies.get("uid");
+	.factory('userService', function($filter, $http, authService, $rootScope, $cookies) {
+		var service = {};
+		
 
 		service.index = function() {
 			return $http({
@@ -11,11 +11,14 @@ angular.module('appModule')
 		};
 
 		service.show = function() {
-			return $http({
-				method : 'GET',
-				url : 'api/user/' + userId
-
-			})
+			console.log(userId)
+			var userId = $cookies.get("uid");
+			if (userId) {
+				return $http({
+					method : 'GET',
+					url : 'api/user/' + userId
+				})
+			}
 		};
 
 		service.create = function(user) {
@@ -38,6 +41,7 @@ angular.module('appModule')
 		};
 
 		service.update = function(user) {
+			var userId = $cookies.get("uid");
 			return $http({
 				method : 'PUT',
 				url : 'api/user/' + userId,
@@ -49,6 +53,7 @@ angular.module('appModule')
 		},
 
 		service.destroy = function() {
+			var userId = $cookies.get("uid");
 			return $http({
 				method : 'DELETE',
 				url : 'api/user/' + userId
