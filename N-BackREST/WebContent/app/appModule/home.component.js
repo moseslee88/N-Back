@@ -1,7 +1,7 @@
 angular.module('appModule')
    .component('home', {   
 	   templateUrl: 'app/appModule/home.component.html',
-	  controller: function($location, $cookies, resultService, profileService, gameService, challengeService, userService, authService)  {
+	  controller: function($location, $cookies, resultService, profileService, gameService, challengeService, userService, authService, $scope)  {
 		   var vm = this;
 		   vm.currentUserId = null;
 		   vm.currentUser = null; 
@@ -29,6 +29,13 @@ angular.module('appModule')
 			   console.log("in gotoprofile")
 			   $location.path('/profile')
 		   };
+		   
+		   var listenForLogin = function(){
+			   vm.getUser();
+			   vm.getCurrentUserID();
+		   }
+		   
+		   $scope.$on('login', listenForLogin);
 		   
 	   },
 	   controllerAs: 'vm'
