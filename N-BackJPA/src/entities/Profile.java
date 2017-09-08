@@ -125,6 +125,10 @@ public class Profile {
 		this.householdIncome = householdIncome;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
 	
 
 }
