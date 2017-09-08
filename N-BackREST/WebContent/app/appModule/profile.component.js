@@ -8,7 +8,7 @@ angular.module('appModule')
 			var userId = $cookies.get("uid");
 
 			console.log("In PROFILE, user profile");
-			$location.path('/profile');
+		
 			
 			vm.user = null;
 			
@@ -28,20 +28,14 @@ angular.module('appModule')
 				});
 			}       
 			
-
-
-			//vm.profileExists = false;
 			
 			var emptyProfileMaldo = [];
 			
 			vm.profileExists = function(user) {
-				console.log("profile button hide");
-				
-				
+		
 				if(vm.user != null){
 					//hide update button
 					if(vm.user.profile !=null)  {
-					console.log("this is where i hide button and vm.user is not null");
 					      //vm.profileExists == true;
 					return true;
 					}
