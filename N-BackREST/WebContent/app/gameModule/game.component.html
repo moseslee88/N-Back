@@ -5,7 +5,10 @@
 			<!-- <img src="..." alt="...">
                 <div class="caption"> -->
 			<br>
-			<nback></nback>
+			<nback ng-if="vm.activeGame.name === 'nback'"></nback>
+			<motest ng-if="vm.activeGame.name === 'motest'"></motest>
+			<position ng-if="vm.activeGame.name === 'position'"></position>
+			<reaction ng-if="vm.activeGame.name === 'reaction'"></reaction>
 			<br>
 		</div>
 	</div>

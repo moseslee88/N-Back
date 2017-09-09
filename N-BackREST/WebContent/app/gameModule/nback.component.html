@@ -4,6 +4,11 @@
 	
 	<div id="gameContainer" class="container-fluid">
 	<!-- here lies the game: -->
+	<h1>{{vm.getDisplayNum()}}</h1>
+	<br>
 	
+	<!-- start button and game button, note that difficulty is hard coded in right now -->
+	<button class="btn btn-primary" ng-click="vm.startGame(6)">start!</button>
+	<button class="btn btn-primary" ng-click="vm.checkCorrect()">check!</button>
 	</div>
 </div>
