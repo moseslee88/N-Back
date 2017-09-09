@@ -3,7 +3,15 @@ angular.module('gameModule')
 		templateUrl : 'app/gameModule/game.component.html',
 		controller : function($location, localGameService, $cookies) {
 			var vm = this;
-			console.log("we are in the game component")
+			vm.activeGame = null;
+
+			vm.activateGame = function(thisGame) {
+				vm.activeGame = thisGame;
+			}
+
+			vm.deactivateGame = function() {
+				vm.activeGame = null;
+			}
 
 			vm.gameList = [];
 			vm.getGameList = function() {
@@ -14,13 +22,13 @@ angular.module('gameModule')
 					.catch(console.error);
 			}
 			vm.getGameList();
-			
+
 			vm.currentUserId = null;
-	          
-	           vm.getCurrentUser = function(){
-	               vm.currentUserId = $cookies.get("uid");
-	           }
-	           vm.getCurrentUser();
+
+			vm.getCurrentUser = function() {
+				vm.currentUserId = $cookies.get("uid");
+			}
+			vm.getCurrentUser();
 
 		},
 		controllerAs : 'vm'
