@@ -60,6 +60,12 @@ angular.module('gameModule')
 //      	var c = Math.floor(25*Math.random());
 //          finalArr.push((letters[c]).replace(/"/g, ''));   //grabs letter from Letters array and pushes it. Also in need of a Method like .replaceAll("[^A-Za-z0-9]", "");
 //      }
+            
+//        	$( '.add_to_cart_button:not(.product_type_variable, .product_type_grouped)' ).click( function() {
+//				_gaq.push(['_trackEvent', 'Products', 'Add to Cart', ($(this).data('product_sku')) ? ($(this).data('product_sku')) : ('#' + $(this).data('product_id'))]);
+//			});
+
+            
         };
         
 

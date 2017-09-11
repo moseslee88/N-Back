@@ -1,14 +1,15 @@
 <div id="mainContent" class="container-fluid">
 	<h2>N-Back Test</h2>
-	<p>Test your ability to recognize if the current number is the same as a previous number
+	<p>Test your ability to recognize if the current number is the same as a previous number</p>
+	<p>If difficulty is 1, click the button if the displayed number is the same as the previous number. If difficulty is 2, compare to the number that was shown 2 numbers back, etc.</p> 
 	
 	<div id="gameContainer" class="container-fluid">
 	<!-- here lies the game: -->
-	<h1>{{vm.getDisplayNum()}}</h1>
+	<h1 class="animated pulse">{{vm.displayNumber}}</h1>
 	<br>
-	
+<h1>{{$rootScope.gameId}}</h1>	
 	<!-- start button and game button, note that difficulty is hard coded in right now -->
-	<button class="btn btn-primary" ng-click="vm.startGame()">start!</button>
+	<button class="btn btn-tertiary" ng-click="vm.startGame()">start!</button>
 	<button class="btn btn-primary" ng-click="vm.checkCorrect()">check!</button>
 	</div>
 </div>
