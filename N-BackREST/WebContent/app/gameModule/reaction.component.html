@@ -3,7 +3,13 @@
 	<p>Test your ability to react to a specific stimulus
 	
 	<div id="gameContainer" class="container-fluid">
-	<!-- here lies the game: -->
-	
+		<!-- here lies the game: -->
+		<button class="btn btn-primary" ng-click="vm.startGame(1)">start reaction game!</button>
+		<div>
+			<span>{{vm.msg}}</span>
+			<br>
+			<span>{{vm.showNumbers}}</span>
+			<span ng-hide="hideNumbers"><h3>Remember Numbers :{{vm.showList}}</h3></span>
+		</div>
 	</div>
 </div>
