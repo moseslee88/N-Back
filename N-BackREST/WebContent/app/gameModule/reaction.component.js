@@ -35,15 +35,19 @@ angular.module('gameModule')
 			              //clearInterval(j);
 
 			    	  }
+			      vm.msg = $scope.value;
+			}, 1000);
 			     
 			    	
 			    	  	//now want to show a number every two seconds
+			      
+			      //interval service
 			      var counter = 0;
 			      var i = setInterval(function(){
 			          // do your thing
 			    	vm.showNumbers  = thirdArrayNums[counter];
 			          counter++;
-			          if(counter === 11) {
+			          if(counter === 12) {
 			              clearInterval(i);
 			          }
 			      }, 2000);
@@ -51,8 +55,7 @@ angular.module('gameModule')
 			    	 
 			      
 			      	
-				vm.msg = $scope.value;
-			}, 1000);
+				
 			
 		}
 		
