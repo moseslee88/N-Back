@@ -12,7 +12,7 @@ angular
 						vm.fullArr = [];
 						vm.movingArr = [];
 						vm.currentIndex = 0;
-					vm.displayNumber = -1;
+						vm.displayNumber = -1;
 						vm.difficulty = 1;
 						vm.points = 0;
 
@@ -38,6 +38,8 @@ angular
 						// the array that will be used to check if the user is
 						// correct
 						vm.runLoop = function() {
+							vm.displayNumber = " ";
+							$interval(function(){}, 10000);
 							vm.displayNumber = vm.fullArr[vm.currentIndex];
 							vm.movingArr = vm.fullArr.slice((vm.currentIndex
 									- vm.difficulty - 1), vm.currentIndex);
@@ -72,7 +74,7 @@ angular
 						// use $interval to iteratively run the game loop until
 						// there are no numbers left in the array
 						vm.runGame = function(diff) {
-							$interval(vm.runLoop, 1000, vm.fullArr.length)
+							$interval(vm.runLoop, 1200, vm.fullArr.length)
 									.then(function() {
 										vm.showResult();
 									}, function(e) {
@@ -95,7 +97,6 @@ angular
 
 						vm.buildResult = function() {
 							var newResult = {};
-							newResult.challenges = [];
 							newResult.gameString = vm.fullArr.toString();
 							newResult.points = vm.points;
 							newResult.difficulty = $rootScope.gameDifficulty;
@@ -107,7 +108,8 @@ angular
 
 						vm.saveResult = function() {
 							console.log("saving result");
-							resultService.create(vm.buildResult());
+							resultService.create(vm.buildResult(),
+									$rootScope.gameId);
 						}
 					},
 					controllerAs : 'vm'

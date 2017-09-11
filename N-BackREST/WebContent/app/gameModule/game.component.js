@@ -7,9 +7,11 @@ angular.module('gameModule')
 			$rootScope.gameDifficulty = 1;
 
 			vm.activateGame = function(thisGame) {
-				console.log($rootScope.gameDifficulty);
-				vm.activeGame = thisGame;
+			vm.activeGame = thisGame;
+				$rootScope.gameId = thisGame.id;
+				console.log($rootScope.gameId);
 			}
+			
 
 			vm.deactivateGame = function() {
 				vm.activeGame = null;
