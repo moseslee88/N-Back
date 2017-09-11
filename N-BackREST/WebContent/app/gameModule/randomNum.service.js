@@ -40,6 +40,22 @@ angular.module('gameModule')
 			}
 			return finalArr;
 		};
+		
+		service.getLetters = function(totalLet) {
+            console.log("randomNumservice.getLetters");
+            finalArr = [];
+            var letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 
+                    'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 
+                    'W', 'X', 'Y', 'Z'];
+            for (var i = 0; i < totalLet; i++) {
+                //finalArr.push(Math.floor(Math.random() * maxNum));
+            	var c = Math.floor(25*Math.random());
+                finalArr.push(letters[c]);   //grabs letter from Letters array and pushes it 
+            }
+            return finalArr;
+        };
+        
+
 
 		return service;
 	})
