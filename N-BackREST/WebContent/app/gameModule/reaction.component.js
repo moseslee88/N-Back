@@ -19,6 +19,10 @@ angular.module('gameModule')
 
 		console.log(thirdArrayNums);
 		
+		var selectedNumArray = [];
+
+		
+		
 		//cannot bind list that will be used again so had to assign to a bind
 		vm.showList = myListOfNums;
 		
@@ -37,25 +41,30 @@ angular.module('gameModule')
 			    	  }
 			      vm.msg = $scope.value;
 			}, 1000);
-			     
 			    	
-			    	  	//now want to show a number every two seconds
-			      
-			      //interval service
+			    	 //now want to show a number every two seconds
+			     //interval service
 			      var counter = 0;
-			      var i = setInterval(function(){
+			    var i = setInterval(function(){
 			          // do your thing
-			    	vm.showNumbers  = thirdArrayNums[counter];
+				    	vm.showNumbers  = thirdArrayNums[counter];
+				    	
+				    var numCounter = 0;
+	
+				    
+				    	$scope.numberSelected = function(num) {
+				    	
+				    		selectedNumArray.push(num);
+				    		console.log(selectedNumArray);
+
+				    	}
+			    	
 			          counter++;
 			          if(counter === 12) {
 			              clearInterval(i);
+			              clearInterval(j);
 			          }
 			      }, 2000);
-						
-			    	 
-			      
-			      	
-				
 			
 		}
 		
