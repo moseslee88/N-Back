@@ -45,7 +45,7 @@ public class ResultController {
 	public Result showResult(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int rid) {
 		return dao.showResult(uid, rid);
 	}
-	@RequestMapping(path = "/user/{uid}/result/{gid}", method = RequestMethod.POST)
+	@RequestMapping(path = "/user/{uid}/game/{gid}/result", method = RequestMethod.POST)
 	public Result createResult(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,@PathVariable int gid, @RequestBody String resultJson) {
 		
 		return dao.createResult(uid, gid, resultJson);
