@@ -4,15 +4,18 @@
 
 	<div id="gameContainer" class="container-fluid">
 		<!-- here lies the game: -->
-	    <h1>  Test Random Letters ARRAY ==> {{vm.showNumbers}}</h1>
-		<h2>  {{vm.show4Numbers}}</h2>
-		<h3>  {{vm.show6Numbers}}</h3>
-		<h4>  {{vm.show8Numbers}}</h4>
-		<h5>  {{vm.show10Numbers}}</h5>
-		<h6>  {{vm.show12Numbers}}</h6>
-		<h6>  {{vm.show14Numbers}}</h6>
-		<h6>  {{vm.show16Numbers}}</h6>	
-		<h6>  {{vm.showNumbersNoQuotes}}</h6>	
+	    <span>{{vm.msg}}</span>
+			<br>
+		<!--That up there was the timer -->
+	    <h1 ng-hide="vm.hideLetters">  Test Random Letters ARRAY ==> {{vm.showNumbers}}</h1>
+		<h2 ng-hide="vm.hideLetters">  {{vm.show4Numbers}}</h2>
+		<h3 ng-hide="vm.hideLetters">  {{vm.show6Numbers}}</h3>
+		<h4 ng-hide="vm.hideLetters">  {{vm.show8Numbers}}</h4>
+		<h5 ng-hide="vm.hideLetters">  {{vm.show10Numbers}}</h5>
+		<h6 ng-hide="vm.hideLetters">  {{vm.show12Numbers}}</h6>
+		<h6 ng-hide="vm.hideLetters">  {{vm.show14Numbers}}</h6>
+		<h6 ng-hide="vm.hideLetters">  {{vm.show16Numbers}}</h6>	
+		<h6 ng-hide="vm.hideLetters">  {{vm.showNumbersNoQuotes}}</h6>	
 
 		
 		<table>      <!-- table of numbers-->
@@ -26,7 +29,14 @@
     </tr>
  </table>
  
- <p> <center>
+ <form ng-hide="vm.selected">       <!--  hides the form if no results-->
+
+     <input type="text" placeholder="Number of questions" disabled/>{{vm.countOfLettersNumbers}}<br />
+     <input type="text" style="width:314px" placeholder="Enter number of correct letters/numbers" ng-model="items.count" /><br />
+     <input type="submit" value="Get Score" ng-click="vm.addItems(items); items ={}"/>
+ </form>
+ 
+ <!-- <p> <center>
 <h3>D G<h3></center><p>
  
  <p> <center>
@@ -43,7 +53,7 @@
 
 
 <p> <center>
-<h3>F G X Q R P X A S M Q K<h3></center><p><hr>
+<h3>F G X Q R P X A S M Q K<h3></center><p><hr>   -->
 
 	</div>
 </div>
