@@ -24,13 +24,13 @@ angular.module('appModule')
 
 
 
-		service.create = function(result) {
+		service.create = function(result, gameId) {
 			var userId = $cookies.get("uid");
 			var newResult = angular.copy(result);
 
 			return $http({
 				method : 'POST',
-				url : 'api/user/' + userId + '/result',
+				url : 'api/user/' + userId + '/game/'+ gameId + '/result' ,
 				headers : {
 					'Content-Type' : 'application/json'
 				},
