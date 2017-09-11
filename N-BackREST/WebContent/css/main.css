@@ -56,6 +56,12 @@ button, .btn-primary {
 	color: #EEE;
 }
 
+.btn-tertiary {
+	background: #E4A835;
+	border: #E4A835;
+	color: #EEE;
+}
+
 .btn:hover {
 	background: #796F70;
 	border: #E4A835;

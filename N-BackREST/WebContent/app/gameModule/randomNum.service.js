@@ -41,6 +41,28 @@ angular.module('gameModule')
 			}
 			return finalArr;
 		};
+		
+		service.getLetters = function(totalLet) {
+            console.log("randomNumservice.getLetters");
+            //finalArr = [];
+            var letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 
+                    'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 
+                    'W', 'X', 'Y', 'Z'];
+            var text = "";
+            for (var i = 0; i < totalLet; i++) {
+            	var c = Math.floor(25*Math.random());
+                text += letters[c] + " ";
+            }
+            return text;
+            
+//          for (var i = 0; i < totalLet; i++) {
+//          finalArr.push(Math.floor(Math.random() * maxNum));
+//      	var c = Math.floor(25*Math.random());
+//          finalArr.push((letters[c]).replace(/"/g, ''));   //grabs letter from Letters array and pushes it. Also in need of a Method like .replaceAll("[^A-Za-z0-9]", "");
+//      }
+        };
+        
+
 
 		return service;
 	})

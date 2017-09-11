@@ -1,8 +1,8 @@
 <navigator></navigator>
 <div id="mainContent" class="container-fluid">
-	<div class="row">
 
-		<h1 ng-show="vm.currentUserId">Welcome!</h1>
+	<div class="row">
+		<div class="col-sm-3 col-md-4" ng-hide="vm.currentUserId"></div>
 		<div class="col-sm-6 col-md-4" ng-hide="vm.currentUserId">
 			<div class="thumbnail">
 				<!-- <img src="..." alt="...">
@@ -11,37 +11,53 @@
 				<h3>Login</h3>
 				<login></login>
 				<h3>Register</h3>
-				<button class="btn btn-primary" ng-click="vm.goToRegister()">Go Register</button>
+				<button class="btn btn-primary" ng-click="vm.goToRegister()">Go
+					Register</button>
 				<br> <br>
 			</div>
 		</div>
+		<div class="col-sm-3 col-md-4" ng-hide="vm.currentUserId"></div>
+	</div>
 
+	<div class="row">
+		<!-- repeatable section -->
+		<div class="col-sm-3 col-md-4" ng-show="vm.currentUserId"></div>
+		<div class="col-sm-6 col-md-4" ng-show="vm.currentUserId">
+			<div class="thumbnail">
+				<h1>Welcome!</h1>
+				<br>
+				<a class="btn btn-tertiary" role="button" ng-click="vm.goToGame()">
+					Play Games!</a>
+				<br> <br>
+			</div>
+		</div>
+		<div class="col-sm-3 col-md-4" ng-show="vm.currentUserId"></div>
+	</div>
 
-
-
+	<div class="row">
 		<!-- repeatable section -->
 		<div class="col-sm-6 col-md-4" ng-show="vm.currentUserId">
 			<div class="thumbnail">
-				<!-- <img src="..." alt="...">
-				<div class="caption"> -->
 				<br>
 				<h3>Profile Info</h3>
 				<p>
 					Username: {{vm.currentUser.profile.name}}<br> City:
 					{{vm.currentUser.profile.city}}<br>
 				<p>
-					<a href="#" class="btn btn-primary" role="button" ng-click="vm.goToProfile()">Profile</a>
+					<a class="btn btn-primary" role="button"
+						ng-click="vm.goToProfile()">Profile</a>
 				</p>
 				<br> <br>
 			</div>
 		</div>
+
 		<div class="col-sm-6 col-md-4" ng-show="vm.currentUserId">
 			<div class="thumbnail" ng-controller="chart1 as vm">
-			<h1>{{vm.title}}</h1>
-  <canvas id="pie" class="chart chart-pie"
-    chart-data="vm.data" chart-labels="vm.labels" chart-options="options">
+				<h3>{{vm.title}}</h3>
+				<canvas id="pie" class="chart chart-pie" chart-data="vm.data"
+					chart-labels="vm.labels" chart-options="options">
   </canvas>
-			
+
 			</div>
 		</div>
 
