@@ -5,8 +5,15 @@ angular.module('gameModule')
 		var vm = this;
 		
 		vm.ArrofNumbers = [];
+		vm.randomNums = [];
+		vm.getPracticeNums = [2, 4, 6, 8, 10, 12, 14, 1];
 		
 		 $timeout(callAtTimeout, 3000);
+		 
+		 vm.getDisplayNums = function() {
+				vm.randomNums = Math.floor(Math.sqrt(vm.points / 100) * 100 * $rootScope.gameDifficulty * Math.sqrt($rootScope.gameDifficulty));
+				console.log("points: " + vm.randomNums);
+			}
 
 
 
