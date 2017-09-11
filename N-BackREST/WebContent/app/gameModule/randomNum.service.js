@@ -29,6 +29,7 @@ angular.module('gameModule')
 
 		service.getUniqueNums = function(maxNum, totalNum) {
 			finalArr = [];
+			console.log("In getUniqueNums")
 			for (var i = 0; i < totalNum; i++) {
 				var num = Math.floor(Math.random() * maxNum);
 				while(finalArr.includes(num)){
