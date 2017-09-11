@@ -3,11 +3,29 @@
 	<p>Test your ability to remember the position of objects on a board
 
 
+
+
+
+
+
 	
 	<div id="gameContainer" class="container-fluid">
 		<!-- here lies the game: -->
 
 		<button class="btn btn-primary" ng-click="vm.startGame()">start!</button>
 	</div>
-	
+	<div>
+		<div class="container">
+		<h1 ng-show="vm.randomNum">{{vm.randomNum}}</h1>
+			<div>
+				<table class="table table-striped table-border">
+					<tbody>
+						<tr ng-repeat="array in vm.grid">
+						<td ng-repeat="num in array" ng-click="vm.guessNumber(num)">{{num}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
