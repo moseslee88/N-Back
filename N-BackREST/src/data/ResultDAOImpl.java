@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import entities.Game;
 import entities.Result;
 import entities.User;
 
@@ -47,7 +48,8 @@ public class ResultDAOImpl implements ResultDAO {
 	}
 
 	@Override
-	public Result createResult(Integer userId, String resultJson) {
+	public Result createResult(Integer userId,Integer gameId, String resultJson) {
+		Game g = em.find(Game.class, gameId);
 		User u = em.find(User.class,	userId);
 		Result result = null;
 		ObjectMapper om = new ObjectMapper();
@@ -55,6 +57,7 @@ public class ResultDAOImpl implements ResultDAO {
 		try {
 			result = om.readValue(resultJson, Result.class);
 			result.setUser(u);
+			result.setGame(g);
 			em.persist(result);
 			em.flush();
 		} catch (Exception e) {

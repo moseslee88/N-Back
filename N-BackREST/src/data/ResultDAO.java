@@ -10,7 +10,7 @@ public interface ResultDAO {
 
 	public Result showResult(Integer userId, Integer resultId);
 
-	public Result createResult(Integer userId, String resultJson);
+	public Result createResult(Integer userId,Integer gameId, String resultJson);
 
 	public Collection<ResultGameDTO> addGames(Set<Result> results);
 

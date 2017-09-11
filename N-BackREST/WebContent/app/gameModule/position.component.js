@@ -13,7 +13,7 @@ angular.module('gameModule')
 			vm.buildGrid = function() {
 				vm.diff = $rootScope.gameDifficulty;
 				vm.gridSize = 1 + parseInt(vm.diff);
-				vm.gridSize = parseInt(vm.gridSize) * 2;
+				vm.gridSize *= parseInt(vm.gridSize) * 2;
 				vm.grid = randomNumService.getUniqueNums(parseInt(vm.gridSize), parseInt(vm.gridSize))
 				vm.gridSize = parseInt(vm.gridSize) / 2;
 			};
