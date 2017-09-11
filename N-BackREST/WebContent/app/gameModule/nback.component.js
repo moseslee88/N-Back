@@ -1,7 +1,7 @@
 angular.module('gameModule')
 	.component('nback', {
 		templateUrl : 'app/gameModule/nback.component.html',
-		controller : function(randomNumService, $timeout, $interval, $scope) {
+		controller : function(randomNumService, $timeout, $interval, $rootScope) {
 			var vm = this;
 			//various fields that will be var instead of vm eventually
 			vm.fullArr = [];
@@ -13,7 +13,7 @@ angular.module('gameModule')
 
 			//reset game so nothing bleeds over from a previous play
 			vm.setUpGame = function(diff) {
-				vm.fullArr = randomNumService.getNums(5, (30 + diff));
+				vm.fullArr = randomNumService.getNums(5, (30 + parseInt(diff)));
 				console.log(vm.fullArr)
 				vm.displayNum = -1;
 				vm.currentIndex = 0;
@@ -49,6 +49,7 @@ angular.module('gameModule')
 
 			//show number of points earned in the console
 			vm.showResult = function() {
+				vm.points = Math.floor(Math.sqrt(vm.points / 100) * 100 * $rootScope.gameDifficulty * Math.sqrt($rootScope.gameDifficulty));
 				console.log("points: " + vm.points);
 			}
 
@@ -63,10 +64,11 @@ angular.module('gameModule')
 			}
 			
 			//user clicks start button which calls all other functions, not sure that I am using $timeout correctly
-			vm.startGame = function(diff){	
-				$timeout(vm.setUpGame(diff), 3000)
+			vm.startGame = function(){
+				console.log($rootScope.gameDifficulty)
+				$timeout(vm.setUpGame($rootScope.gameDifficulty), 3000)
 				.then(function(d) {
-					vm.runGame(diff);
+					vm.runGame($rootScope.gameDifficulty);
 				}, function(e) {
 					console.log(e);
 				})

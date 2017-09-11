@@ -23,7 +23,7 @@
 			<h3>{{thisGame.name}}</h3>
 			<p>
 				diff:
-				<select name="difficulty" ng-model="gameDifficulty">
+				<select name="gameDifficulty" ng-model="$root.gameDifficulty">
 					<option>1</option>
 					<option>2</option>
 					<option>3</option>
@@ -34,7 +34,7 @@
 					<option>8</option>
 				</select>
 
-				<button class="btn btn-primary" ng-click="vm.activateGame(thisGame)">play!</button>
+				<input type="submit" value="play!" class="btn btn-primary" ng-click="vm.activateGame(thisGame)"/>
 			</p>
 			<br>
 			<p>{{thisGame.description}}</p>
