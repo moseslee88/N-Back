@@ -18,18 +18,20 @@ angular.module('gameModule')
 				console.log("points: " + vm.randomNums);
 			}
 
+			var setsNumOfLetters = function() {
+				
+			}
+			
 			//shows an array of Randomly-generated Letters based on given total numbers 
 			var randomNums = [];
-			var random4Nums = [];
-			var random6Nums = [];   //make less DRY 
-			var random8Nums = [];
-			var random10Nums = [];
-			var random12Nums = [];
-			var random14Nums = [];
-			var random16Nums = [];
-			randomNums = randomNumService.getLetters(2);
+			//var random4Nums = [];
+			//var random6Nums = [];   //make less DRY, make a method that takes in 2,4,6,8,10,12,14,24 in a method 
+			//var random8Nums = [];
+			//var random10Nums = [];
+
+			randomNums = randomNumService.getLetters(setsNumOfLetters);
 			vm.showNumbers = randomNums;
-			random4Nums = randomNumService.getLetters(4);
+			random4Nums = randomNumService.getLetters(setsNumOfLetters);
 			vm.show4Numbers = random4Nums;
 			random6Nums = randomNumService.getLetters(6);
 			vm.show6Numbers = random6Nums;
@@ -67,15 +69,17 @@ angular.module('gameModule')
 				var i = setInterval(function() {
 					// do your thing
 					//vm.showNumbers = thirdArrayNums[counter];
+					vm.showNumbers = [counter];
 					counter++;
 					if (counter === 12) {
 						clearInterval(i);
+						clearInterval(j);
 					}
 				}, 2000);
-
+				vm.saveResult();
 			}
 
-			vm.runGame()
+			//vm.runGame()
 			vm.startGame = function() {
 				console.log($rootScope.gameDifficulty)
 				$timeout(vm.setUpGame($rootScope.gameDifficulty), 3000) //call the set up Game function
@@ -92,8 +96,24 @@ angular.module('gameModule')
 				vm.fullArr = randomNumService.getLetters(levelDiff);
 				console.log(vm.fullArr)
 				//vm.points = 0;
+				vm.points = 0;
 				vm.difficulty = diff;
 			}
+			
+            vm.buildResult = function() {
+                var newResult = {};
+                newResult.gameString = vm.show24Numbers;
+                newResult.points = vm.points;
+                newResult.difficulty = $rootScope.gameDifficulty;
+                newResult.datetime = new Date();
+                console.log(newResult.datetime);   //check console later
+                return newResult;
+            }
+
+            vm.saveResult = function() {
+                console.log("saving result");
+                resultService.create(vm.buildResult(), $rootScope.gameId);
+            }
 
 
 		},
