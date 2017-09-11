@@ -38,7 +38,7 @@ angular.module('appModule')
 			})
 				.then(function(res) {
 					$rootScope.$broadcast('created', {
-						todo : res.data
+						result : res.data
 					})
 					return res;
 				})
