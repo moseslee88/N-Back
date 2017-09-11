@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class Result {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	protected int id;
 
 	@JsonIgnore
 	@OneToMany(mappedBy="result", fetch=FetchType.EAGER)
@@ -44,11 +44,18 @@ public class Result {
 	private Game game;
 	
 	
+	protected Integer points;
+	protected Integer difficulty;
+	protected Date datetime;
 	
-	private Integer points;
-	private Integer difficulty;
-	private Date datetime;
 	
+	public Game getGame() {
+		return game;
+	}
+	
+	public void setGame(Game game) {
+		this.game = game;
+	}
 	
 	public int getId() {
 		return id;

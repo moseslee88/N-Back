@@ -1,9 +1,10 @@
 angular.module('gameModule')
 	.component('game', {
 		templateUrl : 'app/gameModule/game.component.html',
-		controller : function($location, localGameService, $cookies) {
+		controller : function($location, localGameService, $cookies, $scope) {
 			var vm = this;
 			vm.activeGame = null;
+			$scope.gameDifficulty = 1;
 
 			vm.activateGame = function(thisGame) {
 				vm.activeGame = thisGame;

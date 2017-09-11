@@ -1,7 +1,7 @@
 angular.module('gameModule')
 	.component('nback', {
 		templateUrl : 'app/gameModule/nback.component.html',
-		controller : function(randomNumService, $timeout, $interval) {
+		controller : function(randomNumService, $timeout, $interval, $scope) {
 			var vm = this;
 			//various fields that will be var instead of vm eventually
 			vm.fullArr = [];
@@ -40,9 +40,9 @@ angular.module('gameModule')
 				if (vm.movingArr.length) {
 					if (vm.movingArr[0] === vm.movingArr[(vm.movingArr.length-1)]) {
 						console.log("correct");
-						vm.points += 100;
+						vm.points += 15;
 					} else {
-						vm.points -= 2;
+						vm.points -= 4;
 					}
 				}
 			}
