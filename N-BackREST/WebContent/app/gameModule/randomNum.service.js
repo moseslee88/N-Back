@@ -27,5 +27,19 @@ angular.module('gameModule')
 			return finalArr;
 		};
 
+		service.getUniqueNums = function(maxNum, totalNum) {
+			finalArr = [];
+			for (var i = 0; i < totalNum; i++) {
+				var num = Math.floor(Math.random() * maxNum);
+				while(finalArr.includes(num)){
+					num = Math.floor(Math.random() * maxNum);
+				}
+				if(!finalArr.includes(num)){
+					finalArr.push(num);					
+				}
+			}
+			return finalArr;
+		};
+
 		return service;
 	})
