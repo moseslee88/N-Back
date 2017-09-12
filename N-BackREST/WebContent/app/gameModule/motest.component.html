@@ -1,38 +1,31 @@
 <div id="mainContent" class="container-fluid">
 	<h2>MO Test</h2>
-	<p>Test your ability to remember a sequence of numbers or letters
+	<p>Test your ability to remember a sequence of letters
 
 	<div id="gameContainer" class="container-fluid">
 		<!-- here lies the game: -->
 	    <span>{{vm.msg}}</span>
 			<br>
 		<!--That up there was the timer -->
-	    <h1 ng-hide="vm.hideLetters">  Test Random Letters ARRAY ==> {{vm.showNumbers}}</h1>
-		<h2 ng-hide="vm.hideLetters2">  {{vm.show4Numbers}}</h2>
-		<h3 ng-hide="vm.hideLetters3">  {{vm.show6Numbers}}</h3>
-		<h4 ng-hide="vm.hideLetters4">  {{vm.show8Numbers}}</h4>
-		<h5 ng-hide="vm.hideLetters5">  {{vm.show10Numbers}}</h5>
-		<h6 ng-hide="vm.hideLetters6">  {{vm.show12Numbers}}</h6>
-		<h6 ng-hide="vm.hideLetters7">  {{vm.show14Numbers}}</h6>
-		<h6 ng-hide="vm.hideLetters8">  {{vm.show24Numbers}}</h6>	
-		<h6 ng-hide="vm.hideLetters">  {{vm.showNumbersNoQuotes}}</h6>	
+	    <div ng-show="vm.hideLets">
+	    <h1 >  Test Rdm ARRAYYY ==> {{vm.showLetters}}</h1>
+		<!--   <h2 ng-hide="vm.hideLetters">  {{vm.showLetters}}</h2>  -->
+			
+         </div>	
 
 		
 		<table>      <!-- table of numbers-->
-  <h4>
- <tr>
-    <th>Numbers</th> 
-  </tr>
+ 
   
-    <tr ng-repeat="item in vm.getPracticeNums "  >    <!-- ng-class="vm.strike(item)"  -->
+   <!--  <tr ng-repeat="item in vm.getPracticeNums "  >    ng-class="vm.strike(item)"  
        <td>    Numbers?!? {{item}}</td>
-    </tr>
+    </tr>    -->
  </table>
  
  <form ng-hide="vm.selected">       <!--  hides the form if no results-->
+      <h5>What are the letters of the sequence, in order?</h5>
+     <input type="text" placeholder="Write sequence of letters here" />{{vm.countOfLettersNumbers}}<br />
 
-     <input type="text" placeholder="Number of questions" disabled/>{{vm.countOfLettersNumbers}}<br />
-     <input type="text" style="width:314px" placeholder="Enter number of correct letters/numbers" ng-model="items.count" /><br />
      <input type="submit" value="Get Score" ng-click="vm.addItems(items); items ={}"/>
  </form>
  
@@ -54,6 +47,6 @@
 
 <p> <center>
 <h3>F G X Q R P X A S M Q K<h3></center><p><hr>   -->
-
+<br>
 	</div>
 </div>

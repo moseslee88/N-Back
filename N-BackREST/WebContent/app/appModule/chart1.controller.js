@@ -14,7 +14,6 @@ angular.module('appModule')
 				var gamesWithResults = {};
 				
 				results.forEach(function(result, idx, arr) {
-					console.log(result)
 					if (!gamesWithResults[result.game.name]) {
 						gamesWithResults[result.game.name] = 1;
 					} else {
@@ -26,12 +25,6 @@ angular.module('appModule')
 					vm.labels.push(game);
 					vm.data.push(gamesWithResults[game]);
 				}
-				
-				console.log("vm.labels")
-				console.log(vm.labels)
-				console.log("vm.data")
-				console.log(vm.data)
-				
 			});
 		
 	});

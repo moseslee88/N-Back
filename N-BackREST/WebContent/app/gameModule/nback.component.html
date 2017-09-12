@@ -1,15 +1,27 @@
 <div id="mainContent" class="container-fluid">
 	<h2>N-Back Test</h2>
-	<p>Test your ability to recognize if the current number is the same as a previous number</p>
-	<p>If difficulty is 1, click the button if the displayed number is the same as the previous number. If difficulty is 2, compare to the number that was shown 2 numbers back, etc.</p> 
-	
+	<p ng-hide="vm.gameStarted">Test your ability to recognize if the current number is the same
+		as a previous number</p>
+	<p ng-hide="vm.gameStarted">If difficulty is 1, click the button if the displayed number is
+		the same as the previous number. If difficulty is 2, compare to the
+		number that was shown 2 numbers back, etc.</p>
+
 	<div id="gameContainer" class="container-fluid">
-	<!-- here lies the game: -->
-	<h1 class="animated pulse">{{vm.displayNumber}}</h1>
-	<br>
-<h1>{{$rootScope.gameId}}</h1>	
-	<!-- start button and game button, note that difficulty is hard coded in right now -->
-	<button class="btn btn-tertiary" ng-click="vm.startGame()">start!</button>
-	<button class="btn btn-primary" ng-click="vm.checkCorrect()">check!</button>
+		<button class="btn btn-tertiary" ng-click="vm.startGame()"
+			ng-hide="vm.gameStarted">start!</button>
+		<div id="gameContainerInterior" class="container-fluid"
+			ng-show="vm.gameStarted" ng-hide="vm.gameFinished">
+			<h1>{{vm.displayNumber}}</h1>
+			<br>
+			<button class="btn btn-primary" ng-click="vm.checkCorrect()"
+				ng-disabled="vm.buttonPressed">check!</button>
+		</div>
+		<div id="resultsDisplay" class="container-fluid" ng-show="vm.gameFinished">
+			<p>Difficulty Level: {{$root.gameDifficulty}}</p>
+			<p>Correct: {{vm.correctCounter}}</p>
+			<p>Incorrect: {{vm.incorrectCounter}}</p>
+			<p>Points: {{vm.points}}</p>
+			<button class="btn btn-secondary" ng-click="vm.startGame()">reset!</button>
+		</div>
 	</div>
 </div>

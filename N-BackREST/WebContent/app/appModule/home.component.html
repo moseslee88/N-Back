@@ -20,8 +20,8 @@
 	</div>
 
 	<div class="row">
-		<!-- repeatable section -->
 		<div class="col-sm-3 col-md-4" ng-show="vm.currentUserId"></div>
+		<!-- repeatable section -->
 		<div class="col-sm-6 col-md-4" ng-show="vm.currentUserId">
 			<div class="thumbnail">
 				<h1>Welcome!</h1>
@@ -31,6 +31,7 @@
 				<br> <br>
 			</div>
 		</div>
+
 		<div class="col-sm-3 col-md-4" ng-show="vm.currentUserId"></div>
 	</div>
 
@@ -51,12 +52,23 @@
 			</div>
 		</div>
 
+		<!-- line chart -->
+		<div class="col-sm-6 col-md-4" ng-show="vm.currentUserId">
+		<div class="thumbnail" ng-controller="LineCtrl"> 
+				<canvas id="line" class="chart chart-line" chart-data="data"
+					chart-labels="labels" chart-series="series" chart-options="options"
+					chart-dataset-override="datasetOverride" chart-click="onClick">
+				</canvas>
+			</div> 
+		</div>
+
+		<!-- Pie Chart -->
 		<div class="col-sm-6 col-md-4" ng-show="vm.currentUserId">
 			<div class="thumbnail" ng-controller="chart1 as vm">
 				<h3>{{vm.title}}</h3>
 				<canvas id="pie" class="chart chart-pie" chart-data="vm.data"
 					chart-labels="vm.labels" chart-options="options">
-  </canvas>
+  				</canvas>
 
 			</div>
 		</div>

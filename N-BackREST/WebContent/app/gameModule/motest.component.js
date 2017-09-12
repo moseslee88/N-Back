@@ -4,6 +4,11 @@ angular.module('gameModule')
 		controller : function($location, $timeout, $rootScope, resultService, randomNumService, $interval, $scope) {
 			var vm = this;
 			$scope.value = 0;
+			vm.points = 0;
+			vm.hideLets = false;
+			var difficultyy = parseInt($rootScope.gameDifficulty);
+			var randomNums;
+
 
 			//vm.ArrofNumbers = [];
 			//vm.getPracticeNums = [2, 4, 6, 8, 10, 12, 14, 1];
@@ -26,8 +31,8 @@ angular.module('gameModule')
 					return 4;
 				}
 			}
-			
-			
+
+
 			//here we try to Persist results
 			vm.buildResult = function() {
 				var newResult = {};
@@ -42,77 +47,85 @@ angular.module('gameModule')
 			vm.saveResult = function() {
 				console.log("saving result");
 				resultService.create(vm.buildResult(), $rootScope.gameId);
-				//resultService.create(newResult, $rootScope.gameId);
+			//resultService.create(newResult, $rootScope.gameId);
+			}
+
+			vm.showResult = function() {
+				if (vm.points <= 0) {
+					vm.points = 1;
+				}
+				vm.points = Math.floor(Math.sqrt(vm.points / 100) * 100 *
+					parseInt($rootScope.gameDifficulty) * Math.sqrt(parseInt($rootScope.gameDifficulty)));
+				console.log("points: " + vm.points);
+				vm.saveResult();
 			}
 
 			//shows an array of Randomly-generated Letters based on given total numbers 
-			var randomNums = [];
-			//var random4Nums = [];
-			//var random6Nums = [];   //make less DRY, make a method that takes in 2,4,6,8,10,12,14,24 in a method 
-			//var random8Nums = [];
-			//var random10Nums = [];
+				//var random6Nums = [];   //make less DRY, make a method that takes in 2,4,6,8,10,12,14,24 in a method 
+				//var random8Nums = [];
 
-			randomNums = randomNumService.getLetters(2);
-			vm.showNumbers = randomNums;
-			random4Nums = randomNumService.getLetters(4);
-			vm.show4Numbers = random4Nums;
-			random6Nums = randomNumService.getLetters(6);
-			vm.show6Numbers = random6Nums;
-			random8Nums = randomNumService.getLetters(8);
-			vm.show8Numbers = random8Nums;
-			random10Nums = randomNumService.getLetters(10);
-			vm.show10Numbers = random10Nums;
-			random12Nums = randomNumService.getLetters(12);
-			vm.show12Numbers = random12Nums;
-			random14Nums = randomNumService.getLetters(14);
-			vm.show14Numbers = random14Nums;
-			random24Nums = randomNumService.getLetters(24); //level 8 is really, really difficult
-			vm.show24Numbers = random24Nums;
-			
-			
-			
+			                //randomNums = randomNumService.getLetters(parseInt($rootScope.gameDifficulty) * 3);
+		                  	//vm.showLetters = randomNums;
+
+
+
+
 
 			var results;
 			//results+= modifiedPoints;   //some counter for points 
 
-			vm.runGame = function(diff) {
+			vm.runGame = function(diff) {			
+				vm.hideLets = true;
 				console.log(diff);
+				randomNums = randomNumService.getLetters(parseInt($rootScope.gameDifficulty) * 3);
+				vm.showLetters = randomNums;
+				//create a timer here
+				var showFunLetters = function($rootScope) {
+					//setting timer to change every difficulty level
+					var showTime = 5000 + 10000 / parseInt($rootScope.gameDifficulty);
+					var NumOfRepeats = $rootScope.gameDifficulty;
+
+					$interval(function() {}, showTime, NumOfRepeats)
+						.then(function($rootScope) { //change this to differ per difficulty level
+							if (parseInt($rootScope.gameDifficulty)) {
+								runLoop(difficultyy);
+							}
 
 
-				var j = $interval(function(){    //create a timer here
-						$scope.value++;
-						//$scope.$apply();
-						if ($scope.value > 10) {
-							vm.hideLetters = true;				
-						}
-						if ($scope.value == 120) {
-							vm.hideLetters = true;
-							clearInterval(j);
-						}
-						vm.msg = $scope.value;
-						
-					}, 1000, 88);     //change this to DYNAMICALLY
-				 //setting timer to change every 1000 millis aka 1 sec
+						})
+				} //closes var showFunLetters
 
+				showFunLetters($rootScope.gameDifficulty);
 
-				//interval service
-				//var counter = 0;
-				//	var i = setInterval(function() {
-				// do your thing
-				//vm.showNumbers = thirdArrayNums[counter];
-				//	vm.showNumbers = [counter];
-				//		counter++;
-				//		if (counter === 12) {
-				//		clearInterval(i);
-				//		clearInterval(j);
-				//	}
-				//	}, 2000);
-				vm.points = 10;
-				vm.saveResult();
-			}
+				//$scope.LetterSelected = function(somelettercomingin) { IMPLEMENT THIS TONIGHT
+				//text+= letter;  IMPLEMENT LATER TONIGHT
+				//)
 
+				var runLoop = function($rootScope) {
+					$interval(function() {
+						vm.showLetters = showFunLetters($rootScope.gameDifficulty);
+						console.log("running loop");
+					}, 1000, 5).then(function() {
+						console.log('THIS IS WHERE I COUNT POINTS'); //IMPLEMENT POINTS LATER
+					})
+				}
+			}          //Closes vm.runGame here.....
+			//interval service
+			//var counter = 0;
+			//	var i = setInterval(function() {
+			// do your thing
+			//vm.showNumbers = thirdArrayNums[counter];
+			//	vm.showNumbers = [counter];
+			//		counter++;
+			//		if (counter === 12) {
+			//		clearInterval(i);
+			//		clearInterval(j);
+			//	}
+			//	}, 2000);
+			//vm.points = 10;
+			//vm.saveResult();
 
-			vm.runGame()    //calling function to have the timer function correctly
+			vm.runGame() //calling function to have the timer function correctly
 
 
 			vm.startGame = function() {
@@ -140,3 +153,74 @@ angular.module('gameModule')
 		},
 		controllerAs : 'vm'
 	})
+	//                             
+	//                             if($rootScope.gameDifficulty === 2) {
+	//     							vm.hideLetters = true;
+	//     							vm.hideLetters3 = true;
+	//     							vm.hideLetters4 = true;
+	//     							vm.hideLetters5 = true;
+	//     							vm.hideLetters6 = true;
+	//     							vm.hideLetters7 = true;
+	//     							vm.hideLetters8 = true;
+	//     							runLoop();
+	//                                  }
+	//                             if($rootScope.gameDifficulty === 3) {
+	//     							vm.hideLetters = true;
+	//     							vm.hideLetters2 = true;
+	//     							vm.hideLetters4 = true;
+	//     							vm.hideLetters5 = true;
+	//     							vm.hideLetters6 = true;
+	//     							vm.hideLetters7 = true;
+	//     							vm.hideLetters8 = true;
+	//     							runLoop();
+	//                                  }  
+	//                             if($rootScope.gameDifficulty === 4) {
+	//      							vm.hideLetters = true;
+	//      							vm.hideLetters2 = true;
+	//      							vm.hideLetters3 = true;
+	//      							vm.hideLetters5 = true;
+	//      							vm.hideLetters6 = true;
+	//      							vm.hideLetters7 = true;
+	//      							vm.hideLetters8 = true;
+	//      							runLoop();
+	//                                   }
+	//                             if($rootScope.gameDifficulty === 5) {
+	//      							vm.hideLetters = true;
+	//      							vm.hideLetters2 = true;
+	//      							vm.hideLetters3 = true;
+	//      							vm.hideLetters4 = true;
+	//      							vm.hideLetters6 = true;
+	//      							vm.hideLetters7 = true;
+	//      							vm.hideLetters8 = true;
+	//      							runLoop();
+	//                                   }
+	//                             if($rootScope.gameDifficulty === 6) {
+	//      							vm.hideLetters = true;
+	//      							vm.hideLetters2 = true;
+	//      							vm.hideLetters3 = true;
+	//      							vm.hideLetters4 = true;
+	//      							vm.hideLetters5 = true;
+	//      							vm.hideLetters7 = true;
+	//      							vm.hideLetters8 = true;
+	//      							runLoop();
+	//                                   }
+	//                             if($rootScope.gameDifficulty === 7) {
+	//      							vm.hideLetters = true;
+	//      							vm.hideLetters2 = true;
+	//      							vm.hideLetters3 = true;
+	//      							vm.hideLetters4 = true;
+	//      							vm.hideLetters5 = true;
+	//      							vm.hideLetters6 = true;
+	//      							vm.hideLetters8 = true;
+	//      							runLoop();
+	//                                   }
+	//                             if($rootScope.gameDifficulty === 8) {
+	//      							vm.hideLetters = true;
+	//      							vm.hideLetters2 = true;
+	//      							vm.hideLetters3 = true;
+	//      							vm.hideLetters4 = true;
+	//      							vm.hideLetters5 = true;
+	//      							vm.hideLetters6 = true;
+	//      							vm.hideLetters7 = true;
+	//      							runLoop();
+	//                                   }
