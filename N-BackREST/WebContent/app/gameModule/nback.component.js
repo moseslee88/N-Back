@@ -9,6 +9,7 @@ angular
 						var vm = this;
 						// various fields that will be var instead of vm
 						// eventually
+						var initGame = function(){
 						vm.fullArr = [];
 						vm.movingArr = [];
 						vm.currentIndex = 0;
@@ -20,12 +21,14 @@ angular
 						vm.correctCounter = 0;
 						vm.incorrectCounter = 0;
 						vm.buttonPressed = false;
+						}
 
 						// reset game so nothing bleeds over from a previous
 						// play
 						vm.setUpGame = function(diff) {
 							vm.fullArr = randomNumService.getNums(5,
 									(30 + parseInt(diff)));
+							vm.fullArr.push("end");
 							console.log(vm.fullArr)
 							vm.displayNumber = -1;
 							vm.currentIndex = 0;
@@ -41,19 +44,18 @@ angular
 						// the array that will be used to check if the user is
 						// correct
 						vm.runLoop = function() {
-//							vm.displayNumber = " ";
-//							$interval(function(){}, 10000);
-							vm.buttonPressed = false;
 							vm.displayNumber = vm.fullArr[vm.currentIndex];
+							vm.currentIndex++;
+							vm.buttonPressed = false;
 							vm.movingArr = vm.fullArr.slice((vm.currentIndex
 									- vm.difficulty - 1), vm.currentIndex);
-							vm.currentIndex++;
 							console.log("moving: " + vm.movingArr);
+							$interval(function(){}, 1600, 1).then(function(){
+								vm.displayNumber = " - ";
+							});
 						}
 
-						// user clicked the button, now either add points or
-						// take them away (points are not normalized to 100 per
-						// game yet)
+						// user clicked the button
 						vm.checkCorrect = function() {
 							console.log("checkCorrect");
 							if (vm.movingArr.length) {
@@ -71,6 +73,9 @@ angular
 
 						// show number of points earned in the console
 						vm.showResult = function() {
+							if(vm.points <= 0){
+								vm.points = 1;
+							}
 							vm.points = Math.floor(Math.sqrt(vm.points / 100) * 100 * parseInt($rootScope.gameDifficulty) * Math.sqrt(parseInt($rootScope.gameDifficulty)));
 							console.log("points: " + vm.points);
 							vm.saveResult();
@@ -80,7 +85,7 @@ angular
 						// use $interval to iteratively run the game loop until
 						// there are no numbers left in the array
 						vm.runGame = function(diff) {
-							$interval(vm.runLoop, 1200, vm.fullArr.length)
+							$interval(vm.runLoop, 2000, vm.fullArr.length)
 									.then(function() {
 										vm.showResult();
 									}, function(e) {
@@ -92,6 +97,7 @@ angular
 						// functions, not sure that I am using $timeout
 						// correctly
 						vm.startGame = function() {
+							initGame();
 							console.log($rootScope.gameDifficulty)
 							$timeout(vm.setUpGame($rootScope.gameDifficulty),
 									3000).then(function(d) {

@@ -14,14 +14,14 @@
 			<h1>{{vm.displayNumber}}</h1>
 			<br>
 			<button class="btn btn-primary" ng-click="vm.checkCorrect()"
-				ng-hide="vm.buttonPressed">check!</button>
+				ng-disabled="vm.buttonPressed">check!</button>
 		</div>
 		<div id="resultsDisplay" class="container-fluid" ng-show="vm.gameFinished">
-			<p>Points: {{vm.points}}</p>
+			<p>Difficulty Level: {{$root.gameDifficulty}}</p>
 			<p>Correct: {{vm.correctCounter}}</p>
 			<p>Incorrect: {{vm.incorrectCounter}}</p>
-			<button class="btn btn-primary" ng-click="vm.checkCorrect()"
-				ng-hide="vm.buttonPressed">check!</button>
+			<p>Points: {{vm.points}}</p>
+			<button class="btn btn-secondary" ng-click="vm.startGame()">reset!</button>
 		</div>
 	</div>
 </div>
