@@ -16,12 +16,12 @@
 	</div>
 	<div>
 		<div class="container">
-		<h1 ng-show="vm.randomNum">{{vm.randomNum}}</h1>
+		<h1 ng-show="vm.hideNums">{{vm.randomNum}}</h1>
 			<div>
 				<table class="table table-striped table-border">
 					<tbody>
 						<tr ng-repeat="array in vm.grid">
-						<td ng-repeat="num in array" ng-click="vm.guessNumber(num)">{{num}}</td>
+						<td ng-repeat="num in array" ng-click="vm.guessNumber(num)"><div ng-show="vm.hideNums">X</div><div ng-hide="vm.hideNums">{{num}}</div></td>
 						</tr>
 					</tbody>
 				</table>
