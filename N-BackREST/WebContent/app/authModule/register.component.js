@@ -20,8 +20,8 @@ angular.module('authModule')
 			if (!re.test(user.email)) {
 				vm.errors.push("Your email is not an email");
 			}
-			if (!user.password || user.password.length < 6) {
-				vm.errors.push("You must include a password, of at least 6 characters etc etc")
+			if (!user.password || user.password.length < 4) {
+				vm.errors.push("You must include a password, of at least 4 characters etc etc")
 			}
 			if (user.password !== user.confirm) {
 				vm.errors.push("Your passwords do not match");
