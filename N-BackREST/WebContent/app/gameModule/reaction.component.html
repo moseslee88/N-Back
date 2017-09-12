@@ -2,11 +2,10 @@
 	<h2>Reaction Test</h2>
 	<p>Test your ability to react to a specific stimulus
 	
-	<div id="gameContainer" class="container-fluid">
+	<div id="gameContainer" class="container-fluid" ng-show="vm.gameStart" ng-hide="vm.gameFinished">
 		<!-- here lies the game: -->
-		<button class="btn btn-primary" ng-click="vm.startGame(1)">start reaction game!</button>
+		<button class="btn btn-primary" ng-click="vm.startGame(1)" ng-disabled="disableStart">start reaction game!</button>
 		<div>
-			<span>{{vm.msg}}</span>
 			<br>
 			<span><h1><label ng-click="numberSelected(vm.showNumbers)">{{vm.showNumbers}}</label></h1></span>
 			<span ng-hide="hideNumbers"><h3>Remember Numbers :{{vm.showList}}</h3></span>
@@ -14,3 +13,11 @@
 		<br>
 	</div>
 </div>
+
+<div id="resultsDisplay" class="container-fluid" ng-show="vm.gameFinished" ng-hide="vm.gameStart">
+            <p>Difficulty Level: {{$root.gameDifficulty}}</p>
+            <p>Correct: {{vm.correctCounter}}</p>
+            <p>Incorrect: {{vm.incorrectCounter}}</p>
+            <p>Points: {{vm.points}}</p>
+            <button class="btn btn-secondary" ng-click="vm.checkCorrect()">check!</button>
+</div> 
