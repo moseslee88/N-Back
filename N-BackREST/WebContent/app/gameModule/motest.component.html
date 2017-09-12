@@ -1,45 +1,62 @@
 <div id="mainContent" class="container-fluid">
 	<h2>MO Test</h2>
 	<p>Test your ability to remember a sequence of letters
-
 	<div id="gameContainer" class="container-fluid">
 		<!-- here lies the game: -->
-	    <span>{{vm.msg}}</span>
-			<br>
-		<!--That up there was the timer -->
-	    <div ng-show="vm.hideLets">
-	    <h1 ><center>  Test Rdm ARRAYYY ==> {{vm.showLetters}}</center></h1>
-		<!--   <h2 ng-hide="vm.hideLetters">  {{vm.showLetters}}</h2>  -->
-			
-         </div>	
+		<button class="btn btn-primary" ng-click="vm.startGame()"
+			ng-disabled="vm.disableStart">start game!</button>
 
-		
-		<table>      <!-- table of numbers-->
- 
-  
-   <!--  <tr ng-repeat="item in vm.getPracticeNums "  >    ng-class="vm.strike(item)"  
+		<br>
+		<div ng-show="vm.showLets">
+			<h5>What are the letters of the sequence, in order?</h5>
+			<h1>
+				<center>Test Rdm ARRAYYY ==> {{vm.showLetters}}</center>
+			</h1>
+			<!--   <h2 ng-hide="vm.hideLetters">  {{vm.showLetters}}</h2>  -->
+		</div>
+
+
+
+		<div ng-show="vm.userTurn" ng-hide="vm.showLets">
+			<h5>What are the letters of the sequence, in order?</h5>
+			<form>
+				<!--  hides the form if no results-->
+				<input type="text" style="width: 20em;"
+					placeholder="Write sequence of letters here!"
+					ng-model="vm.userInput" />
+				<br />
+				<input type="submit" value="Get Score!"
+					ng-click="vm.addResults(vm.userInput)" class="btn btn-primary" />
+			</form>
+		</div>
+
+		<div ng-show="vm.gameComplete">
+			<p>Points: {{vm.points}}</p>
+			<p>Correct: {{vm.correctCount}}</p>
+			<p>Incorrect: {{vm.incorrectCount}}</p>
+			<button class="btn btn-secondary" ng-click="vm.startGame()">Play Again!</button>
+		</div>
+
+
+		<!--	<table>       table of numbers-->
+
+
+		<!--  <tr ng-repeat="item in vm.getPracticeNums "  >    ng-class="vm.strike(item)"  
        <td>    Numbers?!? {{item}}</td>
-    </tr>    -->
- </table>
- 
- <form ng-hide="vm.selected">       <!--  hides the form if no results-->
-      <h5>What are the letters of the sequence, in order?</h5>
-     <input type="text" placeholder="Write sequence of letters here" />{{vm.countOfLettersNumbers}}<br />
+    </tr>   
+ </table>    -->
 
-     <input type="submit" value="Get Score" ng-click="vm.addItems(items); items ={}"/>
- </form>
- 
- <!-- <p> <center>
+		<!-- <p> <center>
 		<table>      <!-- table of numbers-->
- 
-  
-   <!--  <tr ng-repeat="item in vm.getPracticeNums "  >    ng-class="vm.strike(item)"  
+
+
+		<!--  <tr ng-repeat="item in vm.getPracticeNums "  >    ng-class="vm.strike(item)"  
        <td>    Numbers?!? {{item}}</td>
     </tr>    
  </table>
 
 <p> <center>
 <h3>F G X Q R P X A S M Q K<h3></center><p><hr>   -->
-<br>
+		<br>
 	</div>
 </div>
