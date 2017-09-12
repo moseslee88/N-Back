@@ -27,7 +27,13 @@ public class ResultController {
 	private ResultDAO dao;
 	
 	@RequestMapping(path = "/result", method = RequestMethod.GET)
-	public Set<Result> indexAllResult() {
+	public Collection<?> indexAllResult(HttpServletRequest req, HttpServletResponse res, @RequestParam(name = "games", required=false) Boolean includeGames) {
+		Set<Result> results = dao.indexAllResult();
+		
+		if (includeGames != null && includeGames == true) {
+			System.out.println("in the if");
+			return dao.addGames(results);
+		}
 		return dao.indexAllResult();
 	}
 	

@@ -15,7 +15,7 @@ angular.module('appModule')
 			
 			return $http({
 				method : 'GET',
-				url : 'api/user/result'
+				url : 'api/result'
 			})
 		}
 

@@ -25,7 +25,7 @@ angular.module("appModule")
 				.then(function(res){
 					
 				});
-			resultService.index(true)
+			resultService.indexAll()
 				.then(function(res) {
 					communityResults = res.data;
 					
