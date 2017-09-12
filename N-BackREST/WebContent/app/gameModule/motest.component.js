@@ -1,7 +1,7 @@
 angular.module('gameModule')
 	.component('motest', {
 		templateUrl : 'app/gameModule/motest.component.html',
-		controller : function($location, $timeout, $rootScope, randomNumService, $interval, $scope) {
+		controller : function($location, $timeout, $rootScope, resultService, randomNumService, $interval, $scope) {
 			var vm = this;
 			$scope.value = 0;
 
@@ -19,9 +19,32 @@ angular.module('gameModule')
 			}
 
 			var setsNumOfLetters = function() {
-				
+				if (vm.difficulty = 1) {
+					return 2;
+				}
+				if (vm.difficulty = 2) {
+					return 4;
+				}
 			}
 			
+			
+			//here we try to Persist results
+			vm.buildResult = function() {
+				var newResult = {};
+				newResult.gameString = vm.show24Numbers;
+				newResult.points = vm.points;
+				newResult.difficulty = $rootScope.gameDifficulty;
+				newResult.datetime = new Date();
+				console.log(newResult.datetime); //check console later
+				return newResult;
+			}
+
+			vm.saveResult = function() {
+				console.log("saving result");
+				resultService.create(vm.buildResult(), $rootScope.gameId);
+				//resultService.create(newResult, $rootScope.gameId);
+			}
+
 			//shows an array of Randomly-generated Letters based on given total numbers 
 			var randomNums = [];
 			//var random4Nums = [];
@@ -29,9 +52,9 @@ angular.module('gameModule')
 			//var random8Nums = [];
 			//var random10Nums = [];
 
-			randomNums = randomNumService.getLetters(setsNumOfLetters);
+			randomNums = randomNumService.getLetters(2);
 			vm.showNumbers = randomNums;
-			random4Nums = randomNumService.getLetters(setsNumOfLetters);
+			random4Nums = randomNumService.getLetters(4);
 			vm.show4Numbers = random4Nums;
 			random6Nums = randomNumService.getLetters(6);
 			vm.show6Numbers = random6Nums;
@@ -45,6 +68,9 @@ angular.module('gameModule')
 			vm.show14Numbers = random14Nums;
 			random24Nums = randomNumService.getLetters(24); //level 8 is really, really difficult
 			vm.show24Numbers = random24Nums;
+			
+			
+			
 
 			var results;
 			//results+= modifiedPoints;   //some counter for points 
@@ -53,33 +79,42 @@ angular.module('gameModule')
 				console.log(diff);
 
 
-				var j = setInterval(function() {           //create a timer here
-					$scope.value++;
-					$scope.$apply();
-					if ($scope.value > 10) {
-						vm.hideLetters = true;
-					//clearInterval(j);
-					}
-					vm.msg = $scope.value;
-				}, 1000);                //setting timer to change every 1000 millis aka 1 sec
+				var j = $interval(function(){    //create a timer here
+						$scope.value++;
+						//$scope.$apply();
+						if ($scope.value > 10) {
+							vm.hideLetters = true;				
+						}
+						if ($scope.value == 120) {
+							vm.hideLetters = true;
+							clearInterval(j);
+						}
+						vm.msg = $scope.value;
+						
+					}, 1000, 88);     //change this to DYNAMICALLY
+				 //setting timer to change every 1000 millis aka 1 sec
 
 
 				//interval service
-				var counter = 0;
-				var i = setInterval(function() {
-					// do your thing
-					//vm.showNumbers = thirdArrayNums[counter];
-					vm.showNumbers = [counter];
-					counter++;
-					if (counter === 12) {
-						clearInterval(i);
-						clearInterval(j);
-					}
-				}, 2000);
+				//var counter = 0;
+				//	var i = setInterval(function() {
+				// do your thing
+				//vm.showNumbers = thirdArrayNums[counter];
+				//	vm.showNumbers = [counter];
+				//		counter++;
+				//		if (counter === 12) {
+				//		clearInterval(i);
+				//		clearInterval(j);
+				//	}
+				//	}, 2000);
+				vm.points = 10;
 				vm.saveResult();
 			}
 
-			//vm.runGame()
+
+			vm.runGame()    //calling function to have the timer function correctly
+
+
 			vm.startGame = function() {
 				console.log($rootScope.gameDifficulty)
 				$timeout(vm.setUpGame($rootScope.gameDifficulty), 3000) //call the set up Game function
@@ -99,21 +134,7 @@ angular.module('gameModule')
 				vm.points = 0;
 				vm.difficulty = diff;
 			}
-			
-            vm.buildResult = function() {
-                var newResult = {};
-                newResult.gameString = vm.show24Numbers;
-                newResult.points = vm.points;
-                newResult.difficulty = $rootScope.gameDifficulty;
-                newResult.datetime = new Date();
-                console.log(newResult.datetime);   //check console later
-                return newResult;
-            }
 
-            vm.saveResult = function() {
-                console.log("saving result");
-                resultService.create(vm.buildResult(), $rootScope.gameId);
-            }
 
 
 		},

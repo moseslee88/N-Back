@@ -15,6 +15,11 @@ angular
 						vm.displayNumber = -1;
 						vm.difficulty = 1;
 						vm.points = 0;
+						vm.gameStarted = false;
+						vm.gameFinished = false;
+						vm.correctCounter = 0;
+						vm.incorrectCounter = 0;
+						vm.buttonPressed = false;
 
 						// reset game so nothing bleeds over from a previous
 						// play
@@ -26,20 +31,19 @@ angular
 							vm.currentIndex = 0;
 							vm.points = 0;
 							vm.difficulty = diff;
-						}
-
-						// doesn't work! will display the current comparison
-						// number for n-back game
-						vm.getDisplayNum = function() {
-							return vm.displayNumber;
+							vm.gameStarted = true;
+							vm.correctCounter = 0;
+							vm.incorrectCounter = 0;
+							vm.buttonPressed = false;
 						}
 
 						// increments the index to go through the array and gets
 						// the array that will be used to check if the user is
 						// correct
 						vm.runLoop = function() {
-							vm.displayNumber = " ";
-							$interval(function(){}, 10000);
+//							vm.displayNumber = " ";
+//							$interval(function(){}, 10000);
+							vm.buttonPressed = false;
 							vm.displayNumber = vm.fullArr[vm.currentIndex];
 							vm.movingArr = vm.fullArr.slice((vm.currentIndex
 									- vm.difficulty - 1), vm.currentIndex);
@@ -53,22 +57,24 @@ angular
 						vm.checkCorrect = function() {
 							console.log("checkCorrect");
 							if (vm.movingArr.length) {
+								vm.buttonPressed = true;
 								if (vm.movingArr[0] === vm.movingArr[(vm.movingArr.length - 1)]) {
 									console.log("correct");
+									vm.correctCounter += 1;
 									vm.points += 15;
 								} else {
 									vm.points -= 4;
+									vm.incorrectCounter += 1;
 								}
 							}
 						}
 
 						// show number of points earned in the console
 						vm.showResult = function() {
-							vm.points = Math.floor(Math.sqrt(vm.points / 100)
-									* 100 * $rootScope.gameDifficulty
-									* Math.sqrt($rootScope.gameDifficulty));
+							vm.points = Math.floor(Math.sqrt(vm.points / 100) * 100 * parseInt($rootScope.gameDifficulty) * Math.sqrt(parseInt($rootScope.gameDifficulty)));
 							console.log("points: " + vm.points);
 							vm.saveResult();
+							vm.gameFinished = true;
 						}
 
 						// use $interval to iteratively run the game loop until
