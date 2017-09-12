@@ -13,7 +13,7 @@ angular.module('appModule')
 			var userId = $cookies.get("uid");
 			return $http({
 				method : 'GET',
-				url : 'api/user/' + userId+ '/profile' + pid
+				url : 'api/user/' + userId+ '/profile/' + pid
 
 			})
 		};

@@ -33,6 +33,16 @@ public class ResultDAOImpl implements ResultDAO {
 
 		Set<Result> results = new HashSet<Result>(resultList);
 		return results;
+	} 
+	
+	@Override
+	public Set<Result> indexAllResult() {
+		String query = "SELECT r FROM Result r";
+		List<Result> resultList = em.createQuery(query, Result.class)
+				.getResultList();
+		
+		Set<Result> results = new HashSet<Result>(resultList);
+		return results;
 	}
 
 	@Override
