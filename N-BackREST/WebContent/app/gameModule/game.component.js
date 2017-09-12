@@ -3,7 +3,7 @@ angular.module('gameModule')
 		templateUrl : 'app/gameModule/game.component.html',
 		controller : function($location, localGameService, $cookies, $rootScope) {
 			var vm = this;
-			vm.activeGame = null;
+			vm.activeGame = $rootScope.activeGame;
 			$rootScope.gameDifficulty = 1;
 
 			vm.activateGame = function(thisGame) {

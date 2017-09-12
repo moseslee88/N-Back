@@ -19,20 +19,77 @@
 		<div class="col-sm-3 col-md-4" ng-hide="vm.currentUserId"></div>
 	</div>
 
-	<div class="row">
-		<div class="col-sm-3 col-md-4" ng-show="vm.currentUserId"></div>
-		<!-- repeatable section -->
-		<div class="col-sm-6 col-md-4" ng-show="vm.currentUserId">
-			<div class="thumbnail">
-				<h1>Welcome!</h1>
-				<br>
-				<a class="btn btn-tertiary" role="button" ng-click="vm.goToGame()">
-					Play Games!</a>
-				<br> <br>
-			</div>
-		</div>
 
-		<div class="col-sm-3 col-md-4" ng-show="vm.currentUserId"></div>
+	<div class="container-fluid">
+		<div id="myCarousel" class="carousel slide">
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="img/welcome.jpg" alt="welcome">
+					<div class="container">
+						<div class="carousel-caption">
+							<h1>Use It or Lose It!</h1>
+							<p class="lead">Build working and short term memory by
+								testing your skills against others.</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<img src="img/reaction.jpg" alt="reaction">
+					<div class="container">
+						<div class="carousel-caption">
+							<h1>Reaction</h1>
+							<p class="lead">Test how quickly you can react when you see a
+								number from a given set. Higher difficulty is worth more points
+								but you have to remember more numbers.</p>
+							<a class="btn btn-large btn-primary" href="/game"
+								ng-click="$root.activeGame = 5">Play!</a>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<img src="img/position.jpg" alt="reaction">
+					<div class="container">
+						<div class="carousel-caption">
+							<h1>Position</h1>
+							<p class="lead">Test how well you can remember the position
+								of a number on a grid. Higher difficulty is worth more points
+								but uses a larger grid.</p>
+							<a class="btn btn-large btn-primary" href="/game"
+								ng-click="$root.activeGame = 4">Play!</a>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<img src="img/motest.jpg" alt="reaction">
+					<div class="container">
+						<div class="carousel-caption">
+							<h1>Mo-Test</h1>
+							<p class="lead">Test how quickly you can remember a sequence
+								of letters. Higher difficulty is worth more points but you have
+								to remember more letters.</p>
+							<a class="btn btn-large btn-primary" href="/game"
+								ng-click="$root.activeGame = 3">Play!</a>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<img src="img/n-back.jpg" alt="reaction">
+					<div class="container">
+						<div class="carousel-caption">
+							<h1>N-Back</h1>
+							<p class="lead">Test if you can match the current number to a
+								previous number in the sequence. Higher difficulty is worth more
+								points but you have to remember farther back.</p>
+							<a class="btn btn-large btn-primary" href="/game"
+								ng-click="$root.activeGame = 2">Play!</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+			<a class="right carousel-control" href="#myCarousel"
+				data-slide="next">›</a>
+		</div>
 	</div>
 
 	<div class="row">
@@ -54,12 +111,12 @@
 
 		<!-- line chart -->
 		<div class="col-sm-6 col-md-4" ng-show="vm.currentUserId">
-		<div class="thumbnail" ng-controller="LineCtrl"> 
-				<canvas id="line" class="chart chart-line" chart-data="data"
+			<div class="thumbnail" ng-controller="BarCtrl">
+				<canvas id="bar" class="chart chart-bar" chart-data="data"
 					chart-labels="labels" chart-series="series" chart-options="options"
 					chart-dataset-override="datasetOverride" chart-click="onClick">
 				</canvas>
-			</div> 
+			</div>
 		</div>
 
 		<!-- Pie Chart -->
