@@ -43,16 +43,7 @@ angular.module('appModule')
 					return res;
 				})
 		};
-//
-//		service.getUsersGamePlayTotal = function() {			
-//			
-//	    
-//			
-//			
-//			
-//			return gamePlayTotal;
-//			
-//		}
+
 
 		return service;
 
