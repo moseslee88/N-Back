@@ -30,7 +30,7 @@ angular.module('gameModule')
 
 			vm.startGame = function() {
 				initGame();
-				vm.showLets = true;
+				vm.showLets = true;   //makes ng-show true so array of Letters shows!!!
 				showFunLetters();
 			}
 
@@ -49,13 +49,14 @@ angular.module('gameModule')
 
 
 			vm.addResults = function(input) {
-				inputArr = input.toUpperCase().trim().split('');
+				inputArr = input.toUpperCase().trim().split("");
 				console.log(inputArr);
 				console.log(vm.showLetters);
-				if (inputArr.length < vm.showLetters.length) {
+				if (inputArr.length < vm.showLetters.length) {    //check for mistakes in user input or less letters than TEST array
 					var lettersShort = vm.showLetters.length - inputArr.length;
 					for (var i = 0; i < lettersShort; i++) {
 						inputArr.push(0);
+						//inputArr.push(i);
 					}
 				}
 
