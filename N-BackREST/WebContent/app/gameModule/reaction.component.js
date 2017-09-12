@@ -6,6 +6,9 @@ angular.module('gameModule').component(
 					resultService, $interval) {
 				var vm = this;
 				vm.points = 0;
+				//initially hide game stats from user
+				$scope.gameFinished = true;
+
 
 				var myListOfNums = [];
 				myListOfNums = randomNumService.getNums(100,
@@ -26,7 +29,6 @@ angular.module('gameModule').component(
 				vm.showList = myListOfNums;
 				vm.runGame = function(diff) {
 					console.log(diff);
-
 					var showFunNums = function() {
 						var showTime = 1000 + 500 * parseInt($rootScope.gameDifficulty);
 						
@@ -44,10 +46,8 @@ angular.module('gameModule').component(
 				}
 
 				$scope.numberSelected = function(num) {
-
 					selectedNumArray.push(num);
 					console.log(selectedNumArray);
-
 				}
 
 				var runLoop = function() {
@@ -58,8 +58,16 @@ angular.module('gameModule').component(
 					}, 1200, thirdArrayNums.length).then(function() {
 						checkResults();
 						$scope.disableStart = false;
+						$scope.gameFinished = false;
+						$scope.gameStart = true;
+						$scope.checkCorrect = function() {
+							$scope.gameFinished = true;
+							$scope.gameStart = false;
+						}
+						
 
 					})
+
 				}
 
 				var checkResults = function() {
@@ -107,10 +115,11 @@ angular.module('gameModule').component(
 				}
 
 				vm.startGame = function(diff) {
-					$scope.gameStart = true;
+					
 					vm.runGame(diff);
 					//disable start button
 					$scope.disableStart = true;
+
 				}
 
 			},
