@@ -14,5 +14,5 @@ public interface ResultDAO {
 
 	public Collection<ResultGameDTO> addGames(Set<Result> results);
 
-
+	public  Set<Result> indexAllResult();
 }

@@ -26,9 +26,9 @@ public class ResultController {
 	@Autowired
 	private ResultDAO dao;
 	
-	@RequestMapping(path = "results/ping", method = RequestMethod.GET)
-	public String ping() {
-		return "pong";
+	@RequestMapping(path = "/result", method = RequestMethod.GET)
+	public Set<Result> indexAllResult() {
+		return dao.indexAllResult();
 	}
 	
 	@RequestMapping(path = "/user/{uid}/result", method = RequestMethod.GET)
