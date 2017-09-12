@@ -74,7 +74,8 @@ angular.module('gameModule')
 			var results;
 			//results+= modifiedPoints;   //some counter for points 
 
-			vm.runGame = function(diff) {			
+			vm.runGame = function(diff) {
+				console.log(parseInt($rootScope.gameDifficulty));
 				vm.hideLets = true;
 				console.log(diff);
 				randomNums = randomNumService.getLetters(parseInt($rootScope.gameDifficulty) * 3);
@@ -88,6 +89,7 @@ angular.module('gameModule')
 					$interval(function() {}, showTime, NumOfRepeats)
 						.then(function($rootScope) { //change this to differ per difficulty level
 							if (parseInt($rootScope.gameDifficulty)) {
+								vm.hideLets = false;  //HIDES the letters after a few seconds
 								runLoop(difficultyy);
 							}
 
