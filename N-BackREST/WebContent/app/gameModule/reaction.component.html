@@ -1,26 +1,43 @@
 <div id="mainContent" class="container-fluid">
 	<h2>Reaction Test</h2>
-	<p>Test your ability to react to a specific stimulus<p> 
-	<br> 
-	<p>Click on flashing numbers!</p>
-	
-	<div id="gameContainer" class="container-fluid" ng-show="gameStart">
+	<p>Test your ability to react when you see a number from your list
+	<p>
+		<br>
+	<p>Click on your number when you see it flash!</p>
+
+	<div id="gameContainer" class="container-fluid">
 		<!-- here lies the game: -->
-		<button class="btn btn-primary" ng-click="vm.startGame(1)" ng-disabled="disableStart">start reaction game!</button>
-		<div>
-			<br>
-			<span><h1><label ng-click="numberSelected(vm.showNumbers)">{{vm.showNumbers}}</label></h1></span>
-			<span ng-hide="hideNumbers"><h3>Remember Numbers :{{vm.showList}}</h3></span>
+		<button class="btn btn-primary" ng-click="vm.startGame()"
+			ng-hide="gameStart">start reaction game!</button>
+		<div class="container-fluid" ng-show="gameStart"
+			>
+			<br> <span><h1>
+					<label ng-click="numberSelected(vm.showNumbers)">{{vm.showNumbers}}</label>
+				</h1></span> <span ng-hide="hideNumbers"><h3>Remember Numbers
+					:{{vm.showList}}</h3></span>
 		</div>
 		<br>
 	</div>
 	<div id="resultsDisplay" class="container-fluid" ng-show="gameFinished">
-            <p>Difficulty Level: {{$root.gameDifficulty}}</p>
-            <p>Correct: {{vm.correct}}</p>
-            <p>Incorrect: {{vm.incorrect}}</p>
-            <p>Points: {{vm.points}}</p>
-            <button class="btn btn-secondary" ng-click="vm.reStartGame()">Return</button>
-	</div> 
+		<p>Difficulty Level: {{$root.gameDifficulty}}</p>
+		<p>Correct: {{vm.correct}}</p>
+		<p>Incorrect: {{vm.incorrect}}</p>
+		<p>Points: {{vm.points}}</p>
+		<p>
+			diff: <select name="gameDifficulty" ng-model="$root.gameDifficulty">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+				<option>8</option>
+			</select>
+			<button class="btn btn-secondary" ng-click="vm.startGame()">Play
+				Again!</button>
+		</p>
+	</div>
 </div>
 
 

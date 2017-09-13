@@ -1,157 +1,170 @@
-angular.module('gameModule').component(
-		'reaction',
-		{
-			templateUrl : 'app/gameModule/reaction.component.html',
-			controller : function(randomNumService, $scope, $rootScope,
-					resultService, $interval, $location) {
-				var vm = this;
-				vm.points = 0;
-				 vm.correct = 0;
-				 vm.totalNum = 0;
-				 vm.incorrect = 0;
-				//initially hide game stats from user
-				$scope.gameFinished = false;
-				$scope.gameStart = true;
+angular
+		.module('gameModule')
+		.component(
+				'reaction',
+				{
+					templateUrl : 'app/gameModule/reaction.component.html',
+					controller : function(randomNumService, $scope, $rootScope,
+							resultService, $interval, $location) {
+						var vm = this;
+						vm.points = 0;
+						vm.correct = 0;
+						vm.totalNum = 0;
+						vm.incorrect = 0;
+						// initially hide game stats from user
+						$scope.gameFinished = false;
+						$scope.gameStart = false;
 
+						var initGame = function() {
+							vm.points = 0;
+							vm.correct = 0;
+							vm.totalNum = 0;
+							vm.incorrect = 0;
+							// initially hide game stats from user
+							$scope.gameFinished = false;
+							$scope.gameStart = false;
+							$scope.hideNumbers = false;
+						}
 
-				var myListOfNums = [];
-				myListOfNums = randomNumService.getNums(100,
-						parseInt($rootScope.gameDifficulty) * 2);
+						var buildGame = function() {
 
-				var secondArrayNums = [];
-				secondArrayNums = randomNumService.getNums(100, 20);
-				//secondArrayNums.push(100);
+							vm.myListOfNums = [];
+							vm.myListOfNums = randomNumService.getNums(100,
+									parseInt($rootScope.gameDifficulty) * 2);
 
-				var thirdArrayNums = [];
+							vm.secondArrayNums = [];
+							vm.secondArrayNums = randomNumService.getNums(100, 20);
+							// vm.secondArrayNums.push(100);
 
-				var thirdArrayNums = myListOfNums.concat(secondArrayNums);
+							vm.thirdArrayNums = [];
 
-				console.log(thirdArrayNums);
+							vm.thirdArrayNums = vm.myListOfNums
+									.concat(vm.secondArrayNums);
 
-				var selectedNumArray = [];
+							console.log(vm.thirdArrayNums);
 
-				vm.showList = myListOfNums;
-				vm.runGame = function(diff) {
-					console.log(diff);
-					var showFunNums = function() {
-						var showTime = 1000 + 500 * parseInt($rootScope.gameDifficulty);
-						
-						$interval(function(){}, showTime, 1)
-								.then(function() {
+							vm.selectedNumArray = [];
+
+							vm.showList = vm.myListOfNums;
+						}
+
+						vm.runGame = function(diff) {
+							$scope.gameStart = true;
+
+							console.log(diff);
+							var showFunNums = function() {
+								var showTime = 1000 + 500 * parseInt($rootScope.gameDifficulty);
+
+								$interval(function() {
+								}, showTime, 1).then(function() {
 									$scope.hideNumbers = true;
 									runLoop();
 								})
-					}
+							}
 
-					shuffle(thirdArrayNums);
-					vm.currentIndex = 0;
-					showFunNums();
+							shuffle(vm.thirdArrayNums);
+							vm.currentIndex = 0;
+							showFunNums();
 
-				}
-
-				$scope.numberSelected = function(num) {
-					selectedNumArray.push(num);
-					console.log(selectedNumArray);
-				}
-
-				var runLoop = function() {
-					$interval(function() {
-						vm.showNumbers = thirdArrayNums[vm.currentIndex];
-						vm.currentIndex++;
-
-					},800, thirdArrayNums.length + 1).then(function() {
-						checkResults();
-						$scope.disableStart = false;
-						$scope.gameFinished = true;
-						$scope.gameStart = false;
-						
-						//need to call startGame when return is cl
-					
-					
-					})
-
-				}
-
-				
-				
-				var checkResults = function() {
-					// check and add points
-					
-					var ratio = (parseInt($rootScope.gameDifficulty) * 2)/thirdArrayNums.length;
-					var pointPerCorrect = ratio * 100;
-					
-					for (var i = 0; i < selectedNumArray.length; i++) {
-						if (myListOfNums.includes(selectedNumArray[i])) {
-							vm.points = vm.points + pointPerCorrect;
-							vm.correct++;
-							console.log(vm.correct);
-
-						} else {
-							vm.points = vm.points - (pointPerCorrect/2);
-							vm.incorrect++;
-							console.log(vm.incorrect);
-							
 						}
-						
-						
-					}
-					//console.log(vm.correct);
-					//	console.log(vm.incorrect);
-					
-					 if(vm.points <= 0){
-                         vm.points = 1;
-                     }
-					vm.points = Math.floor(Math.sqrt(vm.points / 100) * 100 * parseInt($rootScope.gameDifficulty) * Math.sqrt(parseInt($rootScope.gameDifficulty)));
 
-					console.log(vm.points);
-					
-					vm.saveResult();
-				}
+						$scope.numberSelected = function(num) {
+							vm.selectedNumArray.push(num);
+							console.log(vm.selectedNumArray);
+						}
 
-				vm.buildResult = function() {
-					var newResult = {};
-					newResult.gameString = vm.showList.toString();
-					newResult.points = vm.points;
-					newResult.difficulty = $rootScope.gameDifficulty;
-					newResult.datetime = new Date();
-					return newResult;
-				}
+						var runLoop = function() {
+							$interval(
+									function() {
+										vm.showNumbers = vm.thirdArrayNums[vm.currentIndex];
+										vm.currentIndex++;
 
-				vm.saveResult = function() {
-					resultService.create(vm.buildResult(), $rootScope.gameId);
-				}
+									}, 800, vm.thirdArrayNums.length + 1).then(
+									function() {
+										checkResults();
+										$scope.disableStart = false;
+										$scope.gameFinished = true;
 
-				function shuffle(array) {
-					var i = 0, j = 0, temp = null
+										// need to call startGame when return is
+										// cl
 
-					for (i = array.length - 1; i > 0; i -= 1) {
-						j = Math.floor(Math.random() * (i + 1))
-						temp = array[i]
-						array[i] = array[j]
-						array[j] = temp
-					}
-				}
+									})
 
-				vm.startGame = function(diff) {
-					if(!diff) diff= 2;
-					vm.runGame(diff);
-					//disable start button
-					$scope.disableStart = true;
-					
+						}
 
-				}
-				vm.reStartGame = function(){
-//					$scope.gameStart = false;
-//					$scope.gameFinished = true;
-//					vm.points = 0;
-//					$scope.hideNumbers = false;
-//					runLoop();
-					
+						var checkResults = function() {
+							// check and add points
 
-				}
-				
+							var pointPerCorrect = 100 / (parseInt($rootScope.gameDifficulty) * 2);
 
-			},
-			controllerAs : 'vm'
-		})
-		
+							for (var i = 0; i < vm.selectedNumArray.length; i++) {
+								if (vm.myListOfNums.includes(vm.selectedNumArray[i])) {
+									vm.points = vm.points + pointPerCorrect;
+									vm.correct++;
+									console.log(vm.correct);
+
+								} else {
+									vm.points = vm.points
+											- (pointPerCorrect);
+									vm.incorrect++;
+									console.log(vm.incorrect);
+
+								}
+
+							}
+							// console.log(vm.correct);
+							// console.log(vm.incorrect);
+
+							if (vm.points <= 0) {
+								vm.points = 1;
+							}
+							vm.points = Math
+									.floor(Math.sqrt(vm.points / 100)
+											* 100
+											* parseInt($rootScope.gameDifficulty)
+											* Math
+													.sqrt(parseInt($rootScope.gameDifficulty)));
+
+							console.log(vm.points);
+
+							vm.saveResult();
+						}
+
+						vm.buildResult = function() {
+							var newResult = {};
+							newResult.gameString = vm.showList.toString();
+							newResult.points = vm.points;
+							newResult.difficulty = $rootScope.gameDifficulty;
+							newResult.datetime = new Date();
+							return newResult;
+						}
+
+						vm.saveResult = function() {
+							resultService.create(vm.buildResult(),
+									$rootScope.gameId);
+						}
+
+						function shuffle(array) {
+							var i = 0, j = 0, temp = null
+
+							for (i = array.length - 1; i > 0; i -= 1) {
+								j = Math.floor(Math.random() * (i + 1))
+								temp = array[i]
+								array[i] = array[j]
+								array[j] = temp
+							}
+						}
+
+						vm.startGame = function() {
+
+							initGame();
+							buildGame();
+							vm.runGame($rootScope.gameDifficulty);
+							// disable start button
+							$scope.disableStart = true;
+
+						}
+
+					},
+					controllerAs : 'vm'
+				})
