@@ -38,6 +38,8 @@
 						<h1>Use It or Lose It!</h1>
 						<p class="lead">Build working and short term memory by testing
 							your skills against others.</p>
+						<a class="btn btn-large btn-primary" href="#/game"
+							ng-click="$root.activeGame.name = 'reaction'">Play!</a>
 					</div>
 				</div>
 			</div>
@@ -50,7 +52,7 @@
 							number from a given set. Higher difficulty is worth more points
 							but you have to remember more numbers.</p>
 						<a class="btn btn-large btn-primary" href="#/game"
-							ng-click="$root.activeGame = 5">Play!</a>
+							ng-click="$root.activeGame.name = 'reaction'">Play!</a>
 					</div>
 				</div>
 			</div>
@@ -63,7 +65,7 @@
 							a number on a grid. Higher difficulty is worth more points but
 							uses a larger grid.</p>
 						<a class="btn btn-large btn-primary" href="#/game"
-							ng-click="$root.activeGame = 4">Play!</a>
+							ng-click="$root.activeGame.name = 'position'">Play!</a>
 					</div>
 				</div>
 			</div>
@@ -76,7 +78,7 @@
 							of letters. Higher difficulty is worth more points but you have
 							to remember more letters.</p>
 						<a class="btn btn-large btn-primary" href="#/game"
-							ng-click="$root.activeGame = 3">Play!</a>
+							ng-click="$root.activeGame.name = 'motest'">Play!</a>
 					</div>
 				</div>
 			</div>
@@ -89,7 +91,7 @@
 							previous number in the sequence. Higher difficulty is worth more
 							points but you have to remember farther back.</p>
 						<a class="btn btn-large btn-primary" href="#/game"
-							ng-click="$root.activeGame = 2">Play!</a>
+							ng-click="$root.activeGame.name = 'nback'">Play!</a>
 					</div>
 				</div>
 			</div>

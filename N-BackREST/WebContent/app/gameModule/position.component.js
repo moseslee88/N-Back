@@ -64,7 +64,7 @@ angular.module('gameModule')
 			vm.saveResult = function() {
 				console.log("saving result");
 				vm.gameFinished = true;
-				resultService.create(vm.buildResult(), $rootScope.gameId);
+				resultService.create(vm.buildResult(), 4);
 				resetData();
 			}
 			

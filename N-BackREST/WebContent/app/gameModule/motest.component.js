@@ -13,6 +13,7 @@ angular.module('gameModule')
 			vm.correctCount = 0;
 			vm.incorrectCount = 0;
 			vm.gameComplete = false;
+			
 			//vm.errors = []; //empty array for displaying user input errors, if any
 
 			var initGame = function() {
@@ -124,7 +125,7 @@ angular.module('gameModule')
 			}
 
 			vm.saveResult = function() {
-				resultService.create(vm.buildResult(), $rootScope.gameId);
+				resultService.create(vm.buildResult(), 3);
 			}
 
 			vm.showResult = function() {

@@ -4,7 +4,7 @@ angular.module('gameModule')
 		controller : function($location, localGameService, $cookies, $rootScope) {
 			var vm = this;
 			vm.activeGame = $rootScope.activeGame;
-			$rootScope.gameDifficulty = 1;
+			$rootScope.gameDifficulty = 2;
 
 			vm.activateGame = function(thisGame) {
 			vm.activeGame = thisGame;
