@@ -13,83 +13,85 @@ angular.module('gameModule')
 			vm.correctCount = 0;
 			vm.incorrectCount = 0;
 			vm.gameComplete = false;
+			//vm.errors = []; //empty array for displaying user input errors, if any
 
 			var initGame = function() {
 				vm.points = 0;
 				vm.showLets = false;
 				vm.userInput = "";
-				vm.disableStart = false;
+				vm.disableStart = true;
 				vm.showLetters = "";
 				vm.userTurn = false;
 				vm.correctCount = 0;
 				vm.incorrectCount = 0;
 				vm.gameComplete = false;
+				vm.errors = [];
 			}
-
-
 
 			vm.startGame = function() {
 				initGame();
-				vm.showLets = true;   //makes ng-show true so array of Letters shows!!!
+				vm.showLets = true; //makes ng-show true so array of Letters shows!!!
 				showFunLetters();
 			}
+			
+			
 
 			//game Logic Here
 			var showFunLetters = function() {
-				//setting timer to change every difficulty level
+				//setting timer to change every difficulty level (LESS time per higher difficulty level)
 				var showTime = 5000 + 10000 / parseInt($rootScope.gameDifficulty);
 				vm.showLetters = randomNumService.getLetters(parseInt($rootScope.gameDifficulty) * 4);
 
 				$interval(function() {}, showTime, 1)
-					.then(function() { //change this to differ per difficulty level
+					.then(function() { 
 						vm.showLets = false;
 						vm.userTurn = true;
 					})
-			} //closes var showFunLetters
-			
-			
+			} 
+
+
 			vm.addResults = function(input) {
 				inputArr = input.toUpperCase().trim().split("");
-				console.log(inputArr);
-				console.log(vm.showLetters);
-				console.log(vm.showLetters.length);
 				testLetters = vm.showLetters.trim().split(" ").join('');
-				vm.errors = [];
 
-				console.log(testLetters);
 				console.log(testLetters.length);
-				if (inputArr.length != testLetters.length) { 
-					vm.errors.push("Your answer is not the same length, try again");
-                   // return;
-					//write a validator for the length of both arrays 
-					//check for mistakes in user input or less letters than TEST array
-					//var lettersShort = vm.showLetters.length - inputArr.length;
-					//for (var i = inputArr.length; i < vm.showLetters.length; i++) {
-						//inputArr.push(0);
-						//inputArr.push(i);
-					//}
+
+				//some ERROR checking
+				if (inputArr == null) {
+					vm.errors.push("You can't submit a blank response");
+					vm.gameComplete = true;
+					return;
+				}
+				
+				if (inputArr.length != testLetters.length) {
+					vm.errors.push("Your answer is not same length as the test Sequence, please try again");
+					vm.gameComplete = true;
+					return;
+				//write a validator for the length of both arrays 
+				//check for mistakes in user input or less letters than TEST array
+				//var lettersShort = vm.showLetters.length - inputArr.length;
+				//for (var i = inputArr.length; i < vm.showLetters.length; i++) {
+				//inputArr.push(0);
+				//inputArr.push(i);
+				//}
 				}
 
-				console.log(inputArr);
-				console.log(testLetters);
+				//if (inputArr != NaN) {
+				var patt1 = /[0-9]/g;
+				for (var i = 0; i < inputArr.length; i++) {
+					if (inputArr[i].match(patt1)) {
+						vm.errors.push("You must include an answer of letters, crazy")
+						vm.gameComplete = true;
+						return;
+					}
+				}
 
-//				for (var i = 0; i < vm.showLetters.length; i++) {
-//					//if correct
-//					if (vm.showLetters[i] == inputArr[i]) {
-//						vm.correctCount++;
-//						console.log('user is COrrect');
-//					} else {
-//						vm.incorrectCount++;
-//					}
-//					console.log('user is incorrect');
-//				}
-				
-				
+	
+
 				for (var i = 0; i < testLetters.length; i++) {
-					//if correct
 					if (testLetters[i] == inputArr[i]) {
 						vm.correctCount++;
-						console.log('user is COrrect');
+						console.log('user is COrrect'); 	//if correct
 					} else {
 						vm.incorrectCount++;
 						console.log('user is incorrect');
@@ -98,15 +100,15 @@ angular.module('gameModule')
 
 				vm.calcPoints();
 				vm.showResult();
-
 			}
 
 			vm.calcPoints = function() {
-				//var ratio = (vm.correctCount) / (vm.showLetters.length);
-				var ratio = (vm.correctCount + 1) / (testLetters.length);
+				var ratio = (vm.correctCount) / (testLetters.length);
 				vm.points = 100 * ratio;
 			}
-             // ratio = blank / 12;
+			
+			// StepS for points logic
+			// ratio = blank / 9 or 12 or 15;
 			//take input
 			//compare and give points for correct answers
 			//end game logic
@@ -122,7 +124,6 @@ angular.module('gameModule')
 			}
 
 			vm.saveResult = function() {
-				console.log("saving result");
 				resultService.create(vm.buildResult(), $rootScope.gameId);
 			}
 
