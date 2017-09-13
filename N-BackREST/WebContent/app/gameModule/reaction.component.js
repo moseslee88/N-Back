@@ -19,8 +19,8 @@ angular.module('gameModule').component(
 						parseInt($rootScope.gameDifficulty) * 2);
 
 				var secondArrayNums = [];
-				secondArrayNums = randomNumService.getNums(100, 10);
-				secondArrayNums.push(100);
+				secondArrayNums = randomNumService.getNums(100, 20);
+				//secondArrayNums.push(100);
 
 				var thirdArrayNums = [];
 
@@ -59,7 +59,7 @@ angular.module('gameModule').component(
 						vm.showNumbers = thirdArrayNums[vm.currentIndex];
 						vm.currentIndex++;
 
-					},800, thirdArrayNums.length).then(function() {
+					},800, thirdArrayNums.length + 1).then(function() {
 						checkResults();
 						$scope.disableStart = false;
 						$scope.gameFinished = true;
@@ -76,24 +76,18 @@ angular.module('gameModule').component(
 				
 				var checkResults = function() {
 					// check and add points
-					var possibleCount;
-					for (var j = 0; j < vm.showList.length; j++){
-						if (thirdArrayNums.includes(vm.showList[j])){
-							possibleCount++;
-						}
-					}
 					
-					var ratio = (possibleCount + 1)/thirdArrayNums.length;
+					var ratio = (parseInt($rootScope.gameDifficulty) * 2)/thirdArrayNums.length;
 					var pointPerCorrect = ratio * 100;
 					
 					for (var i = 0; i < selectedNumArray.length; i++) {
 						if (myListOfNums.includes(selectedNumArray[i])) {
-							vm.points += pointPerCorrect;
+							vm.points = vm.points + pointPerCorrect;
 							vm.correct++;
 							console.log(vm.correct);
 
 						} else {
-							vm.points -= (pointPerCorrect/2);
+							vm.points = vm.points - (pointPerCorrect/2);
 							vm.incorrect++;
 							console.log(vm.incorrect);
 							
