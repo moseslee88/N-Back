@@ -76,14 +76,24 @@ angular.module('gameModule').component(
 				
 				var checkResults = function() {
 					// check and add points
+					var possibleCount;
+					for (var j = 0; j < vm.showList.length; j++){
+						if (thirdArrayNums.includes(vm.showList[j])){
+							possibleCount++;
+						}
+					}
+					
+					var ratio = (possibleCount + 1)/thirdArrayNums.length;
+					var pointPerCorrect = ratio * 100;
+					
 					for (var i = 0; i < selectedNumArray.length; i++) {
 						if (myListOfNums.includes(selectedNumArray[i])) {
-							vm.points += 10;
+							vm.points += pointPerCorrect;
 							vm.correct++;
 							console.log(vm.correct);
 
 						} else {
-							vm.points -= 5;
+							vm.points -= (pointPerCorrect/2);
 							vm.incorrect++;
 							console.log(vm.incorrect);
 							
