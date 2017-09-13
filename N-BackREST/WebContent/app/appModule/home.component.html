@@ -2,8 +2,8 @@
 <div id="mainContent" class="container-fluid">
 
 	<div class="row">
-		<div class="col-sm-3 col-md-4" ng-hide="vm.currentUserId"></div>
-		<div class="col-sm-6 col-md-4" ng-hide="vm.currentUserId">
+		<div class="col-sm-1 col-md-2" ng-hide="vm.currentUserId"></div>
+		<div class="col-sm-10 col-md-8" ng-hide="vm.currentUserId">
 			<div class="thumbnail">
 				<!-- <img src="..." alt="...">
 				<div class="caption"> -->
@@ -16,7 +16,7 @@
 				<br> <br>
 			</div>
 		</div>
-		<div class="col-sm-3 col-md-4" ng-hide="vm.currentUserId"></div>
+		<div class="col-sm-1 col-md-2" ng-hide="vm.currentUserId"></div>
 	</div>
 
 	<!-- Carousel
@@ -49,7 +49,7 @@
 						<p class="lead">Test how quickly you can react when you see a
 							number from a given set. Higher difficulty is worth more points
 							but you have to remember more numbers.</p>
-						<a class="btn btn-large btn-primary" href="/game"
+						<a class="btn btn-large btn-primary" href="#/game"
 							ng-click="$root.activeGame = 5">Play!</a>
 					</div>
 				</div>
@@ -62,7 +62,7 @@
 						<p class="lead">Test how well you can remember the position of
 							a number on a grid. Higher difficulty is worth more points but
 							uses a larger grid.</p>
-						<a class="btn btn-large btn-primary" href="/game"
+						<a class="btn btn-large btn-primary" href="#/game"
 							ng-click="$root.activeGame = 4">Play!</a>
 					</div>
 				</div>
@@ -75,7 +75,7 @@
 						<p class="lead">Test how quickly you can remember a sequence
 							of letters. Higher difficulty is worth more points but you have
 							to remember more letters.</p>
-						<a class="btn btn-large btn-primary" href="/game"
+						<a class="btn btn-large btn-primary" href="#/game"
 							ng-click="$root.activeGame = 3">Play!</a>
 					</div>
 				</div>
@@ -111,7 +111,7 @@
 
 <div class="row">
 	<!-- repeatable section -->
-	<div class="col-sm-6 col-md-4" ng-show="vm.currentUserId">
+	<div class="col-sm-6 col-md-6" ng-show="vm.currentUserId">
 		<div class="thumbnail">
 			<br>
 			<h3>Profile Info</h3>
@@ -126,7 +126,7 @@
 	</div>
 
 	<!-- line chart -->
-	<div class="col-sm-6 col-md-4" ng-show="vm.currentUserId">
+	<div class="col-sm-6 col-md-6" ng-show="vm.currentUserId">
 		<div class="thumbnail" ng-controller="BarCtrl">
 			<canvas id="bar" class="chart chart-bar" chart-data="data"
 				chart-labels="labels" chart-series="series" chart-options="options"
@@ -136,7 +136,7 @@
 	</div>
 
 	<!-- Pie Chart -->
-	<div class="col-sm-6 col-md-4" ng-show="vm.currentUserId">
+	<div class="col-sm-6 col-md-6" ng-show="vm.currentUserId">
 		<div class="thumbnail" ng-controller="chart1 as vm">
 			<h3>{{vm.title}}</h3>
 			<canvas id="pie" class="chart chart-pie" chart-data="vm.data"
