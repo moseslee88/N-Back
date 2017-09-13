@@ -73,11 +73,11 @@ angular.module('gameModule')
 			vm.guessNumber = function(num) {
 				if(num == vm.randomNum){
 					 console.log("correct");
-					 vm.points += 15;
+					 vm.points += 14.28;
 				}else {
 					 console.log("not correct");
 
-                    vm.points -= 4;
+                    vm.points -= 6;
                 }
 				genRandomNum();
 				turnCounter += 1;

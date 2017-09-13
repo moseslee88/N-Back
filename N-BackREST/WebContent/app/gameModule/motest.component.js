@@ -38,7 +38,7 @@ angular.module('gameModule')
 			var showFunLetters = function() {
 				//setting timer to change every difficulty level
 				var showTime = 5000 + 10000 / parseInt($rootScope.gameDifficulty);
-				vm.showLetters = randomNumService.getLetters(parseInt($rootScope.gameDifficulty) * 3);
+				vm.showLetters = randomNumService.getLetters(parseInt($rootScope.gameDifficulty) * 4);
 
 				$interval(function() {}, showTime, 1)
 					.then(function() { //change this to differ per difficulty level
@@ -103,7 +103,7 @@ angular.module('gameModule')
 
 			vm.calcPoints = function() {
 				//var ratio = (vm.correctCount) / (vm.showLetters.length);
-				var ratio = (vm.correctCount) / (testLetters.length);
+				var ratio = (vm.correctCount + 1) / (testLetters.length);
 				vm.points = 100 * ratio;
 			}
              // ratio = blank / 12;
