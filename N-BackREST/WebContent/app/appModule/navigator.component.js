@@ -16,7 +16,6 @@ angular.module('appModule')
 					$location.path('/');
 				})
 					.catch(function() {
-						console.log("can't logout of this particular session");
 					});
 			}
 			
