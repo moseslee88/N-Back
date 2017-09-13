@@ -7,7 +7,6 @@ angular.module('appModule')
 
       var userId = $cookies.get("uid");
 
-      console.log("In PROFILE, user profile");
       vm.user = null;
       vm.editProfile = null;
 
@@ -21,11 +20,9 @@ angular.module('appModule')
         userService.show().then(function(response) {
             vm.user = response.data;
             vm.editProfile = angular.copy(vm.user.profile);
-            console.log(response.data.id + "hello Maldo");
             //query DATABASE IF USER id exists in DATABASE!!!!!!!!!!!
           })
           .catch(function() {
-            console.log("error; no user exists in session");
           });
       }
 
@@ -48,26 +45,19 @@ angular.module('appModule')
 
 
       vm.saveUserProfile = function(userProfile) {
-        console.log("where in");
         profileService.create(userProfile).then(function(res) {
-            console.log("in then ");
             $location.path('/');
           })
           .catch(function() {
-            console.log("in error")
           });
       }
 
 
       vm.updateUserProfile = function() {
-        console.log(vm.editProfile);
         profileService.update(vm.editProfile).then(function(res) {
-            console.log("in updated Profile ");
-            console.log(res.data.id);
             $location.path('/');
           })
           .catch(function() {
-            console.log("in error")
           });
       }
     },
