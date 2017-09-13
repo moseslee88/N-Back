@@ -2,19 +2,19 @@
 	<h2>MO Test</h2>
 	<p>Test your ability to remember a sequence of letters
 	<div id="gameContainer" class="container-fluid">
-		<!-- here lies the game: -->
+
 		<button class="btn btn-primary" ng-click="vm.startGame()"
 			ng-disabled="vm.disableStart">start game!</button>
 
 		<br>
 
-		<!-- Sequence of TEST letters for the game that shows, then hides: -->
+
 		<div ng-show="vm.showLets">
 			<h5>What are the letters of the sequence, in order?</h5>
 			<h1>
 				<center>{{vm.showLetters}}</center>
 			</h1>
-			<!--   <h2 ng-hide="vm.hideLetters">  {{vm.showLetters}}</h2>  -->
+
 		</div>
 
 
@@ -22,7 +22,7 @@
 		<div ng-show="vm.userTurn" ng-hide="vm.showLets">
 			<h5>What are the letters of the sequence, in order?</h5>
 			<form>
-				<!--  this is where user inputs their answer in a TEXT box-->
+
 				<input type="text" style="width: 26em;"
 					placeholder="Write sequence of letters here! (DON'T enter any spaces)"
 					ng-model="vm.userInput" />
@@ -63,19 +63,6 @@
 			</ul>
 		</div>
 
-
-
-		<!--  
-				<div ng-show="vm.gameComplete || vm.errors.length <1">
-			<table>       table of numbers-->
-
-		<!--  <tr ng-repeat="item in vm.getPracticeNums "  >    ng-class="vm.strike(item)"  
-       <td>    Numbers?!? {{item}}</td>
-    </tr>    
- </table>
-
-<p> <center>
-<h3>F G X Q R P X A S M Q K<h3></center><p><hr>   -->
 		<br>
 	</div>
 </div>

@@ -68,16 +68,10 @@ angular.module('gameModule')
 					vm.errors.push("Your answer is not same length as the test Sequence, please try again");
 					vm.gameComplete = true;
 					return;
-				//write a validator for the length of both arrays 
-				//check for mistakes in user input or less letters than TEST array
-				//var lettersShort = vm.showLetters.length - inputArr.length;
-				//for (var i = inputArr.length; i < vm.showLetters.length; i++) {
-				//inputArr.push(0);
-				//inputArr.push(i);
-				//}
+
 				}
 
-				//if (inputArr != NaN) {
+
 				var patt1 = /[0-9]/g;
 				for (var i = 0; i < inputArr.length; i++) {
 					if (inputArr[i].match(patt1)) {

@@ -2,8 +2,7 @@
 <div id="mainContent" class="container-fluid">
 	<div class="col-sm-12 col-md-12" ng-show="vm.activeGame">
 		<div class="thumbnail">
-			<!-- <img src="..." alt="...">
-                <div class="caption"> -->
+			
 			<br>
 			<nback ng-if="vm.activeGame.name === 'nback'"></nback>
 			<motest ng-if="vm.activeGame.name === 'motest'"></motest>
@@ -18,8 +17,7 @@
 	<!-- repeatable section -->
 	<div class="col-sm-6 col-md-4" ng-repeat="thisGame in vm.gameList">
 		<div class="thumbnail">
-			<!-- <img src="..." alt="...">
-                <div class="caption"> -->
+			
 			<br>
 			<h3>{{thisGame.name}}</h3>
 			<p>

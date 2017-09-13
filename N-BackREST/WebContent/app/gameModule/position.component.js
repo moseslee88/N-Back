@@ -44,31 +44,26 @@ angular.module('gameModule')
                 vm.points = Math.floor(Math.sqrt(vm.points / 100)
                         * 100 * $rootScope.gameDifficulty
                         * Math.sqrt($rootScope.gameDifficulty));
-                console.log("points: " + vm.points);
                 vm.saveResult();
             } 
 			
 			
 			vm.buildResult = function() {
 				var newResult = {};
-				console.log(persistedArr.toString())
 				newResult.gameString = persistedArr.toString();
 				newResult.points = vm.points;
 				newResult.difficulty = $rootScope.gameDifficulty;
 				newResult.datetime = new Date();
-				console.log("bulding result with date: ");
-				console.log(newResult.datetime);
 				return newResult;
 			}
 
 			vm.saveResult = function() {
-				console.log("saving result");
 				vm.gameFinished = true;
 				resultService.create(vm.buildResult(), 4);
 				resetData();
 			}
 			
-			//Build the correct sized grid
+
 			vm.buildGrid = function() {
 				vm.diff = $rootScope.gameDifficulty;
 				vm.gridSize = 1 + parseInt(vm.diff);
@@ -76,7 +71,6 @@ angular.module('gameModule')
 				tempGrid = randomNumService.getUniqueNums(parseInt(vm.gridSize), parseInt(vm.gridSize));
 				persistedArr = angular.copy(tempGrid);
 				vm.gridSize = 1 + parseInt(vm.diff);
-				console.log(vm.gridSize + "Grid Size");
 				for (var i = 0; i < vm.gridSize; i++) {
 					vm.grid[i] = [];
 					for (var j = 0; j < vm.gridSize; j++) {
@@ -96,18 +90,15 @@ angular.module('gameModule')
 
 			vm.guessNumber = function(num) {
 				if(num == vm.randomNum){
-					 console.log("correct");
 					 vm.correctCounter += 1;
 					 vm.points += 14;
 				}else {
-					 console.log("not correct");
 					 vm.incorrectCounter += 1;
 
                     vm.points -= 6;
                 }
 				genRandomNum();
 				turnCounter += 1;
-				 console.log(turnCounter);
 
 				if(turnCounter >= 7){
 					vm.showResult();
@@ -126,7 +117,6 @@ angular.module('gameModule')
 				persistedArr = [];
 				vm.hideNums = false;
 			}
-				
 			
 			var timer = function() {
 				$interval(function(){}, 10000, 1).then(function(){
@@ -134,7 +124,6 @@ angular.module('gameModule')
 				})
 			};
 			
-
 
 		},
 		controllerAs : 'vm'
