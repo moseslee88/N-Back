@@ -120,7 +120,7 @@ angular.module('gameModule')
 				newResult.points = vm.points;
 				newResult.difficulty = $rootScope.gameDifficulty;
 				newResult.datetime = new Date();
-				return newResult;
+				return newResult;   
 			}
 
 			vm.saveResult = function() {

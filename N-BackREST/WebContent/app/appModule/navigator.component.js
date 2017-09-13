@@ -9,8 +9,9 @@ angular.module('appModule')
 
 			vm.logout = function() {
 				authService.logout().then(function(response) {
+					//rootScope to communicate between navigator and home component 
 					$rootScope.$broadcast('logout',{});
-					console.log("yup, user logged out");
+					console.log("yup, user loggedd out");
 					vm.currentUserId = null;
 					$location.path('/');
 				})
