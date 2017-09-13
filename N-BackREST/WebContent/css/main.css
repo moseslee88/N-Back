@@ -43,8 +43,6 @@ p, p>a {
 	color: #EEE;
 }
 
-#myCarousel > {
-}
 
 /* Carousel base class */
 .carousel {
@@ -106,4 +104,13 @@ button, .btn-primary {
 .btn:hover {
 	background: #202C2F;
 	border: #050A05;
+}
+
+#mosloginbox {
+	background-image: url("../img/welcome.jpg");
+	background-size: 100%;
+}
+#mosloginbox * {
+	text-align: center;
+	color: #EEE;
 }

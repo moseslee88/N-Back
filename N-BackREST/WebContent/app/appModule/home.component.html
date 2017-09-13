@@ -1,10 +1,13 @@
 <navigator></navigator>
 <div id="mainContent" class="container-fluid">
 
-	<div class="row">
-		<div class="col-sm-1 col-md-2" ng-hide="$root.currentUserId"></div>
-		<div class="col-sm-10 col-md-8" ng-hide="$root.currentUserId">
-			<div class="thumbnail">
+
+	<div class="row" ng-if="!($root.currentUser.id >= 1)">
+	<div class="col-sm-12 col-md-12" style="height: 60px;"></div>
+		<div class="col-sm-1 col-md-2"></div>
+		<div class="col-sm-10 col-md-8">
+			<div id="mosloginbox" class="thumbnail" style="text-align: center;">
+			
 				<!-- <img src="..." alt="...">
 				<div class="caption"> -->
 				<br>
@@ -16,14 +19,14 @@
 				<br> <br>
 			</div>
 		</div>
-		<div class="col-sm-1 col-md-2" ng-hide="$root.currentUserId"></div>
+		<div class="col-sm-1 col-md-2" ng-hide="$root.currentUser.id"></div>
 	</div>
-	
+
 
 
 	<!-- Carousel
     ================================================== -->
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	<div id="myCarousel" class="carousel slide" data-ride="carousel" ng-if="$root.currentUser.id >= 1">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -113,9 +116,10 @@
 
 <!-- /.carousel -->
 
-<div class="row">
+<div class="row" ng-if="$root.currentUser.id >= 1">
+
 	<!-- repeatable section -->
-	<div class="col-sm-6 col-md-6" ng-show="$root.currentUserId">
+	<div class="col-sm-6 col-md-6">
 		<div class="thumbnail">
 			<br>
 			<h3>Profile Info</h3>
@@ -129,9 +133,11 @@
 		</div>
 	</div>
 
-	<!-- line chart -->
-	<div class="col-sm-6 col-md-6" ng-show="$root.currentUserId">
+
+	<!-- bar chart -->
+	<div class="col-sm-6 col-md-6">
 		<div class="thumbnail" ng-controller="BarCtrl">
+			<h3>You vs Them</h3>
 			<canvas id="bar" class="chart chart-bar" chart-data="data"
 				chart-labels="labels" chart-series="series" chart-options="options"
 				chart-dataset-override="datasetOverride" chart-click="onClick">
@@ -140,9 +146,9 @@
 	</div>
 
 	<!-- Pie Chart -->
-	<div class="col-sm-6 col-md-6" ng-show="$root.currentUserId">
+	<div class="col-sm-6 col-md-6">
 		<div class="thumbnail" ng-controller="chart1 as vm">
-			<h3>{{vm.title}}</h3>
+			<h3>Games Played</h3>
 			<canvas id="pie" class="chart chart-pie" chart-data="vm.data"
 				chart-labels="vm.labels" chart-options="options">
   				</canvas>
@@ -150,7 +156,9 @@
 		</div>
 	</div>
 
+
+
 </div>
 </div>
-<div ng-show="$root.currentUserId"></div>
+<div ng-show="$root.currentUser.id"></div>
 </div>

@@ -11,11 +11,18 @@ angular.module("appModule")
 		var gameNames = [];
 
 		buildData = function() {
-
-			userService.show().then(function(res) {
-				user = res.data;
-				$scope.series = [ user.profile.name, 'Community Average' ];
-			})
+			
+			
+			var userPromise = userService.show();
+			 
+			 if(userPromise != undefined){
+				 userPromise.then(function(res) {
+						user = res.data;
+						$scope.series = [ user.profile.name, 'Community Average' ];
+					});
+			 } else {
+				 $scope.series = ['', 'Community Average' ];
+			 }
 
 			// Takes the avarage score of a game based on the game name
 			$scope.labels = [];

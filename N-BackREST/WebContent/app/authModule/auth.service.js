@@ -10,7 +10,7 @@ angular.module('authModule')
 
     service.getToken = function() {
     		return {
-    			id : $cookies.get("uid"),
+    			uid : $cookies.get("uid"),
     			email : $cookies.get("email"),
     			//pid : $cookies.get("pid")
     		}

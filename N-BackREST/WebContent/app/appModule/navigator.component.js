@@ -4,14 +4,15 @@ angular.module('appModule')
 
 		controller : function(authService, $location, $cookies, $scope, $rootScope) {
 			var vm = this;
-			vm.users = [];
-			vm.currentUserId = null;
+//			vm.users = [];
+//			vm.currentUserId = null;
 
 			vm.logout = function() {
 				authService.logout().then(function(response) {
 					//rootScope to communicate between navigator and home component 
 					$rootScope.$broadcast('logout',{});
 					$rootScope.currentUser = null;
+					$cookies.currentUser = null;
 					$location.path('/');
 				})
 					.catch(function() {

@@ -35,41 +35,38 @@
 <!-- Chart Dependencies Scripts -->
 <script src="js/Chart.min.js"></script>
 <script src="js/angular-chart.min.js"></script>
-<!-- auth module -->
-<script src="app/authModule/auth.module.js"></script>
-<!-- auth services -->
-<script src="app/authModule/auth.service.js"></script>
-<!-- app services -->
-<script src="app/appModule/challenge.service.js"></script>
-<script src="app/appModule/game.service.js"></script>
-<script src="app/appModule/profile.service.js"></script>
-<script src="app/appModule/result.service.js"></script>
-<script src="app/appModule/user.service.js"></script>
 
-<!-- auth components -->
-<script src="app/authModule/login.component.js"></script>
-<script src="app/authModule/register.component.js"></script>
-<script src="app/authModule/logout.component.js"></script>
 
 
 <!-- app module -->
 <script src="app/appModule/app.module.js"></script>
+<!-- auth module -->
+<script src="app/authModule/auth.module.js"></script>
+<!-- game module -->
+<script src="app/gameModule/game.module.js"></script>
+<!-- app services -->
+<script src="app/appModule/user.service.js"></script>
+<script src="app/appModule/challenge.service.js"></script>
+<script src="app/appModule/game.service.js"></script>
+<script src="app/appModule/profile.service.js"></script>
+<script src="app/appModule/result.service.js"></script>
+<!-- auth services -->
+<script src="app/authModule/auth.service.js"></script>
+<!-- game services -->
+<script src="app/gameModule/localgame.service.js"></script>
+<script src="app/gameModule/randomNum.service.js"></script>
 
 <!-- app filters -->
+<!-- game filters -->
 <!-- app components -->
 <script src="app/appModule/home.component.js"></script>
 <script src="app/appModule/navigator.component.js"></script>
 <script src="app/appModule/profile.component.js"></script>
 <script src="app/appModule/notfound.component.js"></script>
-
-<!-- game module -->
-<script src="app/gameModule/game.module.js"></script>
-
-<!-- game services -->
-<script src="app/gameModule/localgame.service.js"></script>
-<script src="app/gameModule/randomNum.service.js"></script>
-
-<!-- game filters -->
+<!-- auth components -->
+<script src="app/authModule/login.component.js"></script>
+<script src="app/authModule/register.component.js"></script>
+<script src="app/authModule/logout.component.js"></script>
 <!-- game components -->
 <script src="app/gameModule/game.component.js"></script>
 <script src="app/gameModule/motest.component.js"></script>
@@ -82,7 +79,6 @@
 
 </head>
 <body>
-	<navigator></navigator>
 	<ng-view></ng-view>
 	<footer>
 		<div style="text-align: right;">

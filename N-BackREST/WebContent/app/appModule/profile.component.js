@@ -15,7 +15,7 @@ angular.module('appModule')
       // Use authservice to get actual user object from API with data (profile)
       // store into vm.user
       if (!authService.getToken()) {
-        $location.path("/login")
+        $location.path("/")
       } else {
         // use service/$http to get actual user
         userService.show().then(function(response) {
@@ -51,7 +51,7 @@ angular.module('appModule')
         console.log("where in");
         profileService.create(userProfile).then(function(res) {
             console.log("in then ");
-            $location.path('/login');
+            $location.path('/');
           })
           .catch(function() {
             console.log("in error")
@@ -64,7 +64,7 @@ angular.module('appModule')
         profileService.update(vm.editProfile).then(function(res) {
             console.log("in updated Profile ");
             console.log(res.data.id);
-            $location.path('/game');
+            $location.path('/');
           })
           .catch(function() {
             console.log("in error")
