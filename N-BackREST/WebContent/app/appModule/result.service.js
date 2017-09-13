@@ -11,14 +11,20 @@ angular.module('appModule')
 			})
 		};
 
-
+		service.indexAll = function(){
+			
+			return $http({
+				method : 'GET',
+				url : 'api/result'
+			})
+		}
 
 
 		service.show = function(rid) {
 			var userId = $cookies.get("uid");
 			return $http({
 				method : 'GET',
-				url : 'api/user/' + userId + '/result' + rid
+				url : 'api/user/' + userId + '/result/' + rid
 			})
 		};
 
