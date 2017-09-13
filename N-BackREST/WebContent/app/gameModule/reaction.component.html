@@ -2,7 +2,7 @@
 	<h2>Reaction Test</h2>
 	<p>Test your ability to react to a specific stimulus
 	
-	<div id="gameContainer" class="container-fluid" ng-hide="gameStart">
+	<div id="gameContainer" class="container-fluid" ng-show="gameStart">
 		<!-- here lies the game: -->
 		<button class="btn btn-primary" ng-click="vm.startGame(1)" ng-disabled="disableStart">start reaction game!</button>
 		<div>
@@ -12,12 +12,12 @@
 		</div>
 		<br>
 	</div>
-	<div id="resultsDisplay" class="container-fluid" ng-hide="gameFinished">
+	<div id="resultsDisplay" class="container-fluid" ng-show="gameFinished">
             <p>Difficulty Level: {{$root.gameDifficulty}}</p>
-            <p>Correct: {{vm.correctCounter}}</p>
-            <p>Incorrect: {{vm.incorrectCounter}}</p>
+            <p>Correct: {{vm.correct}}</p>
+            <p>Incorrect: {{vm.incorrect}}</p>
             <p>Points: {{vm.points}}</p>
-            <button class="btn btn-secondary" ng-click="vm.checkCorrect()">Return</button>
+            <button class="btn btn-secondary" ng-click="vm.reStartGame()">Return</button>
 	</div> 
 </div>
 

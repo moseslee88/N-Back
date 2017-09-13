@@ -3,11 +3,15 @@ angular.module('gameModule').component(
 		{
 			templateUrl : 'app/gameModule/reaction.component.html',
 			controller : function(randomNumService, $scope, $rootScope,
-					resultService, $interval) {
+					resultService, $interval, $location) {
 				var vm = this;
 				vm.points = 0;
+				 vm.correct = 0;
+				 vm.totalNum = 0;
+				 vm.incorrect = 0;
 				//initially hide game stats from user
-				$scope.gameFinished = true;
+				$scope.gameFinished = false;
+				$scope.gameStart = true;
 
 
 				var myListOfNums = [];
@@ -15,7 +19,7 @@ angular.module('gameModule').component(
 						parseInt($rootScope.gameDifficulty) * 2);
 
 				var secondArrayNums = [];
-				secondArrayNums = randomNumService.getNums(100, 30);
+				secondArrayNums = randomNumService.getNums(100, 10);
 				secondArrayNums.push(100);
 
 				var thirdArrayNums = [];
@@ -55,30 +59,36 @@ angular.module('gameModule').component(
 						vm.showNumbers = thirdArrayNums[vm.currentIndex];
 						vm.currentIndex++;
 
-					}, 1200, thirdArrayNums.length).then(function() {
+					},800, thirdArrayNums.length).then(function() {
 						checkResults();
 						$scope.disableStart = false;
-						$scope.gameFinished = false;
-						$scope.gameStart = true;
-						$scope.checkCorrect = function() {
-							$scope.gameFinished = true;
-							$scope.gameStart = false;
-						}
+						$scope.gameFinished = true;
+						$scope.gameStart = false;
 						
-
+						//need to call startGame when return is cl
+					
+					
 					})
 
 				}
 
+				
+				
 				var checkResults = function() {
 					// check and add points
 					for (var i = 0; i < selectedNumArray.length; i++) {
 						if (myListOfNums.includes(selectedNumArray[i])) {
 							vm.points += 10;
+							vm.correct++;
 						} else {
 							vm.points -= 5;
+							vm.incorrect++;
 						}
+						
+						
 					}
+					console.log(vm.correct);
+					console.log(vm.incorrect);
 					
 					 if(vm.points <= 0){
                          vm.points = 1;
@@ -86,7 +96,7 @@ angular.module('gameModule').component(
 					vm.points = Math.floor(Math.sqrt(vm.points / 100) * 100 * parseInt($rootScope.gameDifficulty) * Math.sqrt(parseInt($rootScope.gameDifficulty)));
 
 					console.log(vm.points);
-
+					
 					vm.saveResult();
 				}
 
@@ -115,12 +125,23 @@ angular.module('gameModule').component(
 				}
 
 				vm.startGame = function(diff) {
-					
+					if(!diff) diff= 2;
 					vm.runGame(diff);
 					//disable start button
 					$scope.disableStart = true;
+					
 
 				}
+				vm.reStartGame = function(){
+//					$scope.gameStart = false;
+//					$scope.gameFinished = true;
+//					vm.points = 0;
+//					$scope.hideNumbers = false;
+//					runLoop();
+					
+
+				}
+				
 
 			},
 			controllerAs : 'vm'
