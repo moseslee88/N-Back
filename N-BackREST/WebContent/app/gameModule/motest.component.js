@@ -46,31 +46,54 @@ angular.module('gameModule')
 						vm.userTurn = true;
 					})
 			} //closes var showFunLetters
-
-
+			
+			
 			vm.addResults = function(input) {
 				inputArr = input.toUpperCase().trim().split("");
 				console.log(inputArr);
 				console.log(vm.showLetters);
-				if (inputArr.length < vm.showLetters.length) {    //check for mistakes in user input or less letters than TEST array
-					var lettersShort = vm.showLetters.length - inputArr.length;
-					for (var i = inputArr.length; i <= vm.showLetters.length; i++) {
-						inputArr.push(0);
+				console.log(vm.showLetters.length);
+				testLetters = vm.showLetters.trim().split(" ").join('');
+				vm.errors = [];
+
+				console.log(testLetters);
+				console.log(testLetters.length);
+				if (inputArr.length != testLetters.length) { 
+					vm.errors.push("Your answer is not the same length, try again");
+                   // return;
+					//write a validator for the length of both arrays 
+					//check for mistakes in user input or less letters than TEST array
+					//var lettersShort = vm.showLetters.length - inputArr.length;
+					//for (var i = inputArr.length; i < vm.showLetters.length; i++) {
+						//inputArr.push(0);
 						//inputArr.push(i);
-					}
+					//}
 				}
 
 				console.log(inputArr);
-				console.log(vm.showLetters);
+				console.log(testLetters);
 
-				for (var i = 0; i < vm.showLetters.length; i++) {
+//				for (var i = 0; i < vm.showLetters.length; i++) {
+//					//if correct
+//					if (vm.showLetters[i] == inputArr[i]) {
+//						vm.correctCount++;
+//						console.log('user is COrrect');
+//					} else {
+//						vm.incorrectCount++;
+//					}
+//					console.log('user is incorrect');
+//				}
+				
+				
+				for (var i = 0; i < testLetters.length; i++) {
 					//if correct
-					if (vm.showLetters[i] == inputArr[i]) {
+					if (testLetters[i] == inputArr[i]) {
 						vm.correctCount++;
+						console.log('user is COrrect');
 					} else {
 						vm.incorrectCount++;
+						console.log('user is incorrect');
 					}
-					console.log('user is correct');
 				}
 
 				vm.calcPoints();
@@ -79,7 +102,8 @@ angular.module('gameModule')
 			}
 
 			vm.calcPoints = function() {
-				var ratio = (vm.correctCount) / (vm.showLetters.length);
+				//var ratio = (vm.correctCount) / (vm.showLetters.length);
+				var ratio = (vm.correctCount) / (testLetters.length);
 				vm.points = 100 * ratio;
 			}
              // ratio = blank / 12;
