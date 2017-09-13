@@ -6,21 +6,7 @@ angular.module('appModule')
 			vm.currentUserId = null;
 			vm.currentUser = null;
 
-			vm.getUser = function() {
-				if (authService.getToken().id) {
-					userService.show()
-						.then(function(res) {
-							vm.currentUser = res.data;
-							console.log(vm.currentUser);
-						});
-				}
-			}
-
-			vm.getCurrentUserID = function() {
-				vm.currentUserId = $cookies.get("uid");
-				vm.getUser();
-			}
-			vm.getCurrentUserID();
+			vm.currentUserId = authService.getToken().id;
 
 			vm.goToRegister = function() {
 				$location.path('/register');
@@ -33,9 +19,14 @@ angular.module('appModule')
 				$location.path('/game');
 			}
 
-			var listenForLogin = function() {
-				vm.getUser();
-				vm.getCurrentUserID();
+			var listenForLogin = function(e, user) {
+				console.log(user.currentUser);
+				vm.currentUser = user.currentUser;
+				vm.currentUserId = user.currentUser.id;
+				//				console.log(e)
+//				console.log(user)
+//				vm.getUser();
+//				vm.getCurrentUserID();
 			}
 			
 			vm.gameList = [];
@@ -47,7 +38,14 @@ angular.module('appModule')
 					.catch(console.error);
 			}
 
-			$scope.$on('login', listenForLogin);
+			$scope.$on('userLogin', listenForLogin);
+			$scope.$on('logout', function(e){
+				vm.currentUser = null;
+				vm.currentUserId = null;
+				console.log(vm.currentUser)
+				console.log(vm.currentUserId)
+
+			});
 
 		},
 		controllerAs : 'vm'
