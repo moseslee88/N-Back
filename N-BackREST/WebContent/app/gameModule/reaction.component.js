@@ -80,15 +80,19 @@ angular.module('gameModule').component(
 						if (myListOfNums.includes(selectedNumArray[i])) {
 							vm.points += 10;
 							vm.correct++;
+							console.log(vm.correct);
+
 						} else {
 							vm.points -= 5;
 							vm.incorrect++;
+							console.log(vm.incorrect);
+							
 						}
 						
 						
 					}
-					console.log(vm.correct);
-					console.log(vm.incorrect);
+					//console.log(vm.correct);
+					//	console.log(vm.incorrect);
 					
 					 if(vm.points <= 0){
                          vm.points = 1;
