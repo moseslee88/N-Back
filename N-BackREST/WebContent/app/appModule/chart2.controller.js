@@ -1,5 +1,5 @@
 angular.module("appModule")
-	.controller("BarCtrl", function($scope, $location, $cookies, resultService, profileService, gameService, challengeService, userService, authService) {
+	.controller("BarCtrl", function($filter, $scope, $location, $cookies, resultService, profileService, gameService, challengeService, userService, authService) {
 
 
 		var userResults = [];
@@ -8,50 +8,82 @@ angular.module("appModule")
 		var communityAvg = null;
 		var gameName = "position";
 		var user = null;
+		var gameNames = [];
 
 		buildData = function() {
-			
+
 			userService.show().then(function(res) {
 				user = res.data;
-				console.log(user)
 				$scope.series = [ user.profile.name, 'Community Average' ];
 			})
-			
+
 			// Takes the avarage score of a game based on the game name
 			$scope.labels = [];
-			$scope.data = [[],[]];
-			
-			resultService.show()
-				.then(function(res){
-					
-				});
-			resultService.indexAll()
-				.then(function(res) {
-					communityResults = res.data;
-					
-					var comTotal = 0;					
-					communityResults.forEach(function(result, idx, arr) {
-						if (result.game.name == gameName) {
-							communityData.push(result.points)
-						}
-					})
-					for(var i = 0; i < communityData.length; i++) {
-						comTotal += communityData[i];
-						$scope.labels.push(i);
-					}
-					
-					communityAvg = comTotal / communityData.length;
+			$scope.data = [ [], [] ];
 
-					profileService.show(user.profile.id).then(function(res) {
-						userProfile = res.data;
-					})
-					
-					
+			
+			
+			gameService.index().then(function(res) {
+				var games = {};
+				/*
+				 * {
+				 * 	moTest : {},
+				 *  otherGameName : {}
+				 * }
+				 */
+				res.data.forEach(function(game, idx, array) {
+					games[game.name] = {};
+
 				});
+				resultService.index(true)
+					.then(function(res){
+						
+						res.data.forEach(function(result, idx, array) {
+							if (games[result.game.name].points) {
+								games[result.game.name].points += result.points;
+								games[result.game.name].gamesPlayed += 1;
+							} else {
+								games[result.game.name].points = result.points;
+								games[result.game.name].gamesPlayed = 1;
+							}
+							
+						})
+						for (var game in games) {
+								var avg = 0;
+								avg = $filter('number')(games[game].points / games[game].gamesPlayed, 2);
+								$scope.data[0].push(avg)
+							}
+					})
+					resultService.indexAll(true)
+						.then(function(res) {
+							var comTotal = 0;
+							
+							communityResults = res.data;
+							communityResults.forEach(function(result, idx, arr) {
+								if (games[result.game.name].points) {
+									games[result.game.name].points += result.points;
+									games[result.game.name].gamesPlayed += 1;
+								} else {
+									games[result.game.name].points = result.points;
+									games[result.game.name].gamesPlayed = 1;
+								}
+							})
+							
+							for (var game in games) {
+								var avg = 0;
+								$scope.labels.push(game);
+								avg = $filter('number')(games[game].points / games[game].gamesPlayed, 2);
+								$scope.data[1].push(avg)
+							}
+
+
+
+						}).catch(console.error);
+			});
 		}
 		buildData();
-		
-	
-		
-	
+
+
+
+
 	});

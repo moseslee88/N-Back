@@ -11,11 +11,11 @@ angular.module('appModule')
 			})
 		};
 
-		service.indexAll = function(){
-			
+		service.indexAll = function(includeGames){
+			if (!includeGames) includeGames = false;
 			return $http({
 				method : 'GET',
-				url : 'api/result'
+				url : 'api/result?games=' + includeGames
 			})
 		}
 

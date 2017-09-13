@@ -31,7 +31,6 @@ public class ResultController {
 		Set<Result> results = dao.indexAllResult();
 		
 		if (includeGames != null && includeGames == true) {
-			System.out.println("in the if");
 			return dao.addGames(results);
 		}
 		return dao.indexAllResult();
