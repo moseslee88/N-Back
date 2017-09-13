@@ -23,7 +23,7 @@
 						<input type="text" placeholder="country" ng-model="vm.editProfile.country" /><br>
 						<input type="text" placeholder="houseHoldIncome" ng-model="vm.editProfile.householdIncome" /><br>
 									<!-- get user id from session -->
-						<input type="submit" class="btn-primary btn" value="Save Profile" ng-disabled="vm.invalid(vm.editProfile)" ng-click="vm.saveUserProfile(vm.editProfile)" />
+						<input type="submit" class="btn-primary btn" value="Create Profile" ng-disabled="vm.invalid(vm.editProfile)" ng-click="vm.saveUserProfile(vm.editProfile)" />
 						<input type="submit" class="btn-primary btn" value="Update Profile" ng-show="vm.profileExists(user)" ng-click="vm.updateUserProfile(vm.editProfile)" />
 					</form>
 				<br> <br>
