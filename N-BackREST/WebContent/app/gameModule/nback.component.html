@@ -21,7 +21,20 @@
 			<p>Correct: {{vm.correctCounter}}</p>
 			<p>Incorrect: {{vm.incorrectCounter}}</p>
 			<p>Points: {{vm.points}}</p>
+			<p>
+			diff:
+				<select name="gameDifficulty" ng-model="$root.gameDifficulty">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+					<option>7</option>
+					<option>8</option>
+				</select>
 			<button class="btn btn-secondary" ng-click="vm.startGame()">reset!</button>
+			</p>
 		</div>
 	</div>
 </div>

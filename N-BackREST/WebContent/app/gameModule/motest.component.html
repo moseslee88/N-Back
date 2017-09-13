@@ -7,7 +7,7 @@
 			ng-disabled="vm.disableStart">start game!</button>
 
 		<br>
-		
+
 		<!-- Sequence of TEST letters for the game that shows, then hides: -->
 		<div ng-show="vm.showLets">
 			<h5>What are the letters of the sequence, in order?</h5>
@@ -32,22 +32,36 @@
 			</form>
 		</div>
 
-		<div ng-show="vm.gameComplete || inputArr.length > 0" >
+		<div ng-show="vm.gameComplete || inputArr.length > 0">
 			<p>Points: {{vm.points}}</p>
 			<p>Correct: {{vm.correctCount}}</p>
 			<p>Incorrect: {{vm.incorrectCount}}</p>
 		</div>
-		
+
 		<div ng-show="vm.gameComplete">
-			<button class="btn btn-secondary" ng-click="vm.startGame()">Play Again!</button>
+			<p>
+				diff:
+				<select name="gameDifficulty" ng-model="$root.gameDifficulty">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+					<option>7</option>
+					<option>8</option>
+				</select>
+				<button class="btn btn-secondary" ng-click="vm.startGame()">Play
+					Again!</button>
+			</p>
 		</div>
-		
-		
- <div>
-	<ul>
-		<li ng-repeat="error in vm.errors" ng-show="vm.errors.length > 0">{{error}}</li>
-	</ul>
-</div>  
+
+
+		<div>
+			<ul>
+				<li ng-repeat="error in vm.errors" ng-show="vm.errors.length > 0">{{error}}</li>
+			</ul>
+		</div>
 
 
 

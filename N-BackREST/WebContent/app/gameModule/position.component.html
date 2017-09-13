@@ -1,35 +1,40 @@
 <div id="mainContent" class="container-fluid">
 	<h2>Position Test</h2>
-	<p>Test your ability to remember the position of objects on a board
+	<p>Try to memorize the position of each number in the grid in ten seconds! 
 
-
-
-
-
-
-
-	
 	
 	<div id="gameContainer" class="container-fluid">
 		<!-- here lies the game: -->
 
-		<button class="btn btn-primary" ng-click="vm.startGame()">start!</button>
+		<button class="btn btn-primary" ng-hide="vm.gameStarted" ng-click="vm.startGame()">start!</button>
 		<div>
 			<div class="container">
 				<h1 ng-show="vm.hideNums">{{vm.randomNum}}</h1>
 				<div>
-					<table class="table table-striped table-border">
+					<table class="container-fluid table table-striped table-bordered">
 						<tbody>
 							<tr ng-repeat="array in vm.grid">
 								<td ng-repeat="num in array" ng-click="vm.guessNumber(num)">
-									<div ng-show="vm.hideNums">X</div>
-									<div ng-hide="vm.hideNums">{{num}}</div>
+									<div ng-show="vm.hideNums">
+										<p>X</p>
+									</div>
+									<div ng-hide="vm.hideNums">
+										<p>{{num}}</p>
+									</div>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
+		</div>
+		<div id="resultsDisplay" class="container-fluid"
+			ng-show="vm.gameFinished">
+			<p>Difficulty Level: {{$root.gameDifficulty}}</p>
+			<p>Correct: {{vm.correctCounter}}</p>
+			<p>Incorrect: {{vm.incorrectCounter}}</p>
+			<p>Points: {{vm.points}}</p>
+			<button class="btn btn-secondary" ng-click="vm.startGame()">Play Again!</button>
 		</div>
 		<br>
 	</div>

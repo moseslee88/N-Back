@@ -13,6 +13,24 @@ angular.module('gameModule')
 			var tempGrid = [];
 			var persistedArr = [];
 			vm.hideNums = false;
+			vm.gameStarted = false;
+			vm.gameFinished = false;
+			
+			vm.initGame = function(){
+				vm.diff = 0;
+				vm.gridSize = 0;
+				vm.grid = [];
+				vm.randomNum = null;
+				vm.points = 0;
+				var turnCounter = 0;
+				var tempGrid = [];
+				var persistedArr = [];
+				vm.hideNums = false;
+				vm.gameStarted = false;
+				vm.gameFinished = false;
+				vm.correctCounter = 0;
+				vm.incorrectCounter = 0;
+			}
 		
 			
 			genRandomNum = function(){
@@ -20,6 +38,9 @@ angular.module('gameModule')
 			}
 				
 			vm.showResult = function() {
+				if(vm.points <= 0){
+                    vm.points = 1;
+                }
                 vm.points = Math.floor(Math.sqrt(vm.points / 100)
                         * 100 * $rootScope.gameDifficulty
                         * Math.sqrt($rootScope.gameDifficulty));
@@ -42,6 +63,7 @@ angular.module('gameModule')
 
 			vm.saveResult = function() {
 				console.log("saving result");
+				vm.gameFinished = true;
 				resultService.create(vm.buildResult(), $rootScope.gameId);
 				resetData();
 			}
@@ -67,15 +89,19 @@ angular.module('gameModule')
 			};
 
 			vm.startGame = function() {
-				vm.buildGrid()
+				vm.initGame();
+				vm.gameStarted = true;
+				vm.buildGrid();
 			}
 
 			vm.guessNumber = function(num) {
 				if(num == vm.randomNum){
 					 console.log("correct");
-					 vm.points += 14.28;
+					 vm.correctCounter += 1;
+					 vm.points += 14;
 				}else {
 					 console.log("not correct");
+					 vm.incorrectCounter += 1;
 
                     vm.points -= 6;
                 }
@@ -83,7 +109,7 @@ angular.module('gameModule')
 				turnCounter += 1;
 				 console.log(turnCounter);
 
-				if(turnCounter == 7){
+				if(turnCounter >= 7){
 					vm.showResult();
 					resetData();
 				}
@@ -95,7 +121,6 @@ angular.module('gameModule')
 				vm.gridSize = 0;
 				vm.grid = [];
 				vm.randomNum = null;
-				vm.points = 0;
 				turnCounter = 0;
 				tempGrid = [];
 				persistedArr = [];
