@@ -1,5 +1,5 @@
 angular.module("appModule")
-	.controller("BarCtrl", function($filter, $scope, $location, $cookies, resultService, profileService, gameService, challengeService, userService, authService) {
+	.controller("BarCtrl", function($filter,$rootScope, $scope, $location, $cookies, resultService, profileService, gameService, challengeService, userService, authService) {
 
 
 		var userResults = [];
