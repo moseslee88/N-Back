@@ -40,7 +40,7 @@ angular.module('gameModule')
 			var showFunLetters = function() {
 				//setting timer to change every difficulty level (LESS time per higher difficulty level)
 				var showTime = 5000 + 10000 / parseInt($rootScope.gameDifficulty);
-				vm.showLetters = randomNumService.getLetters(parseInt($rootScope.gameDifficulty) * 3);
+				vm.showLetters = randomNumService.getLetters(parseInt($rootScope.gameDifficulty) * 4);
 
 				$interval(function() {}, showTime, 1)
 					.then(function() { 
