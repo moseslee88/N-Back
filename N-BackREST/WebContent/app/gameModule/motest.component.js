@@ -54,7 +54,7 @@ angular.module('gameModule')
 				console.log(vm.showLetters);
 				if (inputArr.length < vm.showLetters.length) {    //check for mistakes in user input or less letters than TEST array
 					var lettersShort = vm.showLetters.length - inputArr.length;
-					for (var i = 0; i < lettersShort; i++) {
+					for (var i = inputArr.length; i <= vm.showLetters.length; i++) {
 						inputArr.push(0);
 						//inputArr.push(i);
 					}
@@ -82,7 +82,7 @@ angular.module('gameModule')
 				var ratio = (vm.correctCount) / (vm.showLetters.length);
 				vm.points = 100 * ratio;
 			}
-
+             // ratio = blank / 12;
 			//take input
 			//compare and give points for correct answers
 			//end game logic
