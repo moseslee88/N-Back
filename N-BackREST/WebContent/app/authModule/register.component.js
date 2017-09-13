@@ -32,7 +32,6 @@ angular.module('authModule')
 			}
 			
 			delete user.confirm;
-			console.log(user);
 			authService.register(user)
 				.then(function(res) {
 					$location.path('/profile');
