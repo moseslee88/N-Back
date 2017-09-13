@@ -120,8 +120,7 @@ angular
 
 						vm.saveResult = function() {
 							console.log("saving result");
-							resultService.create(vm.buildResult(),
-									$rootScope.gameId);
+							resultService.create(vm.buildResult(),2);
 						}
 					},
 					controllerAs : 'vm'

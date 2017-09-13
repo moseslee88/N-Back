@@ -140,8 +140,7 @@ angular
 						}
 
 						vm.saveResult = function() {
-							resultService.create(vm.buildResult(),
-									$rootScope.gameId);
+							resultService.create(vm.buildResult(),5);
 						}
 
 						function shuffle(array) {
