@@ -6,15 +6,15 @@ angular.module('authModule')
 		vm.login = function(user) {
 			authService.login(user)
 				.then(function(res) {
-					console.log(res.data);
 					$rootScope.$broadcast('userLogin', {
 						currentUser : res.data
 					});
 					$location.path('/')
-					
+					$rootScope.currentUser = res.data;
 				})
 				.catch(console.error);
 		}
+		
 		
 		
 	},

@@ -3,10 +3,8 @@ angular.module('appModule')
 		templateUrl : 'app/appModule/home.component.html',
 		controller : function($location, $cookies, resultService, profileService, gameService, challengeService, userService, authService, $rootScope, $scope) {
 			var vm = this;
-			vm.currentUserId = null;
-			vm.currentUser = null;
 
-			vm.currentUserId = authService.getToken().id;
+			$rootScope.currentUserId = authService.getToken().id;
 
 			vm.goToRegister = function() {
 				$location.path('/register');
@@ -21,12 +19,8 @@ angular.module('appModule')
 
 			var listenForLogin = function(e, user) {
 				console.log(user.currentUser);
-				vm.currentUser = user.currentUser;
-				vm.currentUserId = user.currentUser.id;
-				//				console.log(e)
-//				console.log(user)
-//				vm.getUser();
-//				vm.getCurrentUserID();
+				$rootScope.currentUser = user.currentUser;
+				$rootScope.currentUserId = user.currentUser.id;
 			}
 			
 			vm.gameList = [];
@@ -40,10 +34,10 @@ angular.module('appModule')
 
 			$scope.$on('userLogin', listenForLogin);
 			$scope.$on('logout', function(e){
-				vm.currentUser = null;
-				vm.currentUserId = null;
-				console.log(vm.currentUser)
-				console.log(vm.currentUserId)
+				$rootScope.currentUser = null;
+				$rootScope.currentUserId = null;
+				console.log($rootScope.currentUser)
+				console.log($rootScope.currentUserId)
 
 			});
 

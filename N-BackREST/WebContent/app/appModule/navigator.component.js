@@ -11,8 +11,7 @@ angular.module('appModule')
 				authService.logout().then(function(response) {
 					//rootScope to communicate between navigator and home component 
 					$rootScope.$broadcast('logout',{});
-					console.log("yup, user loggedd out");
-					vm.currentUserId = null;
+					$rootScope.currentUser = null;
 					$location.path('/');
 				})
 					.catch(function() {
@@ -20,10 +19,10 @@ angular.module('appModule')
 					});
 			}
 			
-			$scope.$on('userLogin', function(e,user){
-				vm.currentUserId = user.currentUser.id;
-				console.log('broadcast that user LOGGEdd in')
-			})
+//			$scope.$on('userLogin', function(e,user){
+//				vm.currentUserId = user.currentUser.id;
+//				console.log('broadcast that user LOGGEdd in')
+//			})
 		},
 		controllerAs : 'vm'
 	})

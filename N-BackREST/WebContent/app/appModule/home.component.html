@@ -2,8 +2,8 @@
 <div id="mainContent" class="container-fluid">
 
 	<div class="row">
-		<div class="col-sm-1 col-md-2" ng-hide="vm.currentUserId"></div>
-		<div class="col-sm-10 col-md-8" ng-hide="vm.currentUserId">
+		<div class="col-sm-1 col-md-2" ng-hide="$root.currentUserId"></div>
+		<div class="col-sm-10 col-md-8" ng-hide="$root.currentUserId">
 			<div class="thumbnail">
 				<!-- <img src="..." alt="...">
 				<div class="caption"> -->
@@ -16,7 +16,7 @@
 				<br> <br>
 			</div>
 		</div>
-		<div class="col-sm-1 col-md-2" ng-hide="vm.currentUserId"></div>
+		<div class="col-sm-1 col-md-2" ng-hide="$root.currentUserId"></div>
 	</div>
 
 	<!-- Carousel
@@ -113,13 +113,13 @@
 
 <div class="row">
 	<!-- repeatable section -->
-	<div class="col-sm-6 col-md-6" ng-show="vm.currentUserId">
+	<div class="col-sm-6 col-md-6" ng-show="$root.currentUserId">
 		<div class="thumbnail">
 			<br>
 			<h3>Profile Info</h3>
 			<p>
-				Username: {{vm.currentUser.profile.name}}<br> City:
-				{{vm.currentUser.profile.city}}<br>
+				Username: {{$root.currentUser.profile.name}}<br> City:
+				{{$root.currentUser.profile.city}}<br>
 			<p>
 				<a class="btn btn-primary" role="button" ng-click="vm.goToProfile()">Profile</a>
 			</p>
@@ -128,7 +128,7 @@
 	</div>
 
 	<!-- line chart -->
-	<div class="col-sm-6 col-md-6" ng-show="vm.currentUserId">
+	<div class="col-sm-6 col-md-6" ng-show="$root.currentUserId">
 		<div class="thumbnail" ng-controller="BarCtrl">
 			<canvas id="bar" class="chart chart-bar" chart-data="data"
 				chart-labels="labels" chart-series="series" chart-options="options"
@@ -138,7 +138,7 @@
 	</div>
 
 	<!-- Pie Chart -->
-	<div class="col-sm-6 col-md-6" ng-show="vm.currentUserId">
+	<div class="col-sm-6 col-md-6" ng-show="$root.currentUserId">
 		<div class="thumbnail" ng-controller="chart1 as vm">
 			<h3>{{vm.title}}</h3>
 			<canvas id="pie" class="chart chart-pie" chart-data="vm.data"
@@ -150,5 +150,5 @@
 
 </div>
 </div>
-<div ng-show="vm.currentUserId"></div>
+<div ng-show="$root.currentUserId"></div>
 </div>
