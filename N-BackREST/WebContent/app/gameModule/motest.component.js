@@ -103,7 +103,12 @@ angular.module('gameModule')
 			}
 
 			vm.calcPoints = function() {
+<<<<<<< HEAD
 				var ratio = (vm.correctCount) / (testLetters.length);
+=======
+				//var ratio = (vm.correctCount) / (vm.showLetters.length);
+				var ratio = vm.correctCount/testLetters.length;
+>>>>>>> ea25c7210522f4a4f8c7b3b41af06ad91f630499
 				vm.points = 100 * ratio;
 			}
 			
