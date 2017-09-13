@@ -1,13 +1,13 @@
 /* color scheme:
-dark gray: #504E55
-gold: #E4A835
-dark blue: #143D4C
-light gray: #796F70
-orange: #F07F00
+dark blue gray: #202C2F
+med blue gray: #2C3C3F
+light gray: #586D6D
+  white: #93AEA7
+  almost black: #050A05
  */
 
 body {
-     background: linear-gradient(to bottom, #143D4C, #111);
+    background: linear-gradient(to bottom, #2C3C3F, #050A05);
     height: 100%;
     margin: 0;
     background-repeat: no-repeat;
@@ -32,11 +32,52 @@ p, p>a {
 	color: #EEE;
 }
 
+.navbar {
+	box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+	
+}
+
 .navbar * {
 	font-size: calc(0.5em + 1vmin);
 	font-family: "Spectral", "Cormorant Garamond", serif;
 	color: #EEE;
-	box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+}
+
+#myCarousel > {
+}
+
+/* Carousel base class */
+.carousel {
+  height: 500px;
+  margin-bottom: 60px;
+  border: 5px;
+}
+
+.carousel * {
+  text-align: left;
+}
+
+.carousel-indicators{
+	text-align: center;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+  padding: 40px;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.8);
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 500px;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 500px;
 }
 
 .thumbnail * {
@@ -45,25 +86,24 @@ p, p>a {
 }
 
 button, .btn-primary {
-	background: #143D4C;
-	border: #143D4C;
+	background: #2C3C3F;
+	border: #2C3C3F;
 	color: #EEE;
 }
 
 .btn-secondary {
-	background: #504E55;
-	border: #504E55;
+	background: #586D6D;
+	border: #586D6D;
 	color: #EEE;
 }
 
 .btn-tertiary {
-	background: #E4A835;
-	border: #E4A835;
+	background: #050A05;
+	border: #050A05;
 	color: #EEE;
 }
 
 .btn:hover {
-	background: #796F70;
-	border: #E4A835;
-	color: #EEE;
+	background: #202C2F;
+	border: #050A05;
 }
