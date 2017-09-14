@@ -3,7 +3,7 @@
 <div id="mainContent" class="container-fluid">
 	<div class="col-sm-12 col-md-12" ng-show="vm.activeGame">
 		<div class="thumbnail">
-			
+
 			<br>
 			<nback ng-if="vm.activeGame.name === 'nback'"></nback>
 			<motest ng-if="vm.activeGame.name === 'motest'"></motest>
@@ -12,17 +12,18 @@
 			<br>
 		</div>
 	</div>
-	
+
 
 
 	<!-- repeatable section -->
 	<div class="col-sm-6 col-md-6" ng-repeat="thisGame in vm.gameList">
 		<div class="thumbnail">
-			
+
 			<br>
 			<h3>{{thisGame.name}}</h3>
 			<p>
-				Difficulty: <select name="gameDifficulty" ng-model="$root.gameDifficulty">
+				Difficulty:
+				<select name="gameDifficulty" ng-model="$root.gameDifficulty">
 					<option>1</option>
 					<option>2</option>
 					<option>3</option>
@@ -31,7 +32,8 @@
 					<option>6</option>
 					<option>7</option>
 					<option>8</option>
-				</select> <input type="submit" value="play!" class="btn btn-primary"
+				</select>
+				<input type="submit" value="play!" class="btn btn-primary"
 					ng-click="vm.activateGame(thisGame)" />
 			</p>
 			<br>
@@ -40,7 +42,7 @@
 			<br>
 		</div>
 	</div>
-	
-	
+
+
 
 </div>

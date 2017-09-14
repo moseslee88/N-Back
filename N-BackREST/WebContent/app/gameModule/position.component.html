@@ -1,17 +1,17 @@
 <div id="mainContent" class="container-fluid">
 	<h2>Position Test</h2>
-	<p>Try to memorize the position of each number in the grid in ten seconds! 
-
-	
+	<p>Try to memorize the position of each number in the grid in ten
+		seconds!
 	<div id="gameContainer" class="container-fluid">
 		<!-- here lies the game: -->
 
-		<button class="btn btn-primary" ng-hide="vm.gameStarted" ng-click="vm.startGame()">start!</button>
+		<button class="btn btn-primary" ng-hide="vm.gameStarted"
+			ng-click="vm.startGame()">start!</button>
 		<div>
 			<div class="container">
 				<h1 ng-show="vm.hideNums">{{vm.randomNum}}</h1>
 				<div>
-				<h3 ng-hide="vm.hideNums">{{vm.countdownTimer}}</h3>
+					<h3 ng-hide="vm.hideNums">{{vm.countdownTimer}}</h3>
 					<table class="container-fluid table table-striped table-bordered">
 						<tbody>
 							<tr ng-repeat="array in vm.grid">
@@ -35,7 +35,8 @@
 			<p>Correct: {{vm.correctCounter}}</p>
 			<p>Incorrect: {{vm.incorrectCounter}}</p>
 			<p>Points: {{vm.points}}</p>
-			<button class="btn btn-secondary" ng-click="vm.startGame()">Play Again!</button>
+			<button class="btn btn-secondary" ng-click="vm.startGame()">Play
+				Again!</button>
 		</div>
 		<br>
 	</div>

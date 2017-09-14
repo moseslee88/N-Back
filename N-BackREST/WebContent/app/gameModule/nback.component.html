@@ -1,10 +1,10 @@
 <div id="mainContent" class="container-fluid">
 	<h2>N-Back Test</h2>
-	<p ng-hide="vm.gameStarted">Test your ability to recognize if the current number is the same
-		as a previous number</p>
-	<p ng-hide="vm.gameStarted">If difficulty is 1, click the button if the displayed number is
-		the same as the previous number. If difficulty is 2, compare to the
-		number that was shown 2 numbers back, etc.</p>
+	<p ng-hide="vm.gameStarted">Test your ability to recognize if the
+		current number is the same as a previous number</p>
+	<p ng-hide="vm.gameStarted">If difficulty is 1, click the button if
+		the displayed number is the same as the previous number. If difficulty
+		is 2, compare to the number that was shown 2 numbers back, etc.</p>
 
 	<div id="gameContainer" class="container-fluid">
 		<button class="btn btn-tertiary" ng-click="vm.startGame()"
@@ -16,13 +16,14 @@
 			<button class="btn btn-primary" ng-click="vm.checkCorrect()"
 				ng-disabled="vm.buttonPressed">check!</button>
 		</div>
-		<div id="resultsDisplay" class="container-fluid" ng-show="vm.gameFinished">
+		<div id="resultsDisplay" class="container-fluid"
+			ng-show="vm.gameFinished">
 			<p>Difficulty Level: {{$root.gameDifficulty}}</p>
 			<p>Correct: {{vm.correctCounter}}</p>
 			<p>Incorrect: {{vm.incorrectCounter}}</p>
 			<p>Points: {{vm.points}}</p>
 			<p>
-			diff:
+				diff:
 				<select name="gameDifficulty" ng-model="$root.gameDifficulty">
 					<option>1</option>
 					<option>2</option>
@@ -33,7 +34,7 @@
 					<option>7</option>
 					<option>8</option>
 				</select>
-			<button class="btn btn-secondary" ng-click="vm.startGame()">reset!</button>
+				<button class="btn btn-secondary" ng-click="vm.startGame()">reset!</button>
 			</p>
 		</div>
 	</div>

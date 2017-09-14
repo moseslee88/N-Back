@@ -1,14 +1,14 @@
 <navigator></navigator>
 <div id="mainContent" class="container-fluid">
-<div style="width: 100%; height: 40px;"></div>
+	<div style="width: 100%; height: 40px;"></div>
 
 
 	<div class="row" ng-if="!($root.currentUser.id >= 1)">
-	<div class="col-sm-12 col-md-12" style="height: 60px;"></div>
+		<div class="col-sm-12 col-md-12" style="height: 60px;"></div>
 		<div class="col-sm-1 col-md-2"></div>
 		<div class="col-sm-10 col-md-8">
 			<div id="mosloginbox" class="thumbnail" style="text-align: center;">
-			
+
 				<!-- <img src="..." alt="...">
 				<div class="caption"> -->
 				<br>
@@ -26,7 +26,8 @@
 
 	<!-- Carousel
     ================================================== -->
-	<div id="myCarousel" class="carousel slide" data-ride="carousel" ng-if="$root.currentUser.id >= 1">
+	<div id="myCarousel" class="carousel slide" data-ride="carousel"
+		ng-if="$root.currentUser.id >= 1">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -113,53 +114,53 @@
 			<span class="sr-only">Next</span>
 		</a> -->
 
-<!-- /.carousel -->
+	<!-- /.carousel -->
 
-<div class="row" ng-if="$root.currentUser.id >= 1">
+	<div class="row" ng-if="$root.currentUser.id >= 1">
 
-	<!-- repeatable section -->
-	<div class="col-sm-6 col-md-6">
-		<div class="thumbnail">
-			<br>
-			<h3>Profile Info</h3>
-			<p>
-				Username: {{$root.currentUser.profile.name}}<br> City:
-				{{$root.currentUser.profile.city}}
-				<br> Country: {{$root.currentUser.profile.country}}
+		<!-- repeatable section -->
+		<div class="col-sm-6 col-md-6">
+			<div class="thumbnail">
 				<br>
-			<p>
-				<a class="btn btn-primary" role="button" ng-click="vm.goToProfile()">Profile</a>
-			</p>
-			<br> <br>
+				<h3>Profile Info</h3>
+				<p>
+					Username: {{$root.currentUser.profile.name}}<br> City:
+					{{$root.currentUser.profile.city}} <br> Country:
+					{{$root.currentUser.profile.country}} <br>
+				<p>
+					<a class="btn btn-primary" role="button"
+						ng-click="vm.goToProfile()">Profile</a>
+				</p>
+				<br> <br>
+			</div>
 		</div>
-	</div>
 
 
-	<!-- bar chart -->
-	<div class="col-sm-6 col-md-6">
-		<div class="thumbnail" ng-controller="BarCtrl">
-			<h3>You vs Them</h3>
-			<canvas id="bar" class="chart chart-bar" chart-data="data"
-				chart-labels="labels" chart-series="series" chart-options="options"
-				chart-dataset-override="datasetOverride" chart-click="onClick">
+		<!-- bar chart -->
+		<div class="col-sm-6 col-md-6">
+			<div class="thumbnail" ng-controller="BarCtrl">
+				<h3>You vs Them</h3>
+				<canvas id="bar" class="chart chart-bar" chart-data="data"
+					chart-labels="labels" chart-series="series" chart-options="options"
+					chart-dataset-override="datasetOverride" chart-click="onClick">
 				</canvas>
+			</div>
 		</div>
-	</div>
 
-	<!-- Pie Chart -->
-	<div class="col-sm-6 col-md-6">
-		<div class="thumbnail" ng-controller="chart1 as vm">
-			<h3>Games Played</h3>
-			<canvas id="pie" class="chart chart-pie" chart-data="vm.data"
-				chart-labels="vm.labels" chart-options="options">
+		<!-- Pie Chart -->
+		<div class="col-sm-6 col-md-6">
+			<div class="thumbnail" ng-controller="chart1 as vm">
+				<h3>Games Played</h3>
+				<canvas id="pie" class="chart chart-pie" chart-data="vm.data"
+					chart-labels="vm.labels" chart-options="options">
   				</canvas>
 
+			</div>
 		</div>
+
+
+
 	</div>
-
-
-
-</div>
 </div>
 <div ng-show="$root.currentUser.id"></div>
 </div>
