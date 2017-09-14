@@ -16,13 +16,13 @@
 
 
 	<!-- repeatable section -->
-	<div class="col-sm-6 col-md-4" ng-repeat="thisGame in vm.gameList">
+	<div class="col-sm-6 col-md-6" ng-repeat="thisGame in vm.gameList">
 		<div class="thumbnail">
 			
 			<br>
 			<h3>{{thisGame.name}}</h3>
 			<p>
-				diff: <select name="gameDifficulty" ng-model="$root.gameDifficulty">
+				Difficulty: <select name="gameDifficulty" ng-model="$root.gameDifficulty">
 					<option>1</option>
 					<option>2</option>
 					<option>3</option>

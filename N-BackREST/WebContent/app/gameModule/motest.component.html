@@ -11,6 +11,8 @@
 
 		<div ng-show="vm.showLets">
 			<h5>What are the letters of the sequence, in order?</h5>
+			<br>
+			{{vm.countdownTimer}}
 			<h1>
 				<center>{{vm.showLetters}}</center>
 			</h1>
@@ -19,13 +21,13 @@
 
 
 
-		<div ng-show="vm.userTurn" ng-hide="vm.showLets">
+		<div ng-show="vm.userTurn">
 			<h5>What are the letters of the sequence, in order?</h5>
 			<form>
-
 				<input type="text" style="width: 26em;"
-					placeholder="Write sequence of letters here! (DON'T enter any spaces)"
+					placeholder="Write sequence of letters here!"
 					ng-model="vm.userInput" />
+				<br /> Use '?' for unknown letters. (DON'T enter any spaces)
 				<br />
 				<input type="submit" value="Get Score!"
 					ng-click="vm.addResults(vm.userInput)" class="btn btn-primary" />

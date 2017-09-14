@@ -9,7 +9,6 @@ angular.module('gameModule')
 			vm.activateGame = function(thisGame) {
 			vm.activeGame = thisGame;
 				$rootScope.gameId = thisGame.id;
-				console.log($rootScope.gameId);
 			}
 			
 

@@ -114,3 +114,8 @@ button, .btn-primary {
 	text-align: center;
 	color: #EEE;
 }
+
+#mosloginbox input {
+	text-align: center;
+	color: #050A05;
+}

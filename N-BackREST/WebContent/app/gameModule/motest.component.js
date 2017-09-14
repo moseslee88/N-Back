@@ -40,10 +40,13 @@ angular.module('gameModule')
 			//game Logic Here
 			var showFunLetters = function() {
 				//setting timer to change every difficulty level (LESS time per higher difficulty level)
-				var showTime = 5000 + 10000 / parseInt($rootScope.gameDifficulty);
+				var showTime = Math.floor(6 + 10 / parseInt($rootScope.gameDifficulty));
 				vm.showLetters = randomNumService.getLetters(parseInt($rootScope.gameDifficulty) * 4);
 
-				$interval(function() {}, showTime, 1)
+				$interval(function() {
+					vm.countdownTimer = showTime;
+					showTime--;
+				}, 1000, showTime)
 					.then(function() { 
 						vm.showLets = false;
 						vm.userTurn = true;
@@ -55,7 +58,6 @@ angular.module('gameModule')
 				inputArr = input.toUpperCase().trim().split("");
 				testLetters = vm.showLetters.trim().split(" ").join('');
 
-				console.log(testLetters.length);
 
 				//some ERROR checking
 				if (inputArr == null) {
@@ -72,7 +74,7 @@ angular.module('gameModule')
 				}
 
 
-				var patt1 = /[0-9]/g;
+				var patt1 = /[\?0-9]/g;
 				for (var i = 0; i < inputArr.length; i++) {
 					if (inputArr[i].match(patt1)) {
 						vm.errors.push("You must include an answer of letters, crazy")
@@ -86,10 +88,8 @@ angular.module('gameModule')
 				for (var i = 0; i < testLetters.length; i++) {
 					if (testLetters[i] == inputArr[i]) {
 						vm.correctCount++;
-						console.log('user is COrrect'); 	//if correct
 					} else {
 						vm.incorrectCount++;
-						console.log('user is incorrect');
 					}
 				}
 
@@ -101,12 +101,6 @@ angular.module('gameModule')
 				var ratio = (vm.correctCount) / (testLetters.length);
 				vm.points = 100 * ratio;
 			}
-			
-			// StepS for points logic
-			// ratio = blank / 9 or 12 or 15;
-			//take input
-			//compare and give points for correct answers
-			//end game logic
 
 
 			vm.buildResult = function() {
@@ -129,7 +123,6 @@ angular.module('gameModule')
 				}
 				vm.points = Math.floor(Math.sqrt(vm.points / 100) * 100 *
 					parseInt($rootScope.gameDifficulty) * Math.sqrt(parseInt($rootScope.gameDifficulty)));
-				console.log("points: " + vm.points);
 				vm.saveResult();
 			}
 

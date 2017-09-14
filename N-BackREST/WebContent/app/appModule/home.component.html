@@ -12,11 +12,10 @@
 				<!-- <img src="..." alt="...">
 				<div class="caption"> -->
 				<br>
-				<h3>Login</h3>
+				<h2>Login</h2>
 				<login></login>
-				<h3>Register</h3>
-				<button class="btn btn-primary" ng-click="vm.goToRegister()">Go
-					Register</button>
+				<h2>Register</h2>
+				<button class="btn btn-primary" ng-click="vm.goToRegister()">Register</button>
 				<br> <br>
 			</div>
 		</div>
@@ -125,7 +124,9 @@
 			<h3>Profile Info</h3>
 			<p>
 				Username: {{$root.currentUser.profile.name}}<br> City:
-				{{$root.currentUser.profile.city}}<br>
+				{{$root.currentUser.profile.city}}
+				<br> Country: {{$root.currentUser.profile.country}}
+				<br>
 			<p>
 				<a class="btn btn-primary" role="button" ng-click="vm.goToProfile()">Profile</a>
 			</p>

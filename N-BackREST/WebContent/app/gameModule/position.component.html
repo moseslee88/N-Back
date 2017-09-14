@@ -11,6 +11,7 @@
 			<div class="container">
 				<h1 ng-show="vm.hideNums">{{vm.randomNum}}</h1>
 				<div>
+				<h3 ng-hide="vm.hideNums">{{vm.countdownTimer}}</h3>
 					<table class="container-fluid table table-striped table-bordered">
 						<tbody>
 							<tr ng-repeat="array in vm.grid">
