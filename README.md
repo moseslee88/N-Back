@@ -12,14 +12,14 @@ We have 40 years of military experience combined, observing and strategizing inn
 
 ### Technologies Used
 
-Java 8
-Spring MVC
-JDBC/JPA
-JavaScript
-JQuery
-AngularJS
-Gradle Nature
-MySQL on Amazon RDS
-Amazon EC2 Host
+-Java 8 <br>
+-Spring MVC  <br>
+-JDBC/JPA <br>
+-JavaScript <br>
+-JQuery <br>
+-AngularJS<br>
+-Gradle Nature<br>
+-MySQL on Amazon RDS<br>
+-Amazon EC2 Host<br>
 
 The end goal of the 4 memory games was to create a user-interactive, friendly experience that was easy to use, clear with instructions and bug-free.  We wanted to be able for users to compare how their memory is, using charts, to others or friends.  Some of the challenges/obstacles we faced were with issues uploading a database onto RDS, login & pathing issues, and Angular Charts documentation. Also, given more time, we would have liked to implement a way for others to challenge their friends dynamically, by clicking on their profile and challenging. Any feedback to any of us four is much appreciated!
